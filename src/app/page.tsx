@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const PHONE_DISPLAY = "(437) 669-1543";
 const PHONE_TEL = "+14376691543";
 const EMAIL = "info@theprimedevelopers.ca";
@@ -90,10 +92,16 @@ export default function Home() {
       <div className="sticky top-0 z-40 border-b" style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.85)", backdropFilter: "blur(10px)" }}>
         <div className="pd-container flex items-center justify-between py-3">
           <div className="flex items-center gap-3">
-            <div
-              className="h-9 w-9 rounded-xl"
-              style={{ background: "linear-gradient(135deg, var(--accent) 0%, #ffffff 85%)", border: "1px solid rgba(15,23,42,0.12)" }}
-            />
+            <div className="h-10 w-24 sm:w-28">
+              <Image
+                src="/logo.jpg"
+                alt="The Prime Developers"
+                width={320}
+                height={120}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
             <div className="leading-tight">
               <div className="text-sm font-extrabold tracking-wider">
                 {BRAND.name.toUpperCase()}
