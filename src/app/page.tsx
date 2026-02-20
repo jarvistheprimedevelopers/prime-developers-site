@@ -32,6 +32,29 @@ const audiences = [
   },
 ];
 
+const gallery = [
+  {
+    src: "/projects/kitchen-1.png",
+    title: "Kitchen Renovation",
+    tag: "Renovation",
+  },
+  {
+    src: "/projects/kitchen-2.png",
+    title: "Kitchen Remodel",
+    tag: "Renovation",
+  },
+  {
+    src: "/projects/kitchen-3.png",
+    title: "Modern Kitchen",
+    tag: "Renovation",
+  },
+  {
+    src: "/projects/bathroom-1.png",
+    title: "Bathroom Refresh",
+    tag: "Renovation",
+  },
+];
+
 const services = [
   {
     title: "Renovations",
@@ -146,6 +169,19 @@ export default function Home() {
                 emergency service, handyman work, insurance claim support, and contractor
                 coordination.
               </p>
+
+              {/* Hero image strip */}
+              <div className="mt-8 pd-card overflow-hidden" style={{ borderRadius: "1.75rem" }}>
+                <div className="relative h-[220px] w-full sm:h-[260px]">
+                  <Image
+                    src={gallery[0].src}
+                    alt={gallery[0].title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a className="pd-btn pd-btn-primary" href={`tel:${PHONE_TEL}`}>
@@ -294,6 +330,40 @@ export default function Home() {
                 <a className="pd-btn pd-btn-accent" href={ESTIMATE_URL}>
                   Request an Estimate
                 </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="pd-container py-16">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <div className="text-xs font-extrabold tracking-widest" style={{ color: "var(--accent-ink)" }}>
+              RECENT WORK
+            </div>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight">Project Gallery</h2>
+            <p className="mt-2 max-w-2xl pd-muted">
+              A few examples of the finish level we aim for.
+            </p>
+          </div>
+          <a className="pd-btn pd-btn-accent" href={ESTIMATE_URL}>
+            Request an Estimate
+          </a>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {gallery.map((g) => (
+            <div key={g.src} className="pd-card overflow-hidden">
+              <div className="relative h-[220px] w-full">
+                <Image src={g.src} alt={g.title} fill className="object-cover" />
+              </div>
+              <div className="p-4">
+                <div className="text-xs font-extrabold tracking-widest" style={{ color: "var(--accent-ink)" }}>
+                  {g.tag}
+                </div>
+                <div className="mt-1 text-sm font-extrabold">{g.title}</div>
               </div>
             </div>
           ))}
