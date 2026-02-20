@@ -90,3 +90,34 @@ body {
 .pd-muted2 {
   color: var(--muted2);
 }
+
+/* Prestige-style service cards (pill + smooth hover) */
+.service-card {
+  background: #ffffff;
+  border: 2px solid rgba(183, 243, 151, 0.85); /* uses your B light-green */
+  border-radius: 40px;
+  padding: 40px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 30px rgba(183, 243, 151, 0.18);
+}
+
+.service-card:hover {
+  transform: scale(1.03) translateY(-10px);
+  background: rgba(183, 243, 151, 0.75);
+  color: var(--accent-ink);
+  box-shadow: 0 20px 40px rgba(183, 243, 151, 0.35);
+  border-color: rgba(183, 243, 151, 1);
+}
+
+.service-card p {
+  color: var(--muted);
+}
+
+.service-card:hover p {
+  color: rgba(6, 78, 59, 0.95);
+}
+
+.flow-text {
+  color: var(--accent-ink);
+  line-height: 1.6;
+}

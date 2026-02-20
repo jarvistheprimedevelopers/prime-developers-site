@@ -292,7 +292,7 @@ export default function Home() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="pd-card p-6 transition hover:-translate-y-1" style={{ boxShadow: "0 18px 55px rgba(15,23,42,0.07)" }}>
+            <div key={s.title} className="service-card">
               <div className="flex items-center justify-between">
                 <div className="text-lg font-extrabold">{s.title}</div>
                 <div
@@ -300,7 +300,7 @@ export default function Home() {
                   style={{ background: "linear-gradient(135deg, var(--accent) 0%, #ffffff 85%)", border: "1px solid rgba(15,23,42,0.12)" }}
                 />
               </div>
-              <p className="mt-3 text-sm leading-relaxed pd-muted">{s.desc}</p>
+              <p className="mt-3 text-sm leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
