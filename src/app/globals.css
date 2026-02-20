@@ -1,20 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a; /* slate-900 */
-  --muted: rgba(15, 23, 42, 0.70);
-  --muted2: rgba(15, 23, 42, 0.55);
+  /* Institutional palette */
+  --bg: #0b0f0d;            /* near-black */
+  --fg: #f8fafc;            /* near-white */
+  --muted: rgba(248, 250, 252, 0.72);
+  --muted2: rgba(248, 250, 252, 0.55);
 
-  /* Accent (Light Green) */
-  --accent: #B7F397;
-  --accent-2: #86EFAC; /* green-300 */
-  --accent-ink: #064e3b; /* emerald-900 */
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.12);
 
-  /* Surfaces */
-  --card: #ffffff;
-  --card2: rgba(15, 23, 42, 0.03);
-  --border: rgba(15, 23, 42, 0.12);
+  /* Dark green accent */
+  --accent: #0f3d2e;
+  --accent-2: #145a40;
+  --accent-ink: #a7f3d0; /* mint highlight */
 }
 
 html,
@@ -23,11 +22,11 @@ body {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
 }
 
-/* Helpers */
+/* Layout helpers */
 .pd-container {
   @apply mx-auto max-w-6xl px-4 sm:px-6;
 }
@@ -38,49 +37,10 @@ body {
   border-radius: 1.5rem;
 }
 
-.pd-card-soft {
-  background: var(--card2);
+.pd-card-solid {
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: 1.5rem;
-}
-
-.pd-btn {
-  @apply inline-flex items-center justify-center font-extrabold transition;
-  border-radius: 9999px;
-  padding: 0.75rem 1.25rem;
-}
-
-.pd-btn-primary {
-  background: var(--foreground);
-  color: white;
-}
-
-.pd-btn-primary:hover {
-  opacity: 0.92;
-}
-
-.pd-btn-accent {
-  background: rgba(183, 243, 151, 0.25);
-  border: 1px solid rgba(183, 243, 151, 0.65);
-  color: var(--accent-ink);
-}
-
-.pd-btn-accent:hover {
-  background: rgba(183, 243, 151, 0.35);
-}
-
-.pd-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.35rem 0.75rem;
-  border: 1px solid rgba(183, 243, 151, 0.75);
-  background: rgba(183, 243, 151, 0.18);
-  color: var(--accent-ink);
-  font-weight: 900;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
 }
 
 .pd-muted {
@@ -91,33 +51,65 @@ body {
   color: var(--muted2);
 }
 
-/* Prestige-style service cards (pill + smooth hover) */
-.service-card {
-  background: #ffffff;
-  border: 2px solid rgba(183, 243, 151, 0.85); /* uses your B light-green */
-  border-radius: 40px;
-  padding: 40px;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 10px 30px rgba(183, 243, 151, 0.18);
+/* Buttons */
+.pd-btn {
+  @apply inline-flex items-center justify-center font-extrabold transition;
+  border-radius: 9999px;
+  padding: 0.85rem 1.25rem;
 }
 
-.service-card:hover {
-  transform: scale(1.03) translateY(-10px);
-  background: rgba(183, 243, 151, 0.75);
+.pd-btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: var(--fg);
+  border: 1px solid rgba(167, 243, 208, 0.25);
+}
+
+.pd-btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.pd-btn-ghost {
+  border: 1px solid var(--border);
+  color: rgba(248, 250, 252, 0.92);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pd-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(167, 243, 208, 0.35);
+  background: rgba(15, 61, 46, 0.35);
   color: var(--accent-ink);
-  box-shadow: 0 20px 40px rgba(183, 243, 151, 0.35);
-  border-color: rgba(183, 243, 151, 1);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
 }
 
-.service-card p {
-  color: var(--muted);
+/* Portfolio cards */
+.port-card {
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.35s;
 }
 
-.service-card:hover p {
-  color: rgba(6, 78, 59, 0.95);
+.port-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(167, 243, 208, 0.45);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
-.flow-text {
-  color: var(--accent-ink);
-  line-height: 1.6;
+/* Subtle section divider */
+.section-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
 }

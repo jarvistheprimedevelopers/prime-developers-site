@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Prime Developers | Real Estate Solutions Ontario",
+  title: "The Prime Developers | Portfolio Execution Partner (GTA)",
   description:
-    "Renovation, emergency service, handyman work, insurance claim support, and contractor coordination across Ontario.",
-  metadataBase: new URL("https://theprimedevelopers.ca"),
+    "Hamilton-based execution partner for property managers and developers across the GTA: turnovers, renovations, capital improvements, and emergency maintenance.",
+  metadataBase: new URL("https://prime-developers-site.vercel.app"),
   openGraph: {
-    title: "The Prime Developers | Real Estate Solutions Ontario",
+    title: "The Prime Developers | Portfolio Execution Partner (GTA)",
     description:
-      "Renovation, emergency service, handyman work, insurance claim support, and contractor coordination across Ontario.",
-    url: "https://theprimedevelopers.ca",
+      "Turnovers, renovations, and capital improvement execution for multi-unit residential and commercial assets across the GTA.",
+    url: "https://prime-developers-site.vercel.app",
     siteName: "The Prime Developers",
     images: [
       {
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Prime Developers | Real Estate Solutions Ontario",
+    title: "The Prime Developers | Portfolio Execution Partner (GTA)",
     description:
-      "Renovation, emergency service, handyman work, insurance claim support, and contractor coordination across Ontario.",
+      "Hamilton-based execution partner for GTA portfolios: turnovers, renovations, capital improvements.",
     images: ["/og.png"],
   },
 };
