@@ -19,10 +19,10 @@ const BRAND = {
 };
 
 const stats = [
-  { value: "2000+", label: "UNITS SERVICED" },
-  { value: "300+", label: "PROJECTS COMPLETED" },
-  { value: "3", label: "YEARS OF OPERATION" },
-  { value: "10+", label: "PM PARTNERS" },
+  { value: "1000+", label: "UNITS SERVICED" },
+  { value: "3500+", label: "PROJECTS COMPLETED" },
+  { value: "3", label: "YEARS OPERATING" },
+  { value: "7", label: "PM PARTNERS" },
 ];
 
 const services = [
@@ -64,63 +64,54 @@ export default function Home() {
     <div className="min-h-screen">
       <SiteNav />
 
-      {/* HERO */}
-      <header className="relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(900px 520px at 18% 12%, rgba(15, 61, 46, 0.55), transparent 65%), radial-gradient(800px 520px at 80% 0%, rgba(20, 90, 64, 0.35), transparent 60%)",
-          }}
-        />
+      {/* HERO (Insight-style: background video + overlay) */}
+      <header className="pd-hero relative overflow-hidden">
+        <video
+          className="pd-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          {/*
+            Add your file here:
+            prime-developers-site/public/hero.mp4
+          */}
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
 
-        <div className="pd-container py-14 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <div className="pd-pill">HAMILTON-BASED • SERVING THE GTA</div>
-              <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-6xl">
-                {BRAND.heroHeadline}
-              </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed pd-muted">
-                {BRAND.heroSub}
-              </p>
-              <p className="mt-5 text-sm font-extrabold tracking-widest" style={{ color: "var(--accent-ink)" }}>
-                {BRAND.tagline.toUpperCase()}
-              </p>
+        <div className="pd-hero-overlay" />
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a className="pd-btn pd-btn-primary" href={CONSULT_URL}>
-                  View Portfolio
-                </a>
-                <a className="pd-btn pd-btn-ghost" href={CONSULT_URL}>
-                  Request Consultation
-                </a>
-              </div>
+        <div className="pd-container relative z-10 py-20 sm:py-28">
+          <div className="max-w-3xl">
+            <div className="pd-pill">HAMILTON-BASED • SERVING THE GTA</div>
+            <h1 className="mt-7 text-4xl font-extrabold tracking-tight sm:text-6xl">
+              {BRAND.heroHeadline}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed pd-muted">
+              {BRAND.heroSub}
+            </p>
+            <p
+              className="mt-6 text-sm font-extrabold tracking-widest"
+              style={{ color: "var(--accent-ink)" }}
+            >
+              {BRAND.tagline.toUpperCase()}
+            </p>
 
-              <div className="mt-10">
-                <StatsStrip stats={stats} />
-              </div>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a className="pd-btn pd-btn-primary" href={CONSULT_URL}>
+                View Portfolio
+              </a>
+              <a className="pd-btn pd-btn-ghost" href={CONSULT_URL}>
+                Request Consultation
+              </a>
             </div>
+          </div>
 
-            <div className="relative">
-              <div className="port-card">
-                <div className="relative h-[320px] w-full sm:h-[420px]">
-                  <Image
-                    src={portfolio[0].src}
-                    alt={portfolio[0].title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="text-xs font-extrabold tracking-widest" style={{ color: "var(--accent-ink)" }}>
-                    FEATURED
-                  </div>
-                  <div className="mt-1 text-lg font-extrabold">{portfolio[0].title}</div>
-                  <div className="mt-2 text-sm pd-muted">{portfolio[0].meta}</div>
-                </div>
-              </div>
+          <div className="mt-14">
+            <div className="pd-stats-strip">
+              <StatsStrip stats={stats} />
             </div>
           </div>
         </div>

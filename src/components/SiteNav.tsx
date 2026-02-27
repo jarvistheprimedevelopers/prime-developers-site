@@ -24,14 +24,14 @@ export function SiteNav() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-extrabold sm:flex">
-          <Link className="hover:opacity-90" href="/services">
+        <nav className="hidden items-center gap-7 text-xs font-extrabold sm:flex" style={{ letterSpacing: "0.16em" }}>
+          <Link className="uppercase hover:opacity-90" href="/services">
             Services
           </Link>
-          <Link className="hover:opacity-90" href="/portfolio">
+          <Link className="uppercase hover:opacity-90" href="/portfolio">
             Portfolio
           </Link>
-          <Link className="hover:opacity-90" href="/about">
+          <Link className="uppercase hover:opacity-90" href="/about">
             About
           </Link>
           <Link className="pd-btn pd-btn-primary" href="#contact">
