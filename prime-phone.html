@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Prime Developers Inc</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--g:#8cc63f;--gd:#6fa32e;--gb:#28a745;--gbd:#1e7e34;--dk:#111;--mid:#1d1d1f;--mt:#6e6e73;--bd:#d2d2d7;--lt:#f5f5f7;--w:#fff;--nh:64px;--f:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif}html{scroll-behavior:smooth}body{font-family:var(--f);color:var(--mid);background:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}ul{list-style:none}button{font-family:var(--f)}.pg{display:none}.pg.on{display:block;animation:fu .45s ease both}@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.ey{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px}.ey::before,.ey::after{content:'';width:22px;height:1px;background:var(--g)}.sh2{font-size:clamp(36px,5vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1.04;color:var(--dk);margin-bottom:16px}.sh2 em,.sh2 span{font-style:normal;color:var(--g)}.ss{font-size:16px;font-weight:300;line-height:1.7;color:var(--mt);max-width:500px;margin:0 auto}.pill{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:18px 52px;border-radius:980px;border:none;cursor:pointer;transition:background .2s,transform .15s}.pill:hover{transform:translateY(-2px)}.pill-g{background:var(--g)}.pill-g:hover{background:var(--gd)}.pill-gb{background:var(--gb);box-shadow:0 6px 28px rgba(40,167,69,.3)}.pill-gb:hover{background:var(--gbd);box-shadow:0 10px 36px rgba(40,167,69,.35)}nav{position:sticky;top:0;z-index:900;height:100px;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 52px}.nl{cursor:pointer;display:flex;align-items:center;font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--dk)}.nk{display:flex;align-items:center;gap:36px}.nk span{font-size:14px;font-weight:500;color:var(--mid);cursor:pointer;position:relative;padding:4px 0;transition:color .2s}.nk span::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--g);transition:width .25s}.nk span:hover{color:var(--dk)}.nk span:hover::after{width:100%}.nk span.ap{color:var(--g)}.nk span.ap::after{width:100%}.nc{font-size:14px;font-weight:600;background:var(--g);color:#fff;padding:9px 22px;border-radius:980px;cursor:pointer;transition:background .2s,transform .15s;border:none}.nc:hover{background:var(--gd);transform:translateY(-1px)}section.hero{position:relative;height:calc(100vh - var(--nh));min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;background:var(--dk)}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-dim{position:absolute;inset:0;background:rgba(0,0,0,.80);z-index:1}.hero-c{position:relative;z-index:2;max-width:760px;padding:0 32px;display:flex;flex-direction:column;align-items:center}.hero-ey{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:22px;display:flex;align-items:center;gap:14px}.hero-ey::before,.hero-ey::after{content:'';width:28px;height:1px;background:var(--g)}.hero h1{font-size:clamp(44px,7.5vw,96px);font-weight:700;letter-spacing:-.04em;line-height:1.02;color:#fff;margin-bottom:18px}.hero h1 em{font-style:normal;color:var(--g)}.hero p{font-size:clamp(15px,1.6vw,19px);font-weight:300;line-height:1.7;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 52px}.hero .pill{background:transparent;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(8px)}.hero .pill:hover{background:var(--g);border-color:var(--g);transform:translateY(-3px)}.boutique{background:#000;padding:80px 52px;text-align:center}.boutique-ey{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:12px}.boutique-ey::before,.boutique-ey::after{content:'';width:22px;height:1px;background:var(--g)}.boutique p{font-size:clamp(16px,1.8vw,20px);font-weight:300;line-height:1.85;color:rgba(255,255,255,.55);max-width:720px;margin:0 auto}.boutique strong{color:rgba(255,255,255,.85);font-weight:600}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bd)}.metric{padding:48px 24px;text-align:center;border-right:1px solid var(--bd);transition:background .2s}.metric:last-child{border-right:none}.metric:hover{background:var(--lt)}.metric b{display:block;font-size:52px;font-weight:700;letter-spacing:-.05em;color:var(--g);line-height:1;margin-bottom:8px}.metric small{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mt)}section.who{background:var(--w);padding:100px 52px;text-align:center}.wc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:64px auto 0}.wci{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;aspect-ratio:3/4;background:#2a2a2a;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s}.wci:hover{transform:translateY(-8px);box-shadow:0 32px 80px rgba(0,0,0,.18)}.wci-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}.wci-bg--h{background-image:url('https://lh3.googleusercontent.com/d/11-IJAEMOO4z1ynl_RmSPCJa_DlcSvtMf')}.wci-bg--m{background-image:url('https://lh3.googleusercontent.com/d/1GRBWLF6t9gUmB1uG4rQFYywSVugYJ5lA')}.wci-bg--i{background-image:url('https://lh3.googleusercontent.com/d/1YQ6S7OT5jaUn25Ls7hR4IDS-yM4VhpF2')}.wci:hover .wci-bg{transform:scale(1.08)}.wci-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.15) 55%,transparent)}.wci-body{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;text-align:left}.wci-tag{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:10px}.wci-t{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#fff;line-height:1.1;margin-bottom:12px}.wci-d{font-size:13px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.6);max-height:0;overflow:hidden;transition:max-height .4s,opacity .3s;opacity:0;margin-bottom:20px}.wci:hover .wci-d{max-height:120px;opacity:1}.wci-cta{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g);transition:gap .2s}.wci-cta::after{content:'→'}.wci:hover .wci-cta{gap:14px}.ab{background:var(--lt);padding:80px 52px;text-align:center;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}.ab-i{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}section.cli{background:var(--w);padding:100px 52px;text-align:center}.cli-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:56px auto 0}.cli-s{aspect-ratio:3/2;background:var(--w);border:1px solid var(--bd);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:20px;transition:border-color .25s,box-shadow .25s}.cli-s:hover{border-color:var(--g);box-shadow:0 4px 20px rgba(0,0,0,.06)}.cli-s img{max-width:80%;max-height:70%;object-fit:contain}section.cta-band{background:#000;padding:0}.cta-top{padding:100px 52px 64px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}.cta-h{font-size:clamp(48px,7vw,96px);font-weight:700;letter-spacing:-.05em;line-height:.98;color:#fff;margin-bottom:22px}.cta-h em{font-style:normal;color:var(--g)}.cta-tag{font-size:18px;font-weight:300;line-height:1.7;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 48px}.cta-body{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;margin:0 auto;padding:80px 52px 100px;gap:80px;align-items:start}.ci-t{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:36px}.cr{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}.cr-ic{width:38px;height:38px;border-radius:8px;background:rgba(140,198,63,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}.cr-ic svg{fill:var(--g);width:16px;height:16px}.cr-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}.cr-v{font-size:15px;font-weight:300;color:rgba(255,255,255,.78)}.cr-v a{color:rgba(255,255,255,.78);transition:color .2s}.cr-v a:hover{color:var(--g)}.fg{margin-bottom:14px}.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#fff;padding:16px 18px;font-family:var(--f);font-size:15px;font-weight:300;outline:none;border-radius:8px;transition:border-color .2s}.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);font-size:14px}.fg input:focus,.fg textarea:focus{border-color:var(--g)}.fg textarea{resize:vertical;min-height:140px}.btn-send{background:var(--g);color:#fff;border:none;font-family:var(--f);font-size:15px;font-weight:700;padding:17px 48px;border-radius:980px;cursor:pointer;transition:background .2s,transform .15s;width:100%}.btn-send:hover{background:var(--gd);transform:translateY(-1px)}.ty{display:none;text-align:center;padding:40px 20px}.ty.show{display:block;animation:fu .5s ease both}.ty h3{font-size:28px;font-weight:700;color:var(--g);margin-bottom:10px}.ty p{font-size:15px;color:rgba(255,255,255,.55);font-weight:300}footer{background:#000;color:rgba(255,255,255,.35);padding:52px 52px 28px;border-top:1px solid rgba(255,255,255,.06)}.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:22px}.fb-b{font-size:15px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:14px}.fb-b em{font-style:normal;color:var(--g)}.fb-d{font-size:12px;font-weight:300;line-height:1.85;max-width:240px}.fb-h{margin-top:18px;font-size:11px;line-height:1.8;color:rgba(255,255,255,.3)}.fc-t{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:16px}.fc li{margin-bottom:10px}.fc a{font-size:13px;font-weight:300;color:rgba(255,255,255,.35);transition:color .2s;cursor:pointer}.fc a:hover{color:var(--g)}.fb{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.04em;align-items:center}.fb a{color:var(--g)}#page-svc{background:var(--w)}.sb{padding:12px 40px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}.sb-btn{font-size:12px;font-weight:500;color:var(--mt);cursor:pointer;background:none;border:none;font-family:var(--f);transition:color .2s;display:flex;align-items:center;gap:6px}.sb-btn::before{content:'←'}.sb-btn:hover{color:var(--gb)}.sb-sep{color:var(--bd)}.sb-cr{font-size:12px;font-weight:600;color:var(--gb)}.sv-hero{text-align:center;padding:80px 52px 72px;border-bottom:1px solid var(--bd)}.sv-h1{font-size:clamp(36px,5.5vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1.04;color:var(--dk);margin-bottom:12px}.sv-h1 em{font-style:normal;color:var(--gb)}.sv-sub{font-size:17px;font-weight:300;line-height:1.7;color:var(--mt);max-width:560px;margin:0 auto}.sv-w{max-width:1200px;margin:0 auto;padding:72px 52px 100px}.sv-cat{margin-bottom:72px}.sv-cat:last-child{margin-bottom:0}.sv-ch{display:flex;align-items:center;gap:14px;margin-bottom:12px;padding-bottom:16px;border-bottom:1px solid var(--bd)}.sv-ci{font-size:24px}.sv-ct{font-size:22px;font-weight:700;color:var(--gb)}.sv-cd{font-size:14px;font-weight:400;color:var(--mid);line-height:1.7;max-width:700px;margin-bottom:28px}.sv-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}.sv-c{background:var(--w);border:1px solid var(--bd);border-radius:10px;padding:36px 30px;transition:box-shadow .3s,transform .3s}.sv-c:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-4px)}.sv-n{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gb);margin-bottom:16px}.sv-ic{font-size:28px;margin-bottom:14px}.sv-t{font-size:20px;font-weight:700;color:var(--dk);margin-bottom:10px;line-height:1.2}.sv-b{font-size:14px;font-weight:400;line-height:1.75;color:var(--mid);margin-bottom:16px}.sv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}.sv-tag{font-size:10px;font-weight:600;padding:4px 10px;border-radius:980px;background:rgba(40,167,69,.08);color:var(--gb);white-space:nowrap}.sv-cta{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--gb);padding:10px 24px;border-radius:980px;cursor:pointer;transition:background .2s,gap .2s,transform .15s;border:none;font-family:var(--f)}.sv-cta:hover{background:var(--gbd);gap:12px;transform:translateY(-1px)}.sv-cta::after{content:'→'}.sv-emer{border:2px solid #dc3545;background:linear-gradient(135deg,#fff5f5,#fff)}.sv-emer:hover{border-color:#c82333;box-shadow:0 8px 32px rgba(220,53,69,.12)}.sv-emer .sv-n{color:#dc3545}.sv-emer .sv-tag{background:rgba(220,53,69,.08);color:#dc3545}.sv-ct-r{color:#dc3545}.sv-cta-r{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#dc3545;padding:10px 24px;border-radius:980px;cursor:pointer;transition:background .2s,gap .2s,transform .15s;border:none;font-family:var(--f)}.sv-cta-r:hover{background:#c82333;gap:12px;transform:translateY(-1px)}.sv-cta-r::after{content:'→'}#page-port{background:var(--lt)}.mh{background:var(--w);text-align:center;padding:56px 60px;border-bottom:1px solid var(--bd)}.mh-h{font-size:clamp(30px,4vw,52px);font-weight:700;letter-spacing:-.04em;color:var(--dk);margin-bottom:10px}.mh-h em{font-style:normal;color:var(--g)}.mh-s{font-size:15px;font-weight:300;color:var(--mt);max-width:400px;margin:0 auto;line-height:1.7}.mb{display:grid;grid-template-columns:320px 1fr;height:560px;overflow:hidden;border-bottom:1px solid var(--bd)}.ms{background:var(--w);display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--bd)}.ms-top{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}.ms-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mt)}.ms-p{background:rgba(140,198,63,.1);color:var(--g);font-size:12px;font-weight:700;padding:2px 10px;border-radius:980px}.pl{overflow-y:auto;flex:1;scrollbar-width:thin}.pi{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--lt);cursor:pointer;transition:background .15s}.pi:hover{background:var(--lt)}.pi.on{background:rgba(140,198,63,.06)}.pi-b{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:rgba(140,198,63,.1);color:var(--g)}.pi-i{flex:1;min-width:0}.pi-n{font-size:13px;font-weight:600;color:var(--mid);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pi.on .pi-n{color:var(--g)}.pi-h{font-size:10px;color:var(--mt)}.pi-u{font-size:11px;font-weight:600;color:var(--mt);text-align:right;flex-shrink:0}.pi-u span{display:block;font-size:9px;font-weight:400;color:#bbb;text-transform:uppercase}.leaflet-container{font-family:var(--f)!important}.leaflet-popup-content-wrapper{border-radius:10px!important;padding:0!important;overflow:hidden!important;box-shadow:0 12px 40px rgba(0,0,0,.1)!important;border:none!important;min-width:240px!important}.leaflet-popup-content{margin:0!important}.leaflet-popup-tip{background:#fff!important}.pp-h{padding:14px 16px 10px;border-bottom:1px solid var(--lt)}.pp-n{font-size:16px;font-weight:700;color:var(--dk);margin-bottom:2px}.pp-a{font-size:10px;color:var(--mt)}.pp-f{padding:10px 14px}.pp-c{width:100%;padding:9px;background:var(--g);color:#fff;border:none;border-radius:980px;font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer}.pp-c:hover{background:var(--gd)}.modal-bg{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center}.modal-bg.show{display:flex}.modal{background:var(--w);border-radius:14px;max-width:640px;width:92%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative}.modal-close{position:absolute;top:14px;right:16px;background:rgba(0,0,0,.5);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}.modal-close:hover{background:rgba(0,0,0,.7)}.modal-media{position:relative;width:100%;aspect-ratio:16/9;background:#111;overflow:hidden;border-radius:14px 14px 0 0}.modal-media img{width:100%;height:100%;object-fit:cover;display:none;border:none}.modal-media img.active{display:block}.modal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:2}.modal-nav:hover{background:rgba(0,0,0,.8)}.modal-nav.prev{left:10px}.modal-nav.next{right:10px}.modal-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}.modal-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background .2s}.modal-dot.active{background:var(--g)}.modal-body{padding:28px 28px 32px;text-align:center}.modal-tag{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:8px}.modal-title{font-size:24px;font-weight:700;color:var(--dk);margin-bottom:6px}.modal-addr{font-size:13px;color:var(--mt);margin-bottom:16px}.modal-desc{font-size:14px;font-weight:400;line-height:1.7;color:var(--mid);margin-bottom:20px}.modal-quote{font-size:15px;font-weight:600;font-style:italic;color:var(--dk);margin-bottom:24px}.pin-o{display:flex;flex-direction:column;align-items:center}.pin-b{width:34px;height:34px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);border:2px solid rgba(255,255,255,.75);background:var(--g)}.pin-n{transform:rotate(45deg);font-size:12px;font-weight:700;color:#fff}.sstrip{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:24px 32px 36px}.sc{background:#fff;border-radius:8px;padding:18px 22px;display:flex;align-items:center;gap:13px;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid var(--bd)}.sc-i{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:rgba(140,198,63,.1)}.sc-l{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);font-weight:700;margin-bottom:2px}.sc-n{font-size:28px;font-weight:700;letter-spacing:-.04em;color:var(--dk);line-height:1}#page-ct{background:#000;position:relative;min-height:100vh}#page-ct::before{content:'';position:absolute;inset:0;background:url('https://lh3.googleusercontent.com/d/1e-6Ubi8p8FGn308asKiYQZtTFd7PdO2G') center/cover no-repeat;z-index:0}#page-ct::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.70);z-index:1}#page-ct .sb{position:relative;z-index:2;border-color:rgba(255,255,255,.1)}#page-ct .sb-btn{color:rgba(255,255,255,.5)}#page-ct .sb-btn:hover{color:var(--g)}#page-ct .sb-sep{color:rgba(255,255,255,.2)}#page-ct .sb-cr{color:var(--g)}.cpg{max-width:580px;margin:0 auto;padding:60px 24px 100px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}.cpg-ey{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:14px;display:flex;align-items:center;gap:12px}.cpg-ey::before,.cpg-ey::after{content:'';width:22px;height:1px;background:var(--g)}.cpg h1{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:10px;line-height:1.05}.cpg h1 span{color:var(--g)}.cpg>p{font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:12px;max-width:460px}.cpg-q{font-size:16px;font-weight:600;font-style:italic;color:#fff;margin-bottom:36px;max-width:460px;line-height:1.5}.cpg-f{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:40px 36px;box-shadow:0 8px 40px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);width:100%}.cpg-fg{margin-bottom:18px}.cpg-fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:7px;text-align:left}.cpg-fg input,.cpg-fg textarea{width:100%;padding:16px 20px;font-size:16px;font-family:var(--f);font-weight:300;border:1.5px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;outline:none;transition:border-color .2s,box-shadow .2s}.cpg-fg input::placeholder,.cpg-fg textarea::placeholder{color:rgba(255,255,255,.25)}.cpg-fg input:focus,.cpg-fg textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(140,198,63,.15)}.cpg-fg textarea{resize:vertical;min-height:130px}.cpg-s{width:100%;padding:0;height:54px;font-size:17px;font-weight:700;background:var(--g);color:#fff;border:none;border-radius:980px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;font-family:var(--f);margin-top:10px;box-shadow:0 6px 28px rgba(140,198,63,.3)}.cpg-s:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 10px 36px rgba(140,198,63,.35)}.cpg-free{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:32px;padding:10px 28px;border:1.5px solid rgba(140,198,63,.3);border-radius:980px;background:rgba(140,198,63,.08)}.cpg-ty{display:none;text-align:center;padding:48px 20px}.cpg-ty.show{display:block;animation:fu .5s ease both}.cpg-ty h3{font-size:32px;font-weight:700;color:var(--g);margin-bottom:12px}.cpg-ty p{font-size:16px;color:rgba(255,255,255,.55);font-weight:300;margin-bottom:28px}.cpg-ty a{font-size:14px;font-weight:600;color:var(--g);cursor:pointer}@media(max-width:960px){nav{padding:0 20px}.nk,.nc{display:none}.metrics{grid-template-columns:1fr}.metric{border-right:none;border-bottom:1px solid var(--bd);padding:36px 24px}.metric:last-child{border-bottom:none}.wc{grid-template-columns:1fr;gap:12px}.wci{aspect-ratio:16/9}.ab-i{flex-direction:column;align-items:center}.cli-g{grid-template-columns:repeat(2,1fr)}.cta-body{grid-template-columns:1fr;gap:48px;padding:52px 28px 72px}.ft{grid-template-columns:1fr 1fr;gap:28px}.mb{grid-template-columns:1fr;height:auto}.ms{height:220px}#leaflet-map{height:340px}.sstrip{grid-template-columns:1fr}.cpg-f{padding:32px 20px}#page-ct .sb{padding:12px 20px}.sv-g{grid-template-columns:1fr}.sv-hero{padding:52px 28px 48px}.sv-w{padding:48px 20px 72px}.boutique{padding:56px 24px}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nl" onclick="go('home')"><img src="https://lh3.googleusercontent.com/d/1L6i_4-VemEhdo3f-mRwhAVBuvJQlu66N" alt="The Prime Developers" style="height:90px;width:auto"></div>
+<div class="nk">
+<span class="ap" id="nav-home" onclick="go('home')">Home</span>
+<span onclick="go('home');goTo('who')">About</span>
+<span id="nav-svc" onclick="go('svc')">Services</span>
+<span id="nav-port" onclick="go('port')">Portfolio</span>
+<span onclick="go('home');goTo('cli')">Clients</span>
+<span id="nav-ct" onclick="go('ct')">Contact</span>
+</div>
+<button class="nc" onclick="go('ct')">Get in Touch</button>
+</nav>
+
+<div id="page-home" class="pg on">
+<section class="hero">
+<img src="https://lh3.googleusercontent.com/d/1GRBWLF6t9gUmB1uG4rQFYywSVugYJ5lA" alt="">
+<div class="hero-dim"></div>
+<div class="hero-c">
+<div class="hero-ey">The Prime Developers Inc · Hamilton</div>
+<h1>Property Solution<br><em>for All</em></h1>
+<p>We provide a bespoke, boutique service level specifically designed for Investors, Management Companies, and Homeowners.</p>
+<button class="pill" onclick="go('ct')">Contact Us</button>
+</div>
+</section>
+<div class="boutique">
+<div class="boutique-ey">Boutique Service · Bespoke Results</div>
+<p>At The Prime Developer, we don't just manage properties — we <strong>curate experiences.</strong> Our boutique model ensures <strong>high-touch communication</strong>, data-driven strategy for investors, <strong>seamless operational excellence</strong> for management firms, and <strong>premium, white-glove care</strong> for private homeowners.</p>
+<p style="margin-top:28px;font-size:clamp(18px,2vw,24px);font-weight:600;color:#fff;max-width:720px;margin-left:auto;margin-right:auto">We know we are the best in the industry — just let us show you how the work should be done.</p>
+<p style="margin-top:20px"><button class="pill pill-g" onclick="go('ct')" style="font-size:13px;padding:16px 44px;letter-spacing:.12em">FREE ESTIMATE →</button></p>
+</div>
+<div class="metrics">
+<div class="metric"><b>250+</b><small>Projects Completed</small></div>
+<div class="metric"><b>7</b><small>Years of Operation</small></div>
+<div class="metric"><b>200+</b><small>Clients Served</small></div>
+<div class="metric"><b>1250+</b><small>Problems Solved</small></div>
+</div>
+<section class="who" id="who">
+<div class="ey">Find Your Path</div>
+<h2 class="sh2">Who are you?</h2>
+<p class="ss">Select your profile below and we'll show you exactly how we serve you.</p>
+<div class="wc">
+<div class="wci" onclick="go('svc')"><div class="wci-bg wci-bg--h"></div><div class="wci-dim"></div><div class="wci-body"><div class="wci-tag">Residential</div><div class="wci-t">Homeowner?</div><div class="wci-d">Premium, white-glove property care with high-touch communication and a dedicated team who treats your home as their own.</div><div class="wci-cta">Explore Services</div></div></div>
+<div class="wci" onclick="go('svc')"><div class="wci-bg wci-bg--m"></div><div class="wci-dim"></div><div class="wci-body"><div class="wci-tag">Management</div><div class="wci-t">Property Manager?</div><div class="wci-d">Seamless operational partnerships and institutional-grade asset management so your firm can scale without compromise.</div><div class="wci-cta">Explore Services</div></div></div>
+<div class="wci" onclick="go('svc')"><div class="wci-bg wci-bg--i"></div><div class="wci-dim"></div><div class="wci-body"><div class="wci-tag">Capital Growth</div><div class="wci-t">Investor?</div><div class="wci-d">Data-driven acquisition, transparent reporting, and disciplined capital deployment built to grow your portfolio with precision.</div><div class="wci-cta">Explore Services</div></div></div>
+</div>
+</section>
+<div class="ab"><div class="ab-i">
+<button class="pill pill-gb" onclick="go('svc')">View Our Services</button>
+<button class="pill pill-gb" onclick="go('port')">View Portfolio</button>
+</div></div>
+<section class="cli" id="cli">
+<div class="ey">Trusted By</div>
+<h2 class="sh2">Our <span>Clients</span></h2>
+<p class="ss">We deliver results for leading organizations and individuals.</p>
+<div class="cli-g">
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1tcyxZOFQM5wJdvKpjmtO6RI4XNzJNdh_" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1_LFlXL-CtJ7VQWVCGMSLa8GWv5rSxFXU" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1gnHJ65PPaxtSrLqYdIXhVbg4jAQEfQT7" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/14iqskT2sd-yBpldLm4mt3aE-Pl9hF3gz" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/14holRqIC-qJ4l-maC-b0BpqEEu0kaeDk" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1cBBfZqk7TN0mcGSgs0byOqcdqPtRDXmK" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/113CUFn3bdLL1WAIysEb-7fOdm3AT9S3v" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1XX7OsKwWXFa4ehV_T0AbKzHQ3w7Hrc_L" alt="Client"></div>
+<div class="cli-s"><img src="https://lh3.googleusercontent.com/d/1_-ZDMCjcWhLSAsZ5tihyiKTzxr6Va9is" alt="Client"></div>
+</div>
+</section>
+<section class="cta-band" id="contact">
+<div class="cta-top">
+<div class="ey">Let's Connect</div>
+<h2 class="cta-h">Get in<br><em>Touch</em></h2>
+<p class="cta-tag">Whether you're a homeowner, landlord, or property manager — we'd love to hear from you.<br><strong style="color:var(--g);font-weight:700">FREE ESTIMATES on all our services!</strong></p>
+<button class="pill pill-g" onclick="go('ct')">Get Your Free Estimate</button>
+</div>
+<div class="cta-body">
+<div>
+<div class="ci-t">Contact Information</div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></div><div><div class="cr-l">Phone</div><div class="cr-v"><a href="tel:+14376691543">(437) 669-1543</a></div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><div class="cr-l">Email</div><div class="cr-v"><a href="mailto:info@theprimedevelopers.ca">info@theprimedevelopers.ca</a></div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></div><div><div class="cr-l">Address</div><div class="cr-v">185 King St E, Hamilton, ON L8N 1B4</div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div><div><div class="cr-l">Hours</div><div class="cr-v">Mon–Fri 6 am – 9 pm · Sun 12 – 9 pm · Sat Closed</div></div></div>
+</div>
+<div>
+<div class="ci-t">Send a Message</div>
+<form id="home-form" onsubmit="return sf(this,'home-ty')">
+<div class="fg"><input name="name" placeholder="Your Name" required></div>
+<div class="fg"><input type="email" name="email" placeholder="Email Address" required></div>
+<div class="fg"><input type="tel" name="phone" placeholder="Phone Number"></div>
+<div class="fg"><textarea name="message" placeholder="How can we help you?" required></textarea></div>
+<button class="btn-send" type="submit">Send Message</button>
+</form>
+<div class="ty" id="home-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p></div>
+</div>
+</div>
+</section>
+<footer>
+<div class="ft">
+<div><img src="https://lh3.googleusercontent.com/d/1L6i_4-VemEhdo3f-mRwhAVBuvJQlu66N" alt="The Prime Developers" style="height:90px;width:auto;margin-bottom:14px;filter:brightness(1.3)"><p class="fb-d">A boutique property services firm delivering repairs, renovations, and property management across the Greater Hamilton Area.</p><div class="fb-h">Mon–Fri 6 am – 9 pm · Sun 12 – 9 pm · Sat Closed</div></div>
+<div><div class="fc-t">Navigate</div><ul class="fc"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('svc')">Services</a></li><li><a onclick="go('port')">Portfolio</a></li><li><a onclick="go('ct')">Contact</a></li></ul></div>
+<div><div class="fc-t">Services</div><ul class="fc"><li><a onclick="go('svc')">Handyman</a></li><li><a onclick="go('svc')">Plumbing</a></li><li><a onclick="go('svc')">Electrical</a></li><li><a onclick="go('svc')">Renovations</a></li><li><a onclick="go('svc')">Landscaping</a></li></ul></div>
+<div><div class="fc-t">Connect</div><ul class="fc"><li><a href="tel:+14376691543">(437) 669-1543</a></li><li><a href="mailto:info@theprimedevelopers.ca">info@theprimedevelopers.ca</a></li><li><a>185 King St E, Hamilton</a></li></ul></div>
+</div>
+<div class="fb"><span>&copy; 2025 The Prime Developers Inc.</span><a>Privacy Policy</a></div>
+</footer>
+</div>
+
+<div id="page-svc" class="pg">
+<div class="sb"><button class="sb-btn" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Our Services</span></div>
+<div class="sv-hero">
+<div class="ey">What We Offer</div>
+<h1 class="sv-h1">Our <em>Services</em></h1>
+<p class="sv-sub">From repairs and maintenance to full-scope renovations and outdoor living — every service delivered with boutique precision.</p>
+</div>
+<div class="sv-w">
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🔧</span><span class="sv-ct">Repairs &amp; Maintenance</span></div><p class="sv-cd">Keep your property in peak condition with our responsive repair and maintenance services.</p><div class="sv-g">
+<div class="sv-c"><div class="sv-n">01</div><div class="sv-ic">🔨</div><div class="sv-t">Handyman Services</div><p class="sv-b">From minor repairs to routine property maintenance, our skilled handyman team handles it all.</p><div class="sv-tags"><span class="sv-tag">General Repairs</span><span class="sv-tag">Fixture Install</span><span class="sv-tag">Drywall &amp; Painting</span><span class="sv-tag">Door &amp; Window</span><span class="sv-tag">Flooring</span></div><button class="sv-cta" onclick="go('ct')">Book a Handyman</button></div>
+<div class="sv-c"><div class="sv-n">02</div><div class="sv-ic">🚿</div><div class="sv-t">Plumbing</div><p class="sv-b">Licensed plumbers delivering fast, reliable service for routine maintenance and emergencies.</p><div class="sv-tags"><span class="sv-tag">Leak Detection</span><span class="sv-tag">Drain Cleaning</span><span class="sv-tag">Pipe Repair</span><span class="sv-tag">Water Heater</span><span class="sv-tag">Emergency 24/7</span></div><button class="sv-cta" onclick="go('ct')">Book a Plumber</button></div>
+<div class="sv-c"><div class="sv-n">03</div><div class="sv-ic">⚡</div><div class="sv-t">Electrical</div><p class="sv-b">Certified electricians handling panel upgrades, outlet installations, and full safety inspections.</p><div class="sv-tags"><span class="sv-tag">Panel Upgrades</span><span class="sv-tag">Outlet &amp; Switch</span><span class="sv-tag">Lighting</span><span class="sv-tag">EV Charging</span></div><button class="sv-cta" onclick="go('ct')">Book an Electrician</button></div>
+<div class="sv-c"><div class="sv-n">04</div><div class="sv-ic">🏠</div><div class="sv-t">HVAC &amp; Drywall</div><p class="sv-b">Heating, cooling maintenance, and seamless drywall repairs and finishing.</p><div class="sv-tags"><span class="sv-tag">HVAC</span><span class="sv-tag">Drywall Repair</span><span class="sv-tag">Insulation</span><span class="sv-tag">Ventilation</span><span class="sv-tag">Flooring</span></div><button class="sv-cta" onclick="go('ct')">Get a Quote</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🏗️</span><span class="sv-ct">Renovations</span></div><p class="sv-cd">Full-scope renovations for every room — designed to maximize value, comfort, and beauty.</p><div class="sv-g">
+<div class="sv-c"><div class="sv-n">05</div><div class="sv-ic">🍳</div><div class="sv-t">Kitchen Remodel</div><p class="sv-b">One of the highest-return investments you can make in your property.</p><div class="sv-tags"><span class="sv-tag">Cabinets</span><span class="sv-tag">Countertops</span><span class="sv-tag">Backsplash</span><span class="sv-tag">Appliance Install</span><span class="sv-tag">Full Gut Reno</span></div><button class="sv-cta" onclick="go('ct')">Get a Quote</button></div>
+<div class="sv-c"><div class="sv-n">06</div><div class="sv-ic">🛁</div><div class="sv-t">Bathroom Renovations</div><p class="sv-b">Transform your bathroom into a premium, spa-like retreat.</p><div class="sv-tags"><span class="sv-tag">Glass Enclosures</span><span class="sv-tag">Custom Tile</span><span class="sv-tag">Tub-to-Shower</span><span class="sv-tag">Waterproofing</span><span class="sv-tag">Full Reno</span></div><button class="sv-cta" onclick="go('ct')">Get a Quote</button></div>
+<div class="sv-c"><div class="sv-n">07</div><div class="sv-ic">🏚️</div><div class="sv-t">Basement Finishing</div><p class="sv-b">Turn unused space into a livable, income-generating area.</p><div class="sv-tags"><span class="sv-tag">Waterproofing</span><span class="sv-tag">Framing</span><span class="sv-tag">Electrical</span><span class="sv-tag">Flooring</span><span class="sv-tag">Rental Suite</span><span class="sv-tag">Egress</span></div><button class="sv-cta" onclick="go('ct')">Discuss Your Basement</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🌿</span><span class="sv-ct">Outdoor Living</span></div><div class="sv-g">
+<div class="sv-c"><div class="sv-n">08</div><div class="sv-ic">🪴</div><div class="sv-t">Patio Design &amp; Construction</div><p class="sv-b">Stunning outdoor living areas tailored to your space and lifestyle.</p><div class="sv-tags"><span class="sv-tag">Flagstone</span><span class="sv-tag">Interlocking</span><span class="sv-tag">Stamped Concrete</span><span class="sv-tag">Pergolas</span><span class="sv-tag">Lighting</span></div><button class="sv-cta" onclick="go('ct')">Plan Your Patio</button></div>
+<div class="sv-c"><div class="sv-n">09</div><div class="sv-ic">🪵</div><div class="sv-t">Deck Construction</div><p class="sv-b">Custom-built decks designed for durability and style.</p><div class="sv-tags"><span class="sv-tag">Composite</span><span class="sv-tag">Hardwood</span><span class="sv-tag">Railings</span><span class="sv-tag">Multi-Level</span><span class="sv-tag">Permit-Ready</span></div><button class="sv-cta" onclick="go('ct')">Plan Your Deck</button></div>
+<div class="sv-c"><div class="sv-n">10</div><div class="sv-ic">🍽️</div><div class="sv-t">Outdoor Kitchen</div><p class="sv-b">Bring the indoors out with a fully equipped outdoor kitchen.</p><div class="sv-tags"><span class="sv-tag">Built-in Grills</span><span class="sv-tag">Countertops</span><span class="sv-tag">Cabinetry</span><span class="sv-tag">Plumbing</span><span class="sv-tag">Refrigeration</span></div><button class="sv-cta" onclick="go('ct')">Build Yours</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🌱</span><span class="sv-ct">Landscaping</span></div><div class="sv-g">
+<div class="sv-c"><div class="sv-n">11</div><div class="sv-ic">🌳</div><div class="sv-t">Lawn &amp; Garden Design</div><p class="sv-b">Complete lawn and garden care to keep outdoor spaces lush year-round.</p><div class="sv-tags"><span class="sv-tag">Garden Design</span><span class="sv-tag">Irrigation</span><span class="sv-tag">Lawn Care</span><span class="sv-tag">Tree Service</span><span class="sv-tag">Seasonal</span></div><button class="sv-cta" onclick="go('ct')">Get a Quote</button></div>
+<div class="sv-c"><div class="sv-n">12</div><div class="sv-ic">🪨</div><div class="sv-t">Hardscaping &amp; Grading</div><p class="sv-b">Structural landscaping that transforms functionality and curb appeal.</p><div class="sv-tags"><span class="sv-tag">Retaining Walls</span><span class="sv-tag">Walkways</span><span class="sv-tag">Interlocking</span><span class="sv-tag">Drainage</span><span class="sv-tag">Grading</span></div><button class="sv-cta" onclick="go('ct')">Get a Quote</button></div>
+</div></div>
+<div class="sv-cat" style="margin-top:72px"><div class="sv-ch"><span class="sv-ci">🚨</span><span class="sv-ct sv-ct-r">Emergency Response &amp; Restoration</span></div><p class="sv-cd" style="color:#dc3545;font-weight:600">24/7 emergency services — because property emergencies don't wait.</p><div class="sv-g">
+<div class="sv-c sv-emer"><div class="sv-n">13</div><div class="sv-ic">🌊</div><div class="sv-t">Flood Response</div><p class="sv-b">Immediate water extraction, dehumidification, and professional drying to minimize damage.</p><div class="sv-tags"><span class="sv-tag">Water Extraction</span><span class="sv-tag">Dehumidification</span><span class="sv-tag">Drying</span><span class="sv-tag">Emergency</span></div><button class="sv-cta-r" onclick="go('ct')">Call Now</button></div>
+<div class="sv-c sv-emer"><div class="sv-n">14</div><div class="sv-ic">🔥</div><div class="sv-t">Restoration Services</div><p class="sv-b">Structural repair and restoration following water, fire, or storm damage to get your property back to normal.</p><div class="sv-tags"><span class="sv-tag">Water Damage</span><span class="sv-tag">Fire Damage</span><span class="sv-tag">Structural Repair</span><span class="sv-tag">Storm Recovery</span></div><button class="sv-cta-r" onclick="go('ct')">Get Emergency Help</button></div>
+<div class="sv-c sv-emer"><div class="sv-n">15</div><div class="sv-ic">📞</div><div class="sv-t">24/7 Emergency Hotline</div><p class="sv-b">Round-the-clock emergency support for property owners — call anytime, day or night.</p><div class="sv-tags"><span class="sv-tag">24/7 Support</span><span class="sv-tag">Rapid Response</span><span class="sv-tag">All Emergencies</span></div><button class="sv-cta-r" onclick="location.href='tel:+14376691543'">Call (437) 669-1543</button></div>
+</div></div>
+</div>
+</div>
+
+<div id="page-port" class="pg">
+<div class="sb"><button class="sb-btn" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Our Projects</span></div>
+<div class="mb">
+<div class="ms"><div class="ms-top"><span class="ms-l">Projects</span><span class="ms-p" id="proj-count">0</span></div><div class="pl" id="project-list"></div></div>
+<div style="position:relative;flex:1;display:flex;flex-direction:column"><div id="leaflet-map" style="flex:1;min-height:500px"></div></div>
+</div>
+<div class="mh"><div class="ey">Live Project Map</div><div class="mh-h">Our <em>Projects</em></div><p class="mh-s">Our development footprint across Hamilton and the Greater Region.</p></div>
+<div class="sstrip">
+<div class="sc"><div class="sc-i">🏠</div><div><div class="sc-l">Total Projects</div><div class="sc-n" id="count-total">&ndash;</div></div></div>
+<div class="sc"><div class="sc-i">📍</div><div><div class="sc-l">Neighbourhoods</div><div class="sc-n" id="count-hoods">&ndash;</div></div></div>
+</div>
+</div>
+
+<div id="page-ct" class="pg">
+<div class="sb"><button class="sb-btn" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Contact Us</span></div>
+<div class="cpg">
+<div class="cpg-ey">Contact Us</div>
+<h1>Contact Us — <span>The Prime Developer Inc</span></h1>
+<p class="cpg-q">"We know that we are the best — just let us show you how the work needs to be done!"</p>
+<p class="cpg-free">FREE ESTIMATES on all our services!</p>
+<div class="cpg-f" id="cpg-fw">
+<form id="ct-form" onsubmit="return sf(this,'cpg-ty')">
+<div class="cpg-fg"><label>Name</label><input name="name" placeholder="Your full name" required></div>
+<div class="cpg-fg"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+<div class="cpg-fg"><label>Phone</label><input type="tel" name="phone" placeholder="+1 (437) 000-0000"></div>
+<div class="cpg-fg"><label>Message</label><textarea name="message" placeholder="Tell us about your project..." required></textarea></div>
+<button class="cpg-s" type="submit">Send Message</button>
+</form>
+</div>
+<div class="cpg-ty" id="cpg-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p><a onclick="rf()">Send another message</a></div>
+</div>
+</div>
+
+<div class="modal-bg" id="proj-modal" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<button class="modal-close" onclick="closeModal()">✕</button>
+<div class="modal-media"></div>
+<div class="modal-body"></div>
+</div>
+</div>
+
+<script>
+var M=null,mOk=0,curSlide=0,curImgs=[];
+var D='https://lh3.googleusercontent.com/d/';
+var P=[
+{id:1,name:'Liberty Market Lofts',hood:'Liberty Village',address:'5 Hanna Ave, Toronto',lat:43.6375014,lng:-79.4181453,units:'—',cat:'High-End Renovations',desc:'Complete luxury loft renovation featuring 18ft accent wall painting, open-concept design, custom glass stair railings, and premium herringbone flooring. Completed in an accelerated 2-week timeframe.',imgs:[D+'1o-Z-5Gup6vJQB0rSeauZKORyaoW0OKFQ'],vid:'https://drive.google.com/file/d/1XOjF9y9zkLs7Ftf2NUh4iDGUKiXEIW3T/preview'},
+{id:2,name:'18 Yonge — Downtown Toronto',hood:'Downtown Toronto',address:'18 Yonge St, Toronto',lat:43.6444613,lng:-79.3764899,units:'—',cat:'High-End Renovations',desc:'Full-suite transformation designed for young professionals. Removed existing carpeting and installed premium luxury vinyl flooring throughout. Completed a full-unit paint to high-end standards, ensuring the property is 100% rent-ready for the downtown market.',imgs:[D+'1gfoM9YDfaTk_sooV3QWqRvonwvAaz6KY',D+'1m2lYUBYwWIHlNeYB7DtG0TcRvN7kvjwb',D+'1hYIdTcweTQRaAPKWQ-nl422lk-aaE2UB',D+'1JGh0oA5u5xO40YdkvA7hAeeV8JYyHJlP']},
+{id:3,name:'11 Brunel Ct — CityPlace Toronto',hood:'CityPlace',address:'11 Brunel Ct, Toronto',lat:43.6394386,lng:-79.3930638,units:'—',cat:'High-End Renovations / Pre-Sale Prep',desc:'Entrusted by one of our top realtors to prepare this property for the downtown market in just 1 week. We executed a strategic renovation including new flooring, a full repaint, and comprehensive repairs — all within a strict budget designed to maximize the seller\'s profit.',imgs:[D+'1QV-NuynCJmYm9Ku-P51oPwIbKkLMU_g4',D+'1Gb-00ow-B4AH2K-jnm1jls9d3VtwtVqB',D+'1RearzMcqhHZPoLVd805puWwxCd6rFEVM',D+'1t1Ia3xH9bz_Cu5Bu_vRhsL6qKfpLmgy4']},
+{id:4,name:'The Address at High Park — Toronto',hood:'High Park',address:'1638 Bloor St W, Toronto',lat:43.6555898,lng:-79.4562795,units:'—',cat:'Luxury Renovations / 48-Hour Turnaround',desc:'Completed a comprehensive 1+1 bedroom transformation over a single weekend. We installed premium luxury vinyl flooring throughout, executed a full professional repaint, and performed custom lighting upgrades to ensure the property was rent-ready for the next tenant immediately.',imgs:[D+'1HOpWpZVJ2188NXWiRbeNx1CyPGdTXIPj',D+'1JCR5NQaLqReFRGE2zC6g9r1BRfOFO709',D+'1Ey-sg5B2mQ6U7TEetWZsLABoaF3HXoZy']}
+],mk={},aId=null;
+
+function go(p){
+document.querySelectorAll('.pg').forEach(function(e){e.classList.remove('on');e.style.display='none'});
+var t=document.getElementById('page-'+p);if(!t){t=document.getElementById('page-home');p='home'}
+t.style.display='block';t.classList.add('on');scrollTo(0,0);
+document.querySelectorAll('.nk span').forEach(function(l){l.classList.remove('ap')});
+var a=document.getElementById('nav-'+p);if(a)a.classList.add('ap');
+if(p==='port'){if(!mOk){setTimeout(function(){iMap();mOk=1},280)}else if(M){setTimeout(function(){M.invalidateSize()},280)}}
+}
+function goTo(id){setTimeout(function(){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})},60)}
+function sf(f,ty){
+event.preventDefault();var d=new FormData(f),
+s=encodeURIComponent('New inquiry — The Prime Developers'),
+b=encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nPhone: '+(d.get('phone')||'N/A')+'\n\n'+d.get('message'));
+location.href='mailto:info@theprimedevelopers.ca?subject='+s+'&body='+b;
+f.style.display='none';document.getElementById(ty).classList.add('show');return false
+}
+function rf(){document.getElementById('cpg-ty').classList.remove('show');var f=document.getElementById('cpg-fw').querySelector('form');f.style.display='block';f.reset()}
+function iMap(){
+M=L.map('leaflet-map',{center:[43.255,-79.87],zoom:11,zoomControl:false,attributionControl:false});
+L.control.zoom({position:'topright'}).addTo(M);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19}).addTo(M);
+rAll();
+var b=L.latLngBounds(P.map(function(p){return[p.lat,p.lng]}));
+if(P.length>1)M.fitBounds(b.pad(0.3));
+}
+function mIc(p){return L.divIcon({html:'<div class="pin-o"><div class="pin-b"><span class="pin-n">'+p.id+'</span></div></div>',className:'',iconSize:[34,42],iconAnchor:[17,42],popupAnchor:[0,-44]})}
+function mPp(p){return '<div><div class="pp-h"><div class="pp-n">'+p.name+'</div><div class="pp-a">'+p.address+'</div></div><div class="pp-f"><button class="pp-c" style="margin-bottom:6px" onclick="openModal('+p.id+')">View Project</button><button class="pp-c" onclick="go(\'ct\')">Free Estimate</button></div></div>'}
+function rAll(){
+var l=document.getElementById('project-list');
+document.getElementById('proj-count').textContent=P.length;
+document.getElementById('count-total').textContent=P.length;
+var h=[];P.forEach(function(p){if(h.indexOf(p.hood)===-1)h.push(p.hood)});
+document.getElementById('count-hoods').textContent=h.length;l.innerHTML='';
+P.forEach(function(p){
+var e=document.createElement('div');e.className='pi';e.dataset.id=p.id;
+e.innerHTML='<div class="pi-b">'+p.id+'</div><div class="pi-i"><div class="pi-n">'+p.name+'</div><div class="pi-h">'+p.hood+'</div></div><div class="pi-u">'+p.units+'<span>units</span></div>';
+e.addEventListener('click',function(){sP(p.id);var m=mk[p.id];if(m){M.setView(m.getLatLng(),14,{animate:true});m.openPopup()}});l.appendChild(e);
+var m=L.marker([p.lat,p.lng],{icon:mIc(p)}).bindPopup(mPp(p),{maxWidth:260,minWidth:230});
+m.on('click',function(){sP(p.id)});m.addTo(M);mk[p.id]=m
+})
+}
+function sP(id){aId=id;document.querySelectorAll('.pi').forEach(function(e){e.classList.toggle('on',parseInt(e.dataset.id)===id)});var a=document.querySelector('.pi.on');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function openModal(id){
+var p=P.find(function(x){return x.id===id});if(!p)return;
+curImgs=p.imgs||[];curSlide=0;
+var md=document.querySelector('#proj-modal .modal-media');
+var slides='';for(var i=0;i<curImgs.length;i++)slides+='<img src="'+curImgs[i]+'" alt="'+p.name+'"'+(i===0?' class="active"':'')+'>';
+if(p.vid)slides+='<iframe src="'+p.vid+'" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;position:absolute;inset:0;display:none;border:none"></iframe>';
+var total=curImgs.length+(p.vid?1:0);
+var dots='';if(total>1){dots='<div class="modal-dots">';for(var i=0;i<total;i++)dots+='<button class="modal-dot'+(i===0?' active':'')+'" onclick="goSlide('+i+')"></button>';dots+='</div>';}
+var nav=total>1?'<button class="modal-nav prev" onclick="navSlide(-1)">‹</button><button class="modal-nav next" onclick="navSlide(1)">›</button>':'';
+md.innerHTML=slides+nav+dots;
+md.dataset.total=total;md.dataset.hasVid=p.vid?'1':'0';
+var b=document.querySelector('#proj-modal .modal-body');
+b.innerHTML='<div class="modal-tag">'+p.cat+'</div><div class="modal-title">'+p.name+'</div><div class="modal-addr">'+p.address+'</div><p class="modal-desc">'+p.desc+'</p><p class="modal-quote">"We know that we are the best — just let us show you how the work needs to be done!"</p><button class="pill pill-g" style="font-size:13px;padding:14px 40px" onclick="closeModal();go(\'ct\')">Get a Free Estimate</button>';
+document.getElementById('proj-modal').classList.add('show');
+}
+function navSlide(d){goSlide(curSlide+d)}
+function goSlide(i){
+var md=document.querySelector('#proj-modal .modal-media');
+var imgs=md.querySelectorAll('img'),dots=md.querySelectorAll('.modal-dot'),ifr=md.querySelector('iframe');
+var total=parseInt(md.dataset.total)||imgs.length;
+if(!total)return;
+curSlide=(i%total+total)%total;
+imgs.forEach(function(m,j){m.style.display=j===curSlide?'block':'none';m.classList.toggle('active',j===curSlide)});
+if(ifr){var isVid=curSlide===imgs.length;ifr.style.display=isVid?'block':'none';if(!isVid)ifr.src=ifr.src;}
+dots.forEach(function(d,j){d.classList.toggle('active',j===curSlide)});
+}
+function closeModal(){document.getElementById('proj-modal').classList.remove('show')}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape')closeModal();
+if(document.getElementById('proj-modal').classList.contains('show')){
+if(e.key==='ArrowLeft')navSlide(-1);
+if(e.key==='ArrowRight')navSlide(1);
+}
+});
+</script>
+</body>
+</html>
