@@ -129,12 +129,14 @@
 </div>
 <div>
 <div class="ci-t">Send a Message</div>
-<form id="home-form" onsubmit="return sf(this,'home-ty')">
+<form id="home-form" onsubmit="return sf(event)">
+<input type="hidden" name="_subject" value="New Client Inquiry - Prime Developers">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <div class="fg"><input name="name" placeholder="Your Name" required></div>
 <div class="fg"><input type="email" name="email" placeholder="Email Address" required></div>
 <div class="fg"><input type="tel" name="phone" placeholder="Phone Number"></div>
 <div class="fg"><textarea name="message" placeholder="How can we help you?" required></textarea></div>
-<button class="btn-send" type="submit">Send Message</button>
+<button class="btn-send" id="home-btn" type="submit">Send Message</button>
 </form>
 <div class="ty" id="home-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p></div>
 </div>
@@ -208,7 +210,7 @@
 <p class="cpg-q">"We know that we are the best — just let us show you how the work needs to be done!"</p>
 <p class="cpg-free">FREE ESTIMATES on all our services!</p>
 <div class="cpg-f" id="cpg-fw">
-<form id="ct-form" onsubmit="sf(event)">
+<form id="ct-form" onsubmit="return sf(event)">
 <input type="hidden" name="_subject" value="New Client Inquiry - Prime Developers">
 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 <div class="cpg-fg"><label>Name</label><input name="name" placeholder="Your full name" required></div>
@@ -252,33 +254,40 @@ if(p==='port'){if(!mOk){setTimeout(function(){iMap();mOk=1},280)}else if(M){setT
 function goTo(id){setTimeout(function(){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})},60)}
 function sf(e){
   e.preventDefault();
-  var form=e.target,btn=document.getElementById('ct-btn'),err=document.getElementById('ct-err');
-  // honeypot check
-  if(form._gotcha&&form._gotcha.value){return;}
-  btn.disabled=true;btn.textContent='Sending…';err.style.display='none';
+  var form=e.target;
+  if(form._gotcha&&form._gotcha.value){return false;}
+  var isHome=form.id==='home-form';
+  var btn=isHome?document.getElementById('home-btn'):document.getElementById('ct-btn');
+  var err=isHome?null:document.getElementById('ct-err');
+  btn.disabled=true;btn.textContent='Sending…';
+  if(err)err.style.display='none';
   fetch('https://formspree.io/f/mwvrjgag',{
     method:'POST',
     body:new FormData(form),
     headers:{Accept:'application/json'}
   }).then(function(r){
     if(r.ok){
-      form.style.display='none';
-      document.getElementById('cpg-ty').classList.add('show');
+      if(isHome){
+        form.style.display='none';
+        document.getElementById('home-ty').classList.add('show');
+      } else {
+        form.style.display='none';
+        document.getElementById('cpg-ty').classList.add('show');
+      }
     } else {
       r.json().then(function(d){
-        err.textContent=(d&&d.errors&&d.errors[0]&&d.errors[0].message)||'Something went wrong. Please try again.';
-        err.style.display='block';
+        var msg=(d&&d.errors&&d.errors[0]&&d.errors[0].message)||'Something went wrong. Please try again.';
+        if(err){err.textContent=msg;err.style.display='block';}
       }).catch(function(){
-        err.textContent='Something went wrong. Please try again.';
-        err.style.display='block';
+        if(err){err.textContent='Something went wrong. Please try again.';err.style.display='block';}
       });
       btn.disabled=false;btn.textContent='Send Message';
     }
   }).catch(function(){
-    err.textContent='Network error. Please check your connection and try again.';
-    err.style.display='block';
+    if(err){err.textContent='Network error. Please check your connection and try again.';err.style.display='block';}
     btn.disabled=false;btn.textContent='Send Message';
   });
+  return false;
 }
 function rf(){
   document.getElementById('cpg-ty').classList.remove('show');
