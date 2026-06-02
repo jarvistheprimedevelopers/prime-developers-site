@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitchen & Bathroom Renovation | The Prime Developers Inc</title>
+  <meta name="description" content="Transform your kitchen or bathroom with The Prime Developers Inc. Licensed & insured GTA renovators. Book your free estimate today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── Brand tokens ── */
+    :root {
+      --green:   #6abf4b;
+      --green-d: #55a038;
+      --black:   #000000;
+      --white:   #ffffff;
+      --gray:    #cccccc;
+      --nav-h:   72px;
+      --font-h:  'Raleway', sans-serif;
+      --font-b:  'Open Sans', sans-serif;
+    }
+
+    body { font-family: var(--font-b); background: var(--black); color: var(--white); }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.12);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo-text { font-family: var(--font-h); font-weight: 900; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--black); line-height: 1.1; }
+    .nav-logo-sub  { font-family: var(--font-h); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.18em; color: #555; text-transform: uppercase; }
+    .nav-phone { font-family: var(--font-h); font-weight: 700; font-size: 1rem; color: var(--black); text-decoration: none; letter-spacing: 0.04em; display:flex; align-items:center; gap:0.4rem; }
+    .nav-phone:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: var(--white);
+      border: none; padding: 0.65rem 1.5rem;
+      border-radius: 50px; font-family: var(--font-h); font-weight: 700;
+      font-size: 0.78rem; letter-spacing: 0.12em; cursor: pointer;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-d); transform: translateY(-1px); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    /* ── RATING BADGE ── */
+    .rating-badge {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #f5f5f2; border: 1px solid #dddcd7;
+      border-radius: 50px; padding: 0.45rem 1rem 0.45rem 0.65rem;
+    }
+    .rating-badge-stars { display: flex; gap: 1px; }
+    .rating-badge-stars svg { width: 14px; height: 14px; fill: #f59e0b; }
+    .rating-badge-text { line-height: 1.2; }
+    .rating-badge-title { font-family: var(--font-h); font-weight: 700; font-size: 0.7rem; color: #1a1a1a; display: block; letter-spacing: 0.02em; }
+    .rating-badge-sub   { font-family: var(--font-b); font-size: 0.62rem; color: #888; display: block; }
+    @media (max-width: 640px) { .rating-badge { display: none; } }
+
+    /* ── CIRCULAR GALLERY ── */
+    .cg-section {
+      background: #e4e3de;
+      padding: 3.5rem 0 0;
+      overflow: hidden;
+    }
+    .cg-label {
+      text-align: center; margin-bottom: 1.5rem; padding: 0 1.5rem;
+    }
+    .cg-canvas-wrap {
+      position: relative;
+      height: 600px;
+      width: 100%;
+      cursor: grab;
+    }
+    .cg-canvas-wrap:active { cursor: grabbing; }
+    #cgCanvas { display: block; width: 100%; height: 100%; }
+    .cg-hint {
+      position: absolute; bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-h); font-size: 0.65rem;
+      letter-spacing: 0.16em; color: rgba(255,255,255,0.6);
+      text-transform: uppercase; pointer-events: none;
+      background: rgba(0,0,0,0.35); padding: 5px 14px;
+      border-radius: 50px; backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    /* ── SPLIT HERO ── */
+    .split-wrap {
+      display: flex;
+      height: calc(100vh - var(--nav-h));
+      min-height: 500px;
+    }
+    @media (max-width: 767px) { .split-wrap { flex-direction: column; height: auto; } }
+
+    .panel {
+      flex: 1; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; overflow: hidden;
+      transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    @media (max-width: 767px) { .panel { min-height: 320px; } }
+
+    .panel-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.55s ease;
+    }
+    .panel:hover .panel-bg { transform: scale(1.06); }
+
+    .panel-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.48);
+      transition: background 0.4s;
+    }
+    .panel:hover .panel-overlay { background: rgba(0,0,0,0.3); }
+
+    .panel-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 2rem;
+      transition: transform 0.4s ease;
+    }
+    .panel:hover .panel-content { transform: scale(1.04); }
+
+    /* eyebrow label — matches site style */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 0.65rem; letter-spacing: 0.22em;
+      color: var(--green); text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ''; display: block;
+      width: 32px; height: 1.5px; background: var(--green);
+    }
+
+    .panel-title {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      color: var(--white); line-height: 1.1;
+      text-shadow: 0 3px 30px rgba(0,0,0,0.8);
+      margin-bottom: 1.5rem;
+    }
+    .panel-title span { color: var(--green); }
+
+    .btn-pill-outline {
+      display: inline-block;
+      border: 2px solid var(--white); color: var(--white);
+      background: transparent; padding: 1rem 2.8rem;
+      border-radius: 50px; font-family: var(--font-h); font-weight: 800;
+      font-size: 1rem; letter-spacing: 0.14em; cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
+    }
+    .btn-pill-outline:hover {
+      background: var(--green); border-color: var(--green);
+      color: var(--white); transform: translateY(-2px);
+    }
+
+    .split-divider {
+      width: 2px; flex-shrink: 0; z-index: 5;
+      background: linear-gradient(to bottom, transparent, var(--green) 25%, var(--green) 75%, transparent);
+    }
+    @media (max-width: 767px) { .split-divider { display: none; } }
+
+    .panel-vignette {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 38%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      pointer-events: none; z-index: 1;
+    }
+
+    .mobile-hint {
+      position: absolute; bottom: 12px; left: 0; right: 0;
+      text-align: center; font-size: 0.68rem; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55); pointer-events: none; z-index: 3;
+    }
+    @media (min-width: 768px) { .mobile-hint { display: none; } }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: #e4e3de;
+      border-top: 1px solid #cccbc5;
+      border-bottom: 1px solid #cccbc5;
+      display: flex; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat-item {
+      flex: 1; min-width: 160px;
+      padding: 1.75rem 1rem; text-align: center;
+      border-right: 1px solid #cccbc5;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: 2.4rem; color: var(--green-d); line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-label {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      color: #555; text-transform: uppercase;
+    }
+
+    /* ── SECTION INTRO ── */
+    .section-dark {
+      background-image: url('hero-neighborhood.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      padding: 5rem 1.5rem;
+    }
+    .section-dark::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.82);
+      pointer-events: none;
+    }
+    .section-dark > * { position: relative; z-index: 1; }
+    .section-center { text-align: center; max-width: 680px; margin: 0 auto; }
+
+    .section-title {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--white); line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--green); }
+    .section-body { color: var(--gray); font-size: 0.95rem; line-height: 1.75; }
+
+    /* ── FORM ── */
+    .form-wrap { max-width: 660px; margin: 3rem auto 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field { margin-bottom: 1rem; }
+
+    .form-label {
+      display: block; font-family: var(--font-h); font-weight: 700;
+      font-size: 0.65rem; letter-spacing: 0.16em; color: #888;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%; padding: 0.8rem 1rem;
+      background: #111; border: 1px solid #2a2a2a;
+      color: var(--white); font-size: 0.9rem; font-family: var(--font-b);
+      border-radius: 6px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(106,191,75,0.15); }
+    .form-input option { background: #111; }
+
+    .btn-pill-green {
+      width: 100%; padding: 1rem 2rem;
+      background: var(--green); color: var(--white);
+      border: none; border-radius: 50px;
+      font-family: var(--font-h); font-weight: 800;
+      font-size: 0.85rem; letter-spacing: 0.14em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+    .btn-pill-green:hover { background: var(--green-d); transform: translateY(-2px); }
+
+    .radio-group { display: flex; gap: 2rem; }
+    .radio-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--gray); font-size: 0.9rem; }
+    .radio-label input { accent-color: var(--green); width: 16px; height: 16px; }
+
+    /* ── MODAL ── */
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: #e4e3de;
+      display: flex; flex-direction: column;
+      animation: fadeIn 0.25s ease;
+    }
+    .modal.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #cccbc5;
+      background: #e4e3de;
+      flex-shrink: 0;
+    }
+    .modal-title { font-family: var(--font-h); font-weight: 800; font-size: clamp(1.2rem,2.5vw,1.6rem); letter-spacing: 0.06em; color: #1a1a1a; }
+    .modal-sub   { font-family: var(--font-h); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--green-d); margin-top: 3px; text-transform: uppercase; }
+    .modal-close { background: none; border: none; color: #1a1a1a; font-size: 2.2rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; font-weight: 300; transition: color 0.2s; }
+    .modal-close:hover { color: var(--green-d); }
+    .modal-body { flex: 1; overflow-y: auto; padding: 2rem 2.5rem; }
+    @media (max-width: 640px) { .modal-body { padding: 1rem; } }
+
+    /* ── GALLERY GRID ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 700px)  { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 440px)  { .gallery-grid { grid-template-columns: 1fr; } }
+
+    .g-card { overflow: hidden; background: #fff; border: 1px solid #cccbc5; transition: border-color 0.3s, transform 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .g-card:hover { border-color: var(--green-d); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
+    .g-card-img { height: 190px; position: relative; overflow: hidden; background: #ddd; }
+    .g-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .g-card:hover .g-card-img img { transform: scale(1.08); }
+    .g-card-fade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent 55%); pointer-events: none; }
+    .g-badge {
+      position: absolute; bottom: 8px; right: 8px;
+      font-family: var(--font-h); font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 8px; background: var(--green); color: var(--white);
+      border-radius: 3px;
+    }
+    .g-card-body { padding: 0.85rem 1rem; background: #fff; }
+    .g-card-title { font-family: var(--font-h); font-weight: 700; font-size: 0.85rem; color: #1a1a1a; margin-bottom: 0.3rem; }
+    .g-card-desc  { color: #666; font-size: 0.75rem; line-height: 1.5; }
+
+    .modal-cta { text-align: center; margin-top: 2.5rem; padding-bottom: 1rem; }
+    .modal-cta p { color: #555; font-size: 0.9rem; margin-bottom: 1rem; }
+    .btn-pill-green-sm {
+      display: inline-block; padding: 0.8rem 2.5rem;
+      background: var(--green); color: var(--white);
+      border: none; border-radius: 50px;
+      font-family: var(--font-h); font-weight: 800;
+      font-size: 0.78rem; letter-spacing: 0.14em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-pill-green-sm:hover { background: var(--green-d); transform: translateY(-2px); }
+    .summer-offer-section {
+      background: #0d1a0a;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .summer-bg-strip {
+      position: absolute; inset: 0;
+      display: flex;
+      gap: 4px;
+    }
+    .summer-bg-strip img {
+      flex: 1; width: 0; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .summer-offer-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .summer-offer-section > *:not(.summer-bg-strip) { position: relative; z-index: 2; }
+    .summer-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-h); font-weight: 800;
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .summer-title {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: clamp(3rem, 7vw, 6rem);
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+      line-height: 1;
+    }
+    .summer-sub {
+      font-family: var(--font-b);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 2rem;
+    }
+    .summer-sub em { color: var(--green); font-style: normal; font-weight: 700; }
+    .summer-price {
+      display: flex; align-items: baseline; justify-content: center; gap: 0.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .summer-starting {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .summer-amount {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--green);
+      line-height: 1;
+      text-shadow: none;
+    }
+    .summer-exclaim {
+      font-family: var(--font-h); font-weight: 900;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #fff;
+    }
+    .summer-note {
+      font-family: var(--font-b);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+    .btn-free-quote {
+      display: inline-block; padding: 1.4rem 4rem;
+      background: var(--green); color: #fff;
+      border-radius: 50px; text-decoration: none;
+      font-family: var(--font-h); font-weight: 900;
+      font-size: 1.4rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 30px rgba(106,191,75,0.4);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-free-quote:hover { background: var(--green-d); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(106,191,75,0.5); }
+
+    /* ── FOOTER ── */
+    .footer { background: #050505; border-top: 1px solid #111; padding: 3rem 1.5rem; text-align: center; }
+    .footer-brand { font-family: var(--font-h); font-weight: 900; font-size: 1.1rem; letter-spacing: 0.16em; color: var(--white); margin-bottom: 4px; }
+    .footer-brand span { color: var(--green); }
+    .footer-tagline { font-family: var(--font-h); font-size: 0.6rem; letter-spacing: 0.22em; color: #555; margin-bottom: 1.5rem; text-transform: uppercase; }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem 2rem; margin-bottom: 1.5rem; }
+    .footer-links a { color: #555; text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--green); }
+    .footer-copy { font-size: 0.65rem; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── SUCCESS ── */
+    #formSuccess { display:none; text-align:center; padding:3rem 2rem; border:1px solid #1e1e1e; border-radius:8px; margin-top:1rem; }
+    #formSuccess .check { font-size:3rem; margin-bottom:1rem; }
+    #formSuccess h3 { font-family:var(--font-h); font-weight:900; font-size:1.4rem; letter-spacing:0.1em; color:var(--white); margin-bottom:0.75rem; }
+    #formSuccess p { color:#888; line-height:1.7; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <a class="nav-logo" href="https://theprimedevelopers.ca">
+    <div>
+      <div class="nav-logo-text">THE PRIME<br>DEVELOPERS</div>
+      <div class="nav-logo-sub">INC</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <div class="rating-badge">
+      <div class="rating-badge-stars">
+        <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+        <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+        <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+        <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+        <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+      </div>
+      <div class="rating-badge-text">
+        <span class="rating-badge-title">Best Remodeling Service</span>
+        <span class="rating-badge-sub">2,000+ reviews</span>
+      </div>
+    </div>
+    <a class="nav-phone" href="tel:+14376691543">📞 (437) 669-1543</a>
+    <a class="nav-cta" href="#estimate">GET IN TOUCH</a>
+  </div>
+</nav>
+
+<!-- ══════════ SPLIT HERO ══════════ -->
+<section class="split-wrap">
+
+  <!-- Kitchen Panel -->
+  <div class="panel" id="panel-kitchen"
+       onclick="openModal('kitchen')"
+       onmouseenter="hoverPanel('kitchen')"
+       onmouseleave="unhoverPanel()">
+    <div class="panel-bg" style="background-image: url('hero kithen 1.jpg');"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-content">
+      <div class="eyebrow">Kitchen Renovation</div>
+      <h2 class="panel-title">Transform Your<br><span>Dream Kitchen</span></h2>
+      <button class="btn-pill-outline">Get Inspired</button>
+    </div>
+    <div class="panel-vignette"></div>
+  </div>
+
+  <!-- Divider -->
+  <div class="split-divider"></div>
+
+  <!-- Bathroom Panel -->
+  <div class="panel" id="panel-bathroom"
+       onclick="openModal('bathroom')"
+       onmouseenter="hoverPanel('bathroom')"
+       onmouseleave="unhoverPanel()">
+    <div class="panel-bg" style="background-image: url('hero batroom 1.jpg');"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-content">
+      <div class="eyebrow">Bathroom Renovation</div>
+      <h2 class="panel-title">Luxury Bath<br><span>Redesign</span></h2>
+      <button class="btn-pill-outline">Get Inspired</button>
+    </div>
+    <div class="panel-vignette"></div>
+  </div>
+
+  <div class="mobile-hint">TAP A SIDE TO VIEW GALLERY</div>
+</section>
+
+<!-- ══════════ SUMMER OFFER ══════════ -->
+<section class="summer-offer-section">
+  <div class="summer-bg-strip">
+    <img src="summer sale 1.jpg" alt="">
+    <img src="summer sale 2.jpg" alt="">
+    <img src="summer sale.jpg" alt="">
+  </div>
+  <div class="summer-badge">🌞 LIMITED TIME OFFER</div>
+  <h2 class="summer-title">Summer Special</h2>
+  <p class="summer-sub">Full Kitchen Renovation <em>or</em> Full Bathroom Renovation</p>
+  <div class="summer-price">
+    <span class="summer-starting">Starting From</span>
+    <span class="summer-amount">$4,675</span>
+    <span class="summer-exclaim">!!!</span>
+  </div>
+  <p class="summer-note">Licensed &amp; insured · GTA's top-rated renovators · No hidden fees</p>
+  <a href="#estimate" class="btn-free-quote" style="margin-top:1.5rem;">CLAIM THIS OFFER →</a>
+</section>
+
+<!-- ══════════ STATS BAR ══════════ -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">231+</div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Years of Operation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">185</div>
+    <div class="stat-label">Clients Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5★</div>
+    <div class="stat-label">Rated GTA Renovators</div>
+  </div>
+</div>
+
+<!-- ══════════ INTRO ══════════ -->
+<section class="section-dark">
+  <div class="section-center">
+    <div class="eyebrow" style="justify-content:center;">Boutique Service · Bespoke Results</div>
+    <h2 class="section-title">Kitchen &amp; Bathroom<br><span>Renovations Done Right</span></h2>
+    <p class="section-body">
+      We provide a bespoke, boutique service level specifically designed for homeowners across the GTA.
+      Click either side above to explore our portfolio — then book your free, no-obligation estimate below.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ ESTIMATE FORM ══════════ -->
+<section class="section-dark" id="estimate" style="padding-top:0;">
+  <div class="section-center">
+    <div class="eyebrow" style="justify-content:center;">No Obligation · Free Visit</div>
+    <h2 class="section-title">Book Your<br><span>Free Estimate</span></h2>
+    <p class="section-body">Our experts will visit your home and provide a detailed quote at no cost.</p>
+  </div>
+
+  <div class="form-wrap">
+    <div data-fs-success style="display:none; text-align:center; padding:3rem 2rem; border:1px solid #1e1e1e; border-radius:8px;">
+      <div style="font-size:3rem; margin-bottom:1rem;">✅</div>
+      <h3 style="font-family:var(--font-h); font-weight:900; font-size:1.4rem; letter-spacing:0.1em; color:var(--white); margin-bottom:0.75rem;">Thank You!</h3>
+      <p style="color:#888; line-height:1.7;">We've received your request and will be in touch within 24 hours to schedule your free estimate.</p>
+    </div>
+    <div data-fs-error style="color:#ff6b6b; text-align:center; margin-bottom:1rem; font-size:0.9rem;"></div>
+
+    <form id="estimateForm" data-fs-field>
+      <div class="form-row">
+        <div>
+          <label class="form-label">Full Name *</label>
+          <input class="form-input" type="text" name="name" required placeholder="John Smith" data-fs-field />
+        </div>
+        <div>
+          <label class="form-label">Phone Number *</label>
+          <input class="form-input" type="tel" name="phone" required placeholder="(416) 000-0000" data-fs-field />
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email Address *</label>
+        <input class="form-input" type="email" name="email" required placeholder="john@email.com" data-fs-field />
+      </div>
+      <div class="form-field">
+        <label class="form-label">Service Needed *</label>
+        <select class="form-input" name="service" required data-fs-field>
+          <option value="">Select a service...</option>
+          <option value="Kitchen Renovation">Kitchen Renovation</option>
+          <option value="Bathroom Renovation">Bathroom Renovation</option>
+          <option value="Both Kitchen & Bathroom">Both Kitchen &amp; Bathroom</option>
+          <option value="Other Renovation">Other Renovation</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Project Description</label>
+        <textarea class="form-input" name="message" rows="4" placeholder="Tell us about your project — size, style preferences, timeline..." style="resize:none;" data-fs-field></textarea>
+      </div>
+      <div class="form-field">
+        <label class="form-label" style="margin-bottom:0.75rem;">Preferred Contact Method</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="preferred_contact" value="Phone" checked /> Phone</label>
+          <label class="radio-label"><input type="radio" name="preferred_contact" value="Email" /> Email</label>
+        </div>
+      </div>
+      <button type="submit" class="btn-pill-green" data-fs-submit-btn>Get My Free Estimate →</button>
+      <p style="text-align:center; font-size:0.72rem; color:#444; margin-top:0.75rem; letter-spacing:0.06em;">
+        * We typically respond within 24 hours. No spam, ever.
+      </p>
+    </form>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-brand">THE PRIME DEVELOPERS <span>INC</span></div>
+  <div class="footer-tagline">Property Solution for All</div>
+  <div class="footer-links">
+    <a href="tel:+14376691543">📞 (437) 669-1543</a>
+    <a href="mailto:info@theprimedevelopers.ca">✉ info@theprimedevelopers.ca</a>
+    <a href="https://theprimedevelopers.ca" target="_blank">🌐 theprimedevelopers.ca</a>
+  </div>
+  <div class="footer-copy">© 2024 The Prime Developers Inc. All Rights Reserved.</div>
+</footer>
+
+<!-- ══════════ KITCHEN MODAL ══════════ -->
+<div class="modal hidden" id="modal-kitchen" role="dialog" aria-label="Kitchen Renovation Portfolio">
+  <div class="modal-header">
+    <div>
+      <div class="modal-title">Kitchen Renovation — Inspired By</div>
+      <div class="modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="modal-close" onclick="closeModal('kitchen')" aria-label="Close">×</button>
+  </div>
+  <div class="modal-body" style="padding:0; display:flex; flex-direction:column;">
+    <div style="flex:1; position:relative; min-height:0;">
+      <canvas id="cgKitchen" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="modal-cta" style="padding:1.5rem; background:#e4e3de;">
+      <p>Ready to bring this style to your home?</p>
+      <button class="btn-pill-green-sm" onclick="closeModal('kitchen'); scrollToForm();">Book Your Free Estimate →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ BATHROOM MODAL ══════════ -->
+<div class="modal hidden" id="modal-bathroom" role="dialog" aria-label="Bathroom Renovation Portfolio">
+  <div class="modal-header">
+    <div>
+      <div class="modal-title">Bathroom Renovation — Inspired By</div>
+      <div class="modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="modal-close" onclick="closeModal('bathroom')" aria-label="Close">×</button>
+  </div>
+  <div class="modal-body" style="padding:0; display:flex; flex-direction:column;">
+    <div style="flex:1; position:relative; min-height:0;">
+      <canvas id="cgBathroom" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="modal-cta" style="padding:1.5rem; background:#e4e3de;">
+      <p>Ready to bring this style to your home?</p>
+      <button class="btn-pill-green-sm" onclick="closeModal('bathroom'); scrollToForm();">Book Your Free Estimate →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const HOTELS = [
+    'Four Seasons', 'Rosewood', 'Capella', 'Atlantis The Royal',
+    'Royal Mansour', 'Aman Tokyo', 'Waldorf Astoria',
+    'The Ritz-Carlton', 'Bulgari Hotel',
+  ];
+
+  const kitchenImages  = [
+    'kithen  1.jpg','kithen 2.jpg','kithen 3.jpg','kithen 4.jpg','kithen 5.jpg',
+    'kithen 6.jpg','kithen 7.jpg','kithen 8.jpg','kithen 9.jpg',
+  ];
+  const bathroomImages = [
+    'batroom1.jpg','batroom2.jpg','batroom3.jpg','batroom4.jpg','batroom5.jpg',
+    'batroom6.jpg','batroom7.jpg','batroom8.jpg','batroom9.jpg',
+  ];
+
+  // ── Modal WebGL galleries (lazy-init on first open) ──
+  const modalGalleries = {};
+
+  async function initModalGallery(canvasId, images, labels) {
+    if (modalGalleries[canvasId]) return; // already inited
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const { Renderer, Camera, Transform, Plane, Mesh, Program, Texture } =
+      await import('./ogl.bundle.js');
+
+    const renderer = new Renderer({ canvas, alpha: false, antialias: true, dpr: Math.min(devicePixelRatio, 2) });
+    const gl = renderer.gl;
+    gl.clearColor(0.894, 0.886, 0.871, 1);
+
+    const CAM_Z  = 2.5;
+    const FOV    = 75;
+    const camera = new Camera(gl, { fov: FOV });
+    camera.position.z = CAM_Z;
+
+    // Plane size: empirically calibrated — OGL appears to need ~2x the theoretical viewH factor
+    const wrap   = canvas.parentElement;
+    const viewH  = 2 * Math.tan((FOV * Math.PI / 180) / 2) * CAM_Z;
+    const pH     = viewH * 0.58;
+    const pW     = pH * 0.75;   // portrait card — matches source images (~3:4)
+    const CFG    = { bend: 0.0, borderRadius: 0.05, scrollSpeed: 2.2, scrollEase: 0.05, planeW: pW, planeH: pH, gap: pW * 0.12 };
+    const scene = new Transform();
+
+    function resize() {
+      const wrap = canvas.parentElement;
+      renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
+      camera.perspective({ aspect: wrap.offsetWidth / wrap.offsetHeight });
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Shaders — image + hotel name text overlay drawn on a 2D canvas then used as texture
+    const vert = `
+      attribute vec3 position; attribute vec2 uv;
+      uniform mat4 modelViewMatrix; uniform mat4 projectionMatrix;
+      uniform float uBend;
+      varying vec2 vUv;
+      void main(){
+        vUv=uv; vec3 p=position;
+        if(abs(uBend)>0.0001){ float t=p.x*uBend; p.x=sin(t)/uBend; p.z+=(cos(t)-1.0)/uBend; }
+        gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);
+      }`;
+    const frag = `
+      precision highp float;
+      uniform sampler2D tMap; uniform float uRadius;
+      varying vec2 vUv;
+      void main(){
+        vec2 p=vUv-0.5; vec2 q=abs(p)-(0.5-uRadius);
+        float d=length(max(q,0.0))+min(max(q.x,q.y),0.0)-uRadius;
+        if(d>0.0) discard;
+        gl_FragColor=texture2D(tMap,vUv);
+      }`;
+
+    // Build textures: composite photo + hotel name label onto offscreen canvas
+    function makeTexture(src, label) {
+      const tex = new Texture(gl, { generateMipmaps: false });
+      const img = new Image();
+      img.onload = () => {
+        // Portrait canvas matching source image ratio (~3:4)
+        const CW = 900, CH = 1200;
+        const oc = document.createElement('canvas');
+        oc.width = CW; oc.height = CH;
+        const ctx = oc.getContext('2d');
+        // object-fit: cover — fill card edge-to-edge, center crop, no black bars
+        const imgR = img.naturalWidth / img.naturalHeight;
+        const canR = CW / CH;
+        let sx, sy, sw, sh;
+        if (imgR > canR) { sh = img.naturalHeight; sw = sh * canR; sx = (img.naturalWidth - sw) / 2; sy = 0; }
+        else             { sw = img.naturalWidth;  sh = sw / canR; sy = (img.naturalHeight - sh) / 2; sx = 0; }
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, CW, CH);
+        // gradient overlay at bottom
+        const grad = ctx.createLinearGradient(0, CH * 0.65, 0, CH);
+        grad.addColorStop(0, 'rgba(0,0,0,0)');
+        grad.addColorStop(1, 'rgba(0,0,0,0.78)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, CW, CH);
+        // hotel name
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 52px Raleway, sans-serif';
+        ctx.letterSpacing = '3px';
+        ctx.fillText(label, 36, CH - 72);
+        // green underline
+        ctx.fillStyle = '#6abf4b';
+        ctx.fillRect(36, CH - 54, ctx.measureText(label).width, 4);
+        tex.image = oc;
+      };
+      img.src = src;
+      return tex;
+    }
+
+    const stride = CFG.planeW + CFG.gap;
+    const totalW = stride * images.length;
+    const meshes = [];
+
+    images.forEach((src, i) => {
+      const geo = new Plane(gl, { width: CFG.planeW, height: CFG.planeH, widthSegments: 32 });
+      const tex  = makeTexture(src, labels[i] || src);
+      const prog = new Program(gl, {
+        vertex: vert, fragment: frag,
+        uniforms: { tMap: { value: tex }, uBend: { value: CFG.bend }, uRadius: { value: CFG.borderRadius } },
+        transparent: true, cullFace: false,
+      });
+      const mesh  = new Mesh(gl, { geometry: geo, program: prog });
+      const baseX = (i - (images.length - 1) / 2) * stride;
+      mesh.position.x = baseX;
+      mesh.setParent(scene);
+      meshes.push({ mesh, baseX });
+    });
+
+    const scroll = { cur: 0, tar: 0 };
+    let dragging = false, dragX0 = 0, tarX0 = 0;
+
+    canvas.addEventListener('wheel', e => { e.preventDefault(); scroll.tar += e.deltaY * 0.003 * CFG.scrollSpeed; }, { passive: false });
+    canvas.addEventListener('mousedown', e => { dragging = true; dragX0 = e.clientX; tarX0 = scroll.tar; canvas.style.cursor = 'grabbing'; });
+    window.addEventListener('mousemove', e => { if (!dragging) return; scroll.tar = tarX0 - (e.clientX - dragX0) * 0.006 * CFG.scrollSpeed; });
+    window.addEventListener('mouseup',   () => { dragging = false; canvas.style.cursor = 'grab'; });
+    canvas.addEventListener('touchstart', e => { dragX0 = e.touches[0].clientX; tarX0 = scroll.tar; }, { passive: true });
+    canvas.addEventListener('touchmove',  e => { scroll.tar = tarX0 - (e.touches[0].clientX - dragX0) * 0.006 * CFG.scrollSpeed; }, { passive: true });
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    let rafId;
+    function loop() {
+      rafId = requestAnimationFrame(loop);
+      scroll.cur = lerp(scroll.cur, scroll.tar, CFG.scrollEase);
+      const offset = scroll.cur * stride;
+      const half   = totalW / 2;
+      meshes.forEach(({ mesh, baseX }) => {
+        let x = baseX - offset;
+        while (x >  half) x -= totalW;
+        while (x < -half) x += totalW;
+        mesh.position.x = x;
+      });
+      renderer.render({ scene, camera });
+    }
+
+    modalGalleries[canvasId] = { start: () => loop(), stop: () => cancelAnimationFrame(rafId) };
+    modalGalleries[canvasId].start();
+  }
+
+  function openModal(type) {
+    document.getElementById('modal-' + type).classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (type === 'kitchen')
+      initModalGallery('cgKitchen',  kitchenImages,  HOTELS);
+    else
+      initModalGallery('cgBathroom', bathroomImages, HOTELS);
+  }
+  function closeModal(type) {
+    document.getElementById('modal-' + type).classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  function scrollToForm() {
+    document.getElementById('estimate').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal('kitchen'); closeModal('bathroom'); }
+  });
+  document.querySelectorAll('.modal').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (e.target === this) { this.classList.add('hidden'); document.body.style.overflow = ''; }
+    });
+  });
+
+  function hoverPanel(side) {
+    if (window.innerWidth < 768) return;
+    document.getElementById('panel-kitchen').style.flex  = side === 'kitchen'  ? '1.15' : '0.85';
+    document.getElementById('panel-bathroom').style.flex = side === 'bathroom' ? '1.15' : '0.85';
+  }
+  function unhoverPanel() {
+    document.getElementById('panel-kitchen').style.flex  = '1';
+    document.getElementById('panel-bathroom').style.flex = '1';
+  }
+
+  // Formspree Ajax integration
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#estimateForm', formId: 'maqkrqrr' });
+
+  // ── Circular Gallery (WebGL / OGL) ──
+  (async function () {
+    const canvas = document.getElementById('cgCanvas');
+    if (!canvas) return;
+
+    const { Renderer, Camera, Transform, Plane, Mesh, Program, Texture } =
+      await import('./ogl.bundle.js');
+
+    const IMAGES = [
+      'hero kithen 1.jpg','hero batroom 1.jpg',
+      'kithen  1.jpg','kithen 2.jpg','kithen 3.jpg','kithen 4.jpg',
+      'kithen 5.jpg','kithen 6.jpg','kithen 7.jpg','kithen 8.jpg','kithen 9.jpg',
+      'batroom1.jpg','batroom2.jpg','batroom3.jpg','batroom4.jpg',
+      'batroom5.jpg','batroom6.jpg','batroom7.jpg','batroom8.jpg','batroom9.jpg',
+    ];
+
+    const CFG = { bend: 1, borderRadius: 0.05, scrollSpeed: 2, scrollEase: 0.05, planeW: 2.2, planeH: 1.4, gap: 0.18 };
+
+    // ── Renderer ──
+    const renderer = new Renderer({ canvas, alpha: true, antialias: true, dpr: Math.min(devicePixelRatio, 2) });
+    const gl = renderer.gl;
+    gl.clearColor(0.894, 0.886, 0.871, 1); // Silver Satin
+
+    const camera = new Camera(gl, { fov: 35 });
+    camera.position.z = 7;
+
+    const scene = new Transform();
+
+    function resize() {
+      const w = canvas.parentElement.offsetWidth;
+      const h = canvas.parentElement.offsetHeight;
+      renderer.setSize(w, h);
+      camera.perspective({ aspect: w / h });
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // ── Shaders ──
+    const vert = `
+      attribute vec3 position;
+      attribute vec2 uv;
+      uniform mat4 modelViewMatrix;
+      uniform mat4 projectionMatrix;
+      uniform float uBend;
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        vec3 p = position;
+        if (abs(uBend) > 0.0001) {
+          float theta = p.x * uBend;
+          p.x = sin(theta) / uBend;
+          p.z += (cos(theta) - 1.0) / uBend;
+        }
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+      }`;
+
+    const frag = `
+      precision highp float;
+      uniform sampler2D tMap;
+      uniform float uRadius;
+      varying vec2 vUv;
+      void main() {
+        vec2 p = vUv - 0.5;
+        vec2 q = abs(p) - (0.5 - uRadius);
+        float d = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - uRadius;
+        if (d > 0.0) discard;
+        gl_FragColor = texture2D(tMap, vUv);
+      }`;
+
+    // ── Planes ──
+    const stride  = CFG.planeW + CFG.gap;
+    const totalW  = stride * IMAGES.length;
+    const meshes  = [];
+
+    IMAGES.forEach((src, i) => {
+      const geo = new Plane(gl, { width: CFG.planeW, height: CFG.planeH, widthSegments: 32 });
+
+      const tex = new Texture(gl, { generateMipmaps: false });
+      const img = new Image();
+      img.onload = () => { tex.image = img; };
+      img.src = src;
+
+      const prog = new Program(gl, {
+        vertex: vert, fragment: frag,
+        uniforms: { tMap: { value: tex }, uBend: { value: CFG.bend }, uRadius: { value: CFG.borderRadius } },
+        transparent: true, cullFace: false,
+      });
+
+      const mesh = new Mesh(gl, { geometry: geo, program: prog });
+      const baseX = (i - (IMAGES.length - 1) / 2) * stride;
+      mesh.position.x = baseX;
+      mesh.setParent(scene);
+      meshes.push({ mesh, baseX });
+    });
+
+    // ── Scroll state ──
+    const scroll = { cur: 0, tar: 0 };
+    let dragging = false, dragX0 = 0, tarX0 = 0;
+
+    canvas.addEventListener('wheel', e => {
+      e.preventDefault();
+      scroll.tar += e.deltaY * 0.003 * CFG.scrollSpeed;
+    }, { passive: false });
+
+    canvas.addEventListener('mousedown', e => { dragging = true; dragX0 = e.clientX; tarX0 = scroll.tar; });
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      scroll.tar = tarX0 - (e.clientX - dragX0) * 0.006 * CFG.scrollSpeed;
+    });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    canvas.addEventListener('touchstart', e => { dragX0 = e.touches[0].clientX; tarX0 = scroll.tar; }, { passive: true });
+    canvas.addEventListener('touchmove',  e => {
+      scroll.tar = tarX0 - (e.touches[0].clientX - dragX0) * 0.006 * CFG.scrollSpeed;
+    }, { passive: true });
+
+    // ── Loop ──
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    (function loop() {
+      requestAnimationFrame(loop);
+      scroll.cur = lerp(scroll.cur, scroll.tar, CFG.scrollEase);
+
+      const offset = scroll.cur * stride;
+      const half   = totalW / 2;
+
+      meshes.forEach(({ mesh, baseX }) => {
+        let x = baseX - offset;
+        // infinite wrap
+        while (x >  half) x -= totalW;
+        while (x < -half) x += totalW;
+        mesh.position.x = x;
+      });
+
+      renderer.render({ scene, camera });
+    })();
+  })();
+
+  // Pre-select service from URL param e.g. ?service=kitchen
+  const params = new URLSearchParams(window.location.search);
+  const svc = params.get('service');
+  if (svc) {
+    const sel = document.getElementById('serviceSelect');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === svc) { sel.selectedIndex = i; break; }
+    }
+  }
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
