@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Prime Developers Inc | Property Services Hamilton, ON</title>
+<meta name="description" content="The Prime Developers Inc — boutique property services in Hamilton. Repairs, renovations, landscaping, and property management with white-glove care for homeowners, investors, and management firms.">
+<meta name="theme-color" content="#8cc63f">
+<link rel="canonical" href="https://theprimedevelopers.ca/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theprimedevelopers.ca/">
+<meta property="og:title" content="The Prime Developers Inc | Property Services Hamilton, ON">
+<meta property="og:description" content="Boutique property services in Hamilton — repairs, renovations, landscaping, and property management delivered with white-glove precision.">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1GRBWLF6t9gUmB1uG4rQFYywSVugYJ5lA">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap">
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--g:#8cc63f;--gd:#6fa32e;--gb:#28a745;--gbd:#1e7e34;--dk:#111;--mid:#1d1d1f;--mt:#6e6e73;--bd:#d2d2d7;--lt:#f5f5f7;--w:#fff;--nh:64px;--f:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif}html{scroll-behavior:smooth}body{font-family:var(--f);color:var(--mid);background:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}ul{list-style:none}button{font-family:var(--f)}.pg{display:none}.pg.on{display:block;animation:fu .45s ease both}@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.ey{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px}.ey::before,.ey::after{content:'';width:22px;height:1px;background:var(--g)}.sh2{font-size:clamp(36px,5vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1.04;color:var(--dk);margin-bottom:16px}.sh2 em,.sh2 span{font-style:normal;color:var(--g)}.ss{font-size:16px;font-weight:300;line-height:1.7;color:var(--mt);max-width:500px;margin:0 auto}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--g);padding:14px 36px;border-radius:980px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,gap .2s;white-space:nowrap;text-decoration:none}.btn:hover{background:var(--gd);transform:translateY(-2px)}.btn:active{transform:translateY(0)}.btn:focus-visible{outline:2px solid var(--g);outline-offset:3px}.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}.btn-sm{font-size:12px;padding:10px 24px}.btn-lg{font-size:16px;padding:18px 52px}.btn-full{width:100%}.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(8px)}.btn-outline:hover{background:var(--g);border-color:var(--g);transform:translateY(-3px)}.btn-shadow{box-shadow:0 6px 28px rgba(140,198,63,.3)}.btn-shadow:hover{background:var(--gbd);box-shadow:0 10px 36px rgba(140,198,63,.35)}.btn-danger{background:#dc3545}.btn-danger:hover{background:#c82333;transform:translateY(-1px)}.btn-arrow::after{content:'→'}.btn-arrow:hover{gap:14px}.btn-submit{width:100%;height:54px;padding:0;font-size:17px;box-shadow:0 6px 28px rgba(140,198,63,.3);margin-top:10px}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(140,198,63,.35)}nav{position:sticky;top:0;z-index:900;height:100px;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 52px}.nl{cursor:pointer;display:flex;align-items:center;font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--dk)}.nk{display:flex;align-items:center;gap:36px}.nk span{font-size:14px;font-weight:500;color:var(--mid);cursor:pointer;position:relative;padding:4px 0;transition:color .2s}.nk span::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--g);transition:width .25s}.nk span:hover{color:var(--dk)}.nk span:hover::after{width:100%}.nk span.ap{color:var(--g)}.nk span.ap::after{width:100%}section.hero{position:relative;height:calc(100vh - var(--nh));min-height:620px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;background:var(--dk)}.hero-bg{position:absolute;inset:-120px 0;will-change:transform}.hero img{width:100%;height:100%;object-fit:cover;animation:heroZoom 22s ease-in-out infinite;transform-origin:center center;filter:brightness(1.15) contrast(1.08) saturate(1.12)}@keyframes heroZoom{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}.hero-dim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.72) 100%);z-index:1}.hero-c{position:relative;z-index:2;max-width:760px;padding:0 32px;display:flex;flex-direction:column;align-items:center}.hero-ey{font-size:11px;font-weight:600;margin-bottom:22px;gap:14px}.hero-ey::before,.hero-ey::after{width:28px}.hero h1{font-size:clamp(44px,7.5vw,96px);font-weight:700;letter-spacing:-.04em;line-height:1.02;color:#fff;margin-bottom:18px}.hero h1 em{font-style:normal;color:var(--g)}.hero p{font-size:clamp(15px,1.6vw,19px);font-weight:300;line-height:1.7;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 52px}.boutique{background:#000;padding:80px 20px;min-height:70vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%}.boutique strong{color:rgba(255,255,255,.85);font-weight:600}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bd)}.metric{padding:48px 24px;text-align:center;border-right:1px solid var(--bd);transition:background .2s}.metric:last-child{border-right:none}.metric:hover{background:var(--lt)}.metric b{display:block;font-size:52px;font-weight:700;letter-spacing:-.05em;color:var(--g);line-height:1;margin-bottom:8px}.metric small{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mt)}section.who{background:var(--w);padding:100px 52px;text-align:center}.wc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:64px auto 0}.wci{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;aspect-ratio:3/4;background:#2a2a2a;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s}.wci:hover{transform:translateY(-8px);box-shadow:0 32px 80px rgba(0,0,0,.18)}.wci-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}.wci-bg--h{background-image:url('https://lh3.googleusercontent.com/d/11-IJAEMOO4z1ynl_RmSPCJa_DlcSvtMf')}.wci-bg--m{background-image:url('https://lh3.googleusercontent.com/d/1GRBWLF6t9gUmB1uG4rQFYywSVugYJ5lA')}.wci-bg--i{background-image:url('https://lh3.googleusercontent.com/d/1YQ6S7OT5jaUn25Ls7hR4IDS-yM4VhpF2')}.wci:hover .wci-bg{transform:scale(1.08)}.wci-dim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.15) 55%,transparent)}.wci-body{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;text-align:left}.wci-tag{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:10px}.wci-t{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#fff;line-height:1.1;margin-bottom:12px}.wci-d{font-size:13px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.6);max-height:0;overflow:hidden;transition:max-height .4s,opacity .3s;opacity:0;margin-bottom:20px}.wci:hover .wci-d{max-height:120px;opacity:1}.wci-cta{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g);transition:gap .2s}.wci-cta::after{content:'→'}.wci:hover .wci-cta{gap:14px}.ab{background:var(--lt);padding:80px 52px;text-align:center;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}.ab-i{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}section.cli{background:var(--w);padding:100px 0;text-align:center}.cli-head{padding:0 52px 56px}.logo-loop{position:relative;overflow:hidden;width:100%;padding:12px 0}.logo-loop::before,.logo-loop::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}.logo-loop::before{left:0;background:linear-gradient(to right,var(--w) 20%,transparent)}.logo-loop::after{right:0;background:linear-gradient(to left,var(--w) 20%,transparent)}.logo-track{display:flex;align-items:center;width:max-content;animation:logoScroll 30s linear infinite}.logo-loop:hover .logo-track{animation-play-state:paused}.logo-item{height:64px;padding:0 44px;display:flex;align-items:center;flex-shrink:0}.logo-item img{height:52px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(100%);opacity:.5;transition:filter .35s,opacity .35s}.logo-item:hover img{filter:grayscale(0%);opacity:1}@keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}section.cta-band{background:#000;padding:0}.cta-top{padding:100px 52px 64px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}.cta-h{font-size:clamp(48px,7vw,96px);font-weight:700;letter-spacing:-.05em;line-height:.98;color:#fff;margin-bottom:22px}.cta-h em{font-style:normal;color:var(--g)}.cta-tag{font-size:18px;font-weight:300;line-height:1.7;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 48px}.cta-body{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;margin:0 auto;padding:80px 52px 100px;gap:80px;align-items:start}.ci-t{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:36px}.cr{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}.cr-ic{width:38px;height:38px;border-radius:8px;background:rgba(140,198,63,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}.cr-ic svg{fill:var(--g);width:16px;height:16px}.cr-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}.cr-v{font-size:15px;font-weight:300;color:rgba(255,255,255,.78)}.cr-v a{color:rgba(255,255,255,.78);transition:color .2s}.cr-v a:hover{color:var(--g)}.fg{margin-bottom:14px}.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#fff;padding:16px 18px;font-family:var(--f);font-size:15px;font-weight:300;outline:none;border-radius:8px;transition:border-color .2s}.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);font-size:14px}.fg input:focus,.fg textarea:focus{border-color:var(--g)}.fg textarea{resize:vertical;min-height:140px}.ty{display:none;text-align:center;padding:40px 20px}.ty.show{display:block;animation:fu .5s ease both}.ty h3{font-size:28px;font-weight:700;color:var(--g);margin-bottom:10px}.ty p{font-size:15px;color:rgba(255,255,255,.55);font-weight:300}footer{background:#000;color:rgba(255,255,255,.35);padding:52px 52px 28px;border-top:1px solid rgba(255,255,255,.06)}.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:22px}.fb-b{font-size:15px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:14px}.fb-b em{font-style:normal;color:var(--g)}.fb-d{font-size:12px;font-weight:300;line-height:1.85;max-width:240px}.fb-h{margin-top:18px;font-size:11px;line-height:1.8;color:rgba(255,255,255,.3)}.fc-t{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:16px}.fc li{margin-bottom:10px}.fc a{font-size:13px;font-weight:300;color:rgba(255,255,255,.35);transition:color .2s;cursor:pointer}.fc a:hover{color:var(--g)}.fb{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.04em;align-items:center}.fb a{color:var(--g)}#page-svc{background:var(--w)}.sb{padding:12px 40px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}.sb-btn{font-size:12px;font-weight:500;color:var(--mt);cursor:pointer;background:none;border:none;font-family:var(--f);transition:color .2s;display:flex;align-items:center;gap:6px}.sb-btn::before{content:'←'}.sb-btn:hover{color:var(--gb)}.sb-sep{color:var(--bd)}.sb-cr{font-size:12px;font-weight:600;color:var(--gb)}.sv-hero{text-align:center;padding:80px 52px 72px;border-bottom:1px solid var(--bd)}.sv-h1{font-size:clamp(36px,5.5vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1.04;color:var(--dk);margin-bottom:12px}.sv-h1 em{font-style:normal;color:var(--gb)}.sv-sub{font-size:17px;font-weight:300;line-height:1.7;color:var(--mt);max-width:560px;margin:0 auto}.sv-w{max-width:1200px;margin:0 auto;padding:72px 52px 100px}.sv-cat{margin-bottom:72px}.sv-cat:last-child{margin-bottom:0}.sv-ch{display:flex;align-items:center;gap:14px;margin-bottom:12px;padding-bottom:16px;border-bottom:1px solid var(--bd)}.sv-ci{font-size:24px}.sv-ct{font-size:22px;font-weight:700;color:var(--gb)}.sv-cd{font-size:14px;font-weight:400;color:var(--mid);line-height:1.7;max-width:700px;margin-bottom:28px}.sv-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}.sv-c{background:var(--w);border:1px solid var(--bd);border-radius:10px;padding:36px 30px;transition:box-shadow .3s,transform .3s}.sv-c:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-4px)}.sv-n{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gb);margin-bottom:16px}.sv-ic{font-size:28px;margin-bottom:14px}.sv-t{font-size:20px;font-weight:700;color:var(--dk);margin-bottom:10px;line-height:1.2}.sv-b{font-size:14px;font-weight:400;line-height:1.75;color:var(--mid);margin-bottom:16px}.sv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}.sv-tag{font-size:10px;font-weight:600;padding:4px 10px;border-radius:980px;background:rgba(40,167,69,.08);color:var(--gb);white-space:nowrap}.sv-emer{border:2px solid #dc3545;background:linear-gradient(135deg,#fff5f5,#fff)}.sv-emer:hover{border-color:#c82333;box-shadow:0 8px 32px rgba(220,53,69,.12)}.sv-emer .sv-n{color:#dc3545}.sv-emer .sv-tag{background:rgba(220,53,69,.08);color:#dc3545}.sv-ct-r{color:#dc3545}#page-port{background:var(--lt)}.mh{background:var(--w);text-align:center;padding:56px 60px;border-bottom:1px solid var(--bd)}.mh-h{font-size:clamp(30px,4vw,52px);font-weight:700;letter-spacing:-.04em;color:var(--dk);margin-bottom:10px}.mh-h em{font-style:normal;color:var(--g)}.mh-s{font-size:15px;font-weight:300;color:var(--mt);max-width:400px;margin:0 auto;line-height:1.7}.mb{display:grid;grid-template-columns:320px 1fr;height:560px;overflow:hidden;border-bottom:1px solid var(--bd)}.ms{background:var(--w);display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--bd)}.ms-top{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}.ms-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mt)}.ms-p{background:rgba(140,198,63,.1);color:var(--g);font-size:12px;font-weight:700;padding:2px 10px;border-radius:980px}.pl{overflow-y:auto;flex:1;scrollbar-width:thin}.pi{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--lt);cursor:pointer;transition:background .15s}.pi:hover{background:var(--lt)}.pi.on{background:rgba(140,198,63,.06)}.pi-b{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:rgba(140,198,63,.1);color:var(--g)}.pi-i{flex:1;min-width:0}.pi-n{font-size:13px;font-weight:600;color:var(--mid);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pi.on .pi-n{color:var(--g)}.pi-h{font-size:10px;color:var(--mt)}.pi-u{font-size:11px;font-weight:600;color:var(--mt);text-align:right;flex-shrink:0}.pi-u span{display:block;font-size:9px;font-weight:400;color:#bbb;text-transform:uppercase}.leaflet-container{font-family:var(--f)!important}.leaflet-popup-content-wrapper{border-radius:10px!important;padding:0!important;overflow:hidden!important;box-shadow:0 12px 40px rgba(0,0,0,.1)!important;border:none!important;min-width:240px!important}.leaflet-popup-content{margin:0!important}.leaflet-popup-tip{background:#fff!important}.pp-h{padding:14px 16px 10px;border-bottom:1px solid var(--lt)}.pp-n{font-size:16px;font-weight:700;color:var(--dk);margin-bottom:2px}.pp-a{font-size:10px;color:var(--mt)}.pp-f{padding:10px 14px}.modal-bg{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center}.modal-bg.show{display:flex}.modal{background:var(--w);border-radius:14px;max-width:640px;width:92%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative}.modal-close{position:absolute;top:14px;right:16px;background:rgba(0,0,0,.5);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}.modal-close:hover{background:rgba(0,0,0,.7)}.modal-media{position:relative;width:100%;aspect-ratio:16/9;background:#111;overflow:hidden;border-radius:14px 14px 0 0}.modal-media img{width:100%;height:100%;object-fit:cover;display:none;border:none}.modal-media img.active{display:block}.modal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:2}.modal-nav:hover{background:rgba(0,0,0,.8)}.modal-nav.prev{left:10px}.modal-nav.next{right:10px}.modal-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}.modal-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background .2s}.modal-dot.active{background:var(--g)}.modal-body{padding:28px 28px 32px;text-align:center}.modal-tag{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:8px}.modal-title{font-size:24px;font-weight:700;color:var(--dk);margin-bottom:6px}.modal-addr{font-size:13px;color:var(--mt);margin-bottom:16px}.modal-desc{font-size:14px;font-weight:400;line-height:1.7;color:var(--mid);margin-bottom:20px}.modal-quote{font-size:15px;font-weight:600;font-style:italic;color:var(--dk);margin-bottom:24px}.pin-o{display:flex;flex-direction:column;align-items:center}.pin-b{width:34px;height:34px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);border:2px solid rgba(255,255,255,.75);background:var(--g)}.pin-n{transform:rotate(45deg);font-size:12px;font-weight:700;color:#fff}.sstrip{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:24px 32px 36px}.sc{background:#fff;border-radius:8px;padding:18px 22px;display:flex;align-items:center;gap:13px;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid var(--bd)}.sc-i{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:rgba(140,198,63,.1)}.sc-l{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);font-weight:700;margin-bottom:2px}.sc-n{font-size:28px;font-weight:700;letter-spacing:-.04em;color:var(--dk);line-height:1}#page-ct{background:#000;position:relative;min-height:100vh}#page-ct::before{content:'';position:absolute;inset:0;background:url('https://drive.google.com/uc?export=view&id=1e-6Ubi8p8FGn308asKiYQZtTFd7PdO2G') center/cover no-repeat;z-index:0}#page-ct::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.70);z-index:1}#page-ct .sb{position:relative;z-index:2;border-color:rgba(255,255,255,.1)}#page-ct .sb-btn{color:rgba(255,255,255,.5)}#page-ct .sb-btn:hover{color:var(--g)}#page-ct .sb-sep{color:rgba(255,255,255,.2)}#page-ct .sb-cr{color:var(--g)}.cpg{max-width:580px;margin:0 auto;padding:60px 24px 100px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}.cpg-ey{margin-bottom:14px}.cpg h1{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.04em;color:#fff;margin-bottom:10px;line-height:1.05}.cpg h1 span{color:var(--g)}.cpg>p{font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:12px;max-width:460px}.cpg-q{font-size:16px;font-weight:600;font-style:italic;color:#fff;margin-bottom:36px;max-width:460px;line-height:1.5}.cpg-f{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:40px 36px;box-shadow:0 8px 40px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);width:100%}.cpg-fg{margin-bottom:18px}.cpg-fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:7px;text-align:left}.cpg-fg input,.cpg-fg textarea{width:100%;padding:16px 20px;font-size:16px;font-family:var(--f);font-weight:300;border:1.5px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;outline:none;transition:border-color .2s,box-shadow .2s}.cpg-fg input::placeholder,.cpg-fg textarea::placeholder{color:rgba(255,255,255,.25)}.cpg-fg input:focus,.cpg-fg textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(140,198,63,.15)}.cpg-fg textarea{resize:vertical;min-height:130px}.cpg-free{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:32px;padding:10px 28px;border:1.5px solid rgba(140,198,63,.3);border-radius:980px;background:rgba(140,198,63,.08)}.cpg-ty{display:none;text-align:center;padding:48px 20px}.cpg-ty.show{display:block;animation:fu .5s ease both}.cpg-ty h3{font-size:32px;font-weight:700;color:var(--g);margin-bottom:12px}.cpg-ty p{font-size:16px;color:rgba(255,255,255,.55);font-weight:300;margin-bottom:28px}.cpg-ty a{font-size:14px;font-weight:600;color:var(--g);cursor:pointer}
+/* ── Utilities ── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* ── VariableProximity ── */
+#vp-block{font-family:'Roboto Flex',var(--f);font-size:clamp(16px,1.8vw,20px);line-height:1.85;max-width:640px;width:100%;margin:0 auto;cursor:default;text-align:center;word-break:normal;overflow-wrap:break-word;white-space:normal}
+.vp-c{display:inline;font-variation-settings:'wght' 400,'opsz' 9;color:rgba(255,255,255,.6);transition:font-variation-settings .08s linear,color .08s linear;white-space:normal}
+/* ── BlurText animation ── */
+@keyframes blurIn{
+  0%{filter:blur(10px);opacity:0;transform:translateY(-50px)}
+  50%{filter:blur(5px);opacity:.5;transform:translateY(5px)}
+  100%{filter:blur(0);opacity:1;transform:translateY(0)}
+}
+.bt-w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(-50px);will-change:transform,filter,opacity}
+.bt-w.bv{animation:blurIn .7s ease forwards}
+/* ── Boutique ── */
+.bt-label{display:flex;align-items:center;gap:15px;margin-bottom:40px;justify-content:center}.bt-label::before,.bt-label::after{content:'';width:40px;height:1px;background:#333}.bt-label span{color:var(--g);letter-spacing:2px;font-size:12px;font-weight:700}
+#blur-hero{font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--g);max-width:640px;width:100%;text-align:center;margin:60px auto 0}
+.bt-cta{margin-top:50px}
+/* ── Form error ── */
+.form-err{display:none;color:#e74c3c;font-size:13px;margin-bottom:12px;text-align:center}
+/* ── Service search ── */
+.sv-search{padding:28px 52px 0;max-width:860px;margin:0 auto}
+.sv-search-wrap{position:relative;display:flex;align-items:center}
+.sv-search-icon{position:absolute;left:18px;width:18px;height:18px;color:var(--mt);pointer-events:none;flex-shrink:0}
+#sv-search{width:100%;padding:15px 48px 15px 50px;font-size:15px;font-family:var(--f);font-weight:300;border:1.5px solid var(--bd);border-radius:12px;outline:none;color:var(--mid);background:var(--w);transition:border-color .2s,box-shadow .2s}
+#sv-search:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(140,198,63,.12)}
+#sv-search::placeholder{color:var(--mt)}
+#sv-search::-webkit-search-cancel-button{display:none}
+.sv-search-clear{position:absolute;right:14px;background:none;border:none;cursor:pointer;color:var(--mt);font-size:15px;padding:4px 8px;border-radius:4px;line-height:1;transition:color .15s;display:none}
+.sv-search-clear:hover{color:var(--mid)}
+.sv-no-results{display:none;text-align:center;padding:80px 20px}
+.sv-no-results.show{display:block}
+.sv-no-results-icon{font-size:40px;margin-bottom:16px;opacity:.35}
+.sv-no-results p{font-size:16px;font-weight:300;color:var(--mt);line-height:1.6}
+.sv-no-results strong{color:var(--mid);font-weight:600}
+/* ══════════ SUMMER SALE PAGE ══════════ */
+/* -- Fonts for summer page -- */
+/* Raleway & Open Sans loaded via JS on demand */
+.ss-font-h { font-family: 'Raleway', var(--f); }
+/* Nav highlight for summer */
+#nav-summer { color: var(--g) !important; font-weight: 700 !important; }
+#nav-summer::after { width: 100% !important; }
+
+/* ── Split Hero ── */
+.ss-split { display:flex; height:calc(100vh - 100px); min-height:500px; }
+@media(max-width:767px){ .ss-split { flex-direction:column; height:auto; } }
+.ss-panel { flex:1; position:relative; display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; transition:flex .5s cubic-bezier(.4,0,.2,1); }
+@media(max-width:767px){ .ss-panel { min-height:320px; } }
+.ss-panel-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .55s ease; }
+.ss-panel:hover .ss-panel-bg { transform:scale(1.06); }
+.ss-panel-ov { position:absolute; inset:0; background:rgba(0,0,0,.48); transition:background .4s; }
+.ss-panel:hover .ss-panel-ov { background:rgba(0,0,0,.3); }
+.ss-panel-c { position:relative; z-index:2; text-align:center; padding:2rem; transition:transform .4s ease; }
+.ss-panel:hover .ss-panel-c { transform:scale(1.04); }
+.ss-eyebrow { display:inline-flex; align-items:center; gap:.75rem; font-weight:700; font-size:.65rem; letter-spacing:.22em; color:var(--g); text-transform:uppercase; margin-bottom:1.1rem; }
+.ss-eyebrow::before,.ss-eyebrow::after { content:''; display:block; width:32px; height:1.5px; background:var(--g); }
+.ss-panel-title { font-weight:900; font-size:clamp(2rem,5vw,3.6rem); color:#fff; line-height:1.1; text-shadow:0 3px 30px rgba(0,0,0,.8); margin-bottom:1.5rem; }
+.ss-panel-title span { color:var(--g); }
+.ss-btn-outline { display:inline-block; border:2px solid #fff; color:#fff; background:transparent; padding:1rem 2.8rem; border-radius:50px; font-weight:800; font-size:1rem; letter-spacing:.14em; cursor:pointer; text-transform:uppercase; transition:background .25s,color .25s,border-color .25s,transform .2s; }
+.ss-btn-outline:hover { background:var(--g); border-color:var(--g); color:#fff; transform:translateY(-2px); }
+.ss-divider { width:2px; flex-shrink:0; z-index:5; background:linear-gradient(to bottom,transparent,var(--g) 25%,var(--g) 75%,transparent); }
+@media(max-width:767px){ .ss-divider { display:none; } }
+.ss-panel-vig { position:absolute; bottom:0; left:0; right:0; height:38%; background:linear-gradient(to top,rgba(0,0,0,.7),transparent); pointer-events:none; z-index:1; }
+.ss-mob-hint { position:absolute; bottom:12px; left:0; right:0; text-align:center; font-size:.68rem; letter-spacing:.12em; color:rgba(255,255,255,.55); pointer-events:none; z-index:3; }
+@media(min-width:768px){ .ss-mob-hint { display:none; } }
+
+/* ── Summer offer section ── */
+.ss-offer { background:#0d1a0a; text-align:center; padding:6rem 2rem; position:relative; overflow:hidden; }
+.ss-bg-strip { position:absolute; inset:0; display:flex; gap:4px; }
+.ss-bg-strip img { flex:1; width:0; height:100%; object-fit:cover; object-position:center top; }
+.ss-offer::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.45); pointer-events:none; z-index:1; }
+.ss-offer > *:not(.ss-bg-strip) { position:relative; z-index:2; }
+.ss-badge { display:inline-block; background:var(--g); color:#fff; font-weight:800; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; padding:.45rem 1.4rem; border-radius:50px; margin-bottom:1.5rem; }
+.ss-title { font-weight:900; font-size:clamp(3rem,7vw,6rem); color:#fff; letter-spacing:.04em; text-transform:uppercase; margin:0 0 .5rem; line-height:1; }
+.ss-sub { font-size:clamp(1rem,2.5vw,1.35rem); color:rgba(255,255,255,.85); margin:0 0 2rem; }
+.ss-sub em { color:var(--g); font-style:normal; font-weight:700; }
+.ss-price { display:flex; align-items:baseline; justify-content:center; gap:.3rem; margin-bottom:1.2rem; }
+.ss-starting { font-weight:700; font-size:clamp(1rem,2vw,1.3rem); color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:.1em; }
+.ss-amount { font-weight:900; font-size:clamp(3.5rem,10vw,8rem); color:var(--g); line-height:1; }
+.ss-exclaim { font-weight:900; font-size:clamp(2rem,5vw,4rem); color:#fff; }
+.ss-note { font-size:.9rem; color:rgba(255,255,255,.6); letter-spacing:.05em; margin:0; }
+.ss-claim-btn { display:inline-block; padding:1.4rem 4rem; background:var(--g); color:#fff; border-radius:50px; text-decoration:none; font-weight:900; font-size:1.4rem; letter-spacing:.12em; text-transform:uppercase; box-shadow:0 8px 30px rgba(106,191,75,.4); transition:background .2s,transform .15s,box-shadow .2s; border:none; cursor:pointer; }
+.ss-claim-btn:hover { background:var(--gd); transform:translateY(-3px); box-shadow:0 12px 40px rgba(106,191,75,.5); }
+
+/* ── Stats bar ── */
+.ss-stats { background:#e4e3de; border-top:1px solid #cccbc5; border-bottom:1px solid #cccbc5; display:flex; flex-wrap:wrap; justify-content:center; }
+.ss-stat { flex:1; min-width:160px; padding:1.75rem 1rem; text-align:center; border-right:1px solid #cccbc5; }
+.ss-stat:last-child { border-right:none; }
+.ss-stat-n { font-weight:900; font-size:2.4rem; color:#55a038; line-height:1; margin-bottom:.35rem; }
+.ss-stat-l { font-weight:700; font-size:.6rem; letter-spacing:.18em; color:#555; text-transform:uppercase; }
+
+/* ── Intro dark section ── */
+.ss-dark { background-image:url('assets/hero-neighborhood.jpg'); background-size:cover; background-position:center; background-attachment:fixed; position:relative; padding:5rem 1.5rem; }
+.ss-dark::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.82); pointer-events:none; }
+.ss-dark > * { position:relative; z-index:1; }
+.ss-center { text-align:center; max-width:680px; margin:0 auto; }
+.ss-sec-title { font-weight:900; font-size:clamp(1.6rem,3vw,2.4rem); color:#fff; line-height:1.2; margin-bottom:1rem; }
+.ss-sec-title span { color:var(--g); }
+.ss-sec-body { color:#ccc; font-size:.95rem; line-height:1.75; }
+
+/* ── Form ── */
+.ss-form-wrap { max-width:660px; margin:3rem auto 0; }
+.ss-form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+@media(max-width:560px){ .ss-form-row { grid-template-columns:1fr; } }
+.ss-form-field { margin-bottom:1rem; }
+.ss-label { display:block; font-weight:700; font-size:.65rem; letter-spacing:.16em; color:#888; text-transform:uppercase; margin-bottom:.5rem; }
+.ss-input { width:100%; padding:.8rem 1rem; background:#111; border:1px solid #2a2a2a; color:#fff; font-size:.9rem; font-family:var(--f); border-radius:6px; outline:none; transition:border-color .2s,box-shadow .2s; }
+.ss-input:focus { border-color:var(--g); box-shadow:0 0 0 3px rgba(106,191,75,.15); }
+.ss-input option { background:#111; }
+.ss-radio-group { display:flex; gap:2rem; }
+.ss-radio-label { display:flex; align-items:center; gap:.5rem; cursor:pointer; color:#ccc; font-size:.9rem; }
+.ss-radio-label input { accent-color:var(--g); width:16px; height:16px; }
+
+/* ── Gallery modals ── */
+.ss-modal { position:fixed; inset:0; z-index:1100; background:#e4e3de; display:flex; flex-direction:column; animation:fu .25s ease; }
+.ss-modal.hidden { display:none; }
+.ss-modal-hdr { display:flex; align-items:center; justify-content:space-between; padding:1.25rem 2rem; border-bottom:1px solid #cccbc5; background:#e4e3de; flex-shrink:0; }
+.ss-modal-title { font-weight:800; font-size:clamp(1.2rem,2.5vw,1.6rem); letter-spacing:.06em; color:#1a1a1a; }
+.ss-modal-sub { font-size:.6rem; letter-spacing:.2em; color:#55a038; margin-top:3px; text-transform:uppercase; }
+.ss-modal-x { background:none; border:none; color:#1a1a1a; font-size:2.2rem; line-height:1; cursor:pointer; padding:0 .2rem; font-weight:300; transition:color .2s; }
+.ss-modal-x:hover { color:#55a038; }
+.ss-modal-body { flex:1; overflow-y:auto; padding:0; display:flex; flex-direction:column; }
+.ss-modal-cta { text-align:center; padding:1.5rem; background:#e4e3de; }
+.ss-modal-cta p { color:#555; font-size:.9rem; margin-bottom:1rem; }
+.ss-modal-cta-btn { display:inline-block; padding:.8rem 2.5rem; background:var(--g); color:#fff; border:none; border-radius:50px; font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .15s; }
+.ss-modal-cta-btn:hover { background:var(--gd); transform:translateY(-2px); }
+
+/* ── Summer footer ── */
+.ss-footer { background:#050505; border-top:1px solid #111; padding:3rem 1.5rem; text-align:center; }
+.ss-footer-brand { font-weight:900; font-size:1.1rem; letter-spacing:.16em; color:#fff; margin-bottom:4px; }
+.ss-footer-brand span { color:var(--g); }
+.ss-footer-tagline { font-size:.6rem; letter-spacing:.22em; color:#555; margin-bottom:1.5rem; text-transform:uppercase; }
+.ss-footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.25rem 2rem; margin-bottom:1.5rem; }
+.ss-footer-links a { color:#555; text-decoration:none; font-size:.82rem; transition:color .2s; }
+.ss-footer-links a:hover { color:var(--g); }
+.ss-footer-copy { font-size:.65rem; color:#333; letter-spacing:.1em; text-transform:uppercase; }
+
+/* ── Rating badge ── */
+.ss-rating { display:flex; align-items:center; gap:.6rem; background:#f5f5f2; border:1px solid #dddcd7; border-radius:50px; padding:.45rem 1rem .45rem .65rem; }
+.ss-rating-stars { display:flex; gap:1px; }
+.ss-rating-stars svg { width:14px; height:14px; fill:#f59e0b; }
+.ss-rating-text { line-height:1.2; }
+.ss-rating-title { font-weight:700; font-size:.7rem; color:#1a1a1a; display:block; letter-spacing:.02em; }
+.ss-rating-sub { font-size:.62rem; color:#888; display:block; }
+@media(max-width:640px){ .ss-rating { display:none; } }
+
+/* ── Mobile nav ── */
+.nav-ham{display:none;flex-direction:column;justify-content:space-between;width:26px;height:20px;background:none;border:none;cursor:pointer;padding:0}
+.nav-ham span{display:block;width:100%;height:2.5px;background:var(--dk);border-radius:2px;transition:transform .2s,opacity .2s}
+.nav-mob{display:none;position:fixed;inset:0;z-index:950;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center}
+.nav-mob.open{display:flex;animation:fu .2s ease}
+.nav-mob-x{position:absolute;top:20px;right:20px;background:none;border:none;font-size:22px;color:var(--dk);cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .15s}
+.nav-mob-x:hover{background:var(--lt)}
+.nav-mob-l{display:flex;flex-direction:column;align-items:center;gap:32px}
+.nav-mob-l a{font-size:24px;font-weight:600;color:var(--dk);cursor:pointer;transition:color .15s}
+.nav-mob-l a:hover{color:var(--g)}
+@media(max-width:960px){nav{padding:0 20px}.nk,nav .btn{display:none}.nav-ham{display:flex}.btn-lg{padding:22px 44px}.metrics{grid-template-columns:1fr}.metric{border-right:none;border-bottom:1px solid var(--bd);padding:36px 24px}.metric:last-child{border-bottom:none}.wc{grid-template-columns:1fr;gap:12px}.wci{aspect-ratio:16/9}.ab-i{flex-direction:column;align-items:center}.cli-head{padding:0 24px 40px}.logo-loop::before,.logo-loop::after{width:60px}.cta-body{grid-template-columns:1fr;gap:48px;padding:52px 28px 72px}.ft{grid-template-columns:1fr 1fr;gap:28px}.mb{grid-template-columns:1fr;height:auto}.ms{height:220px}#leaflet-map{height:340px}.sstrip{grid-template-columns:1fr}.cpg-f{padding:32px 20px}#page-ct .sb{padding:12px 20px}.sv-g{grid-template-columns:1fr}.sv-hero{padding:52px 28px 48px}.sv-w{padding:48px 20px 72px}.boutique{padding:56px 24px}.sv-search{padding:20px 20px 0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.logo-track{animation:none}.bt-w{opacity:1;filter:none;transform:none}.hero img{animation:none;transform:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Main navigation">
+<div class="nl" onclick="go('home')" role="button" tabindex="0" aria-label="The Prime Developers — go to home"><img src="https://lh3.googleusercontent.com/d/1L6i_4-VemEhdo3f-mRwhAVBuvJQlu66N" alt="The Prime Developers Inc logo" style="height:90px;width:auto" loading="eager"></div>
+<div class="nk" role="menubar">
+<span class="ap" id="nav-home" onclick="go('home')" role="menuitem" tabindex="0">Home</span>
+<span onclick="go('home');goTo('who')" role="menuitem" tabindex="0">About</span>
+<span id="nav-svc" onclick="go('svc')" role="menuitem" tabindex="0">Services</span>
+<span id="nav-port" onclick="go('port')" role="menuitem" tabindex="0">Portfolio</span>
+<span onclick="go('home');goTo('cli')" role="menuitem" tabindex="0">Clients</span>
+<span id="nav-ct" onclick="go('ct')" role="menuitem" tabindex="0">Contact</span>
+<span id="nav-summer" onclick="go('summer')" role="menuitem" tabindex="0">🌞 Summer Sale</span>
+</div>
+<button class="btn btn-sm" type="button" onclick="go('ct')">Get in Touch</button>
+<button class="nav-ham" type="button" onclick="toggleMenu()" aria-label="Open navigation menu" id="nav-ham"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mob" id="nav-mob" role="dialog" aria-modal="true" aria-label="Navigation menu">
+<button class="nav-mob-x" type="button" onclick="toggleMenu()" aria-label="Close navigation menu">✕</button>
+<div class="nav-mob-l">
+<a onclick="toggleMenu();go('home')">Home</a>
+<a onclick="toggleMenu();go('home');goTo('who')">About</a>
+<a onclick="toggleMenu();go('svc')">Services</a>
+<a onclick="toggleMenu();go('port')">Portfolio</a>
+<a onclick="toggleMenu();go('home');goTo('cli')">Clients</a>
+<a onclick="toggleMenu();go('ct')">Contact</a>
+<a onclick="toggleMenu();go('summer')" style="color:var(--g)">🌞 Summer Sale</a>
+</div>
+</div>
+
+<div id="page-home" class="pg on">
+<section class="hero" aria-label="Hero — The Prime Developers Inc">
+<div class="hero-bg" aria-hidden="true"><img src="assets/hero1.jpg.png" alt="" fetchpriority="high" loading="eager"></div>
+<div class="hero-dim" aria-hidden="true"></div>
+<div class="hero-c">
+<div class="ey hero-ey">The Prime Developers Inc</div>
+<h1>Property Solution<br><em>for All</em></h1>
+<p>We provide a bespoke, boutique service level specifically designed for Investors, Management Companies, and Homeowners.</p>
+<button class="btn btn-lg btn-outline" type="button" onclick="go('ct')">Contact Us</button>
+</div>
+</section>
+<div class="boutique">
+  <div class="bt-label"><span>BOUTIQUE SERVICE · BESPOKE RESULTS</span></div>
+  <p id="vp-block"></p>
+  <p id="blur-hero"></p>
+  <button class="btn bt-cta" type="button" onclick="go('ct')">FREE ESTIMATE →</button>
+</div>
+<div class="metrics">
+<div class="metric"><b class="count" data-target="250" data-plus="+">0</b><small>Projects Completed</small></div>
+<div class="metric"><b class="count" data-target="7">0</b><small>Years of Operation</small></div>
+<div class="metric"><b class="count" data-target="200" data-plus="+">0</b><small>Clients Served</small></div>
+<div class="metric"><b class="count" data-target="1250" data-plus="+">0</b><small>Problems Solved</small></div>
+</div>
+<section class="who" id="who">
+<div class="ey">Find Your Path</div>
+<h2 class="sh2">Who are you?</h2>
+<p class="ss">Select your profile below and we'll show you exactly how we serve you.</p>
+<div class="wc">
+<div class="wci" onclick="go('svc')" role="button" tabindex="0" aria-label="Homeowner services — explore our residential offering"><div class="wci-bg wci-bg--h" aria-hidden="true"></div><div class="wci-dim" aria-hidden="true"></div><div class="wci-body"><div class="wci-tag">Residential</div><div class="wci-t">Homeowner?</div><div class="wci-d">Premium, white-glove property care with high-touch communication and a dedicated team who treats your home as their own.</div><div class="wci-cta">Explore Services</div></div></div>
+<div class="wci" onclick="go('svc')" role="button" tabindex="0" aria-label="Property management services — explore our management offering"><div class="wci-bg wci-bg--m" aria-hidden="true"></div><div class="wci-dim" aria-hidden="true"></div><div class="wci-body"><div class="wci-tag">Management</div><div class="wci-t">Property Manager?</div><div class="wci-d">Seamless operational partnerships and institutional-grade asset management so your firm can scale without compromise.</div><div class="wci-cta">Explore Services</div></div></div>
+<div class="wci" onclick="go('port')" role="button" tabindex="0" aria-label="Investor services — view our portfolio"><div class="wci-bg wci-bg--i" aria-hidden="true"></div><div class="wci-dim" aria-hidden="true"></div><div class="wci-body"><div class="wci-tag">Capital Growth</div><div class="wci-t">Investor?</div><div class="wci-d">Data-driven acquisition, transparent reporting, and disciplined capital deployment built to grow your portfolio with precision.</div><div class="wci-cta">Explore Services</div></div></div>
+</div>
+</section>
+<div class="ab"><div class="ab-i">
+<button class="btn btn-lg btn-shadow" type="button" onclick="go('svc')">View Our Services</button>
+<button class="btn btn-lg btn-shadow" type="button" onclick="go('port')">View Portfolio</button>
+</div></div>
+<section class="cli" id="cli">
+<div class="cli-head">
+<div class="ey">Trusted By</div>
+<h2 class="sh2">Our <span>Clients</span></h2>
+<p class="ss">We deliver results for leading organizations and individuals.</p>
+</div>
+<div class="logo-loop">
+<div class="logo-track" id="logo-track">
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1tcyxZOFQM5wJdvKpjmtO6RI4XNzJNdh_" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1_LFlXL-CtJ7VQWVCGMSLa8GWv5rSxFXU" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1gnHJ65PPaxtSrLqYdIXhVbg4jAQEfQT7" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/14iqskT2sd-yBpldLm4mt3aE-Pl9hF3gz" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/14holRqIC-qJ4l-maC-b0BpqEEu0kaeDk" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1cBBfZqk7TN0mcGSgs0byOqcdqPtRDXmK" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/113CUFn3bdLL1WAIysEb-7fOdm3AT9S3v" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1XX7OsKwWXFa4ehV_T0AbKzHQ3w7Hrc_L" alt="Client logo" loading="lazy" decoding="async"></div>
+<div class="logo-item"><img src="https://lh3.googleusercontent.com/d/1_-ZDMCjcWhLSAsZ5tihyiKTzxr6Va9is" alt="Client logo" loading="lazy" decoding="async"></div>
+</div>
+</div>
+</section>
+<section class="cta-band" id="contact">
+<div class="cta-top">
+<div class="ey">Let's Connect</div>
+<h2 class="cta-h">Get in<br><em>Touch</em></h2>
+<p class="cta-tag">Whether you're a homeowner, landlord, or property manager — we'd love to hear from you.<br><strong style="color:var(--g);font-weight:700">FREE ESTIMATES on all our services!</strong></p>
+<button class="btn btn-lg" type="button" onclick="go('ct')">Get Your Free Estimate</button>
+</div>
+<div class="cta-body">
+<div>
+<div class="ci-t">Contact Information</div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></div><div><div class="cr-l">Phone</div><div class="cr-v"><a href="tel:+14376691543">(437) 669-1543</a></div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div><div class="cr-l">Email</div><div class="cr-v"><a href="mailto:info@theprimedevelopers.ca">info@theprimedevelopers.ca</a></div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></div><div><div class="cr-l">Address</div><div class="cr-v">185 King St E, Hamilton, ON L8N 1B4</div></div></div>
+<div class="cr"><div class="cr-ic"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div><div><div class="cr-l">Hours</div><div class="cr-v">Mon–Fri 6 am – 9 pm · Sun 12 – 9 pm · Sat Closed</div></div></div>
+</div>
+<div>
+<div class="ci-t">Send a Message</div>
+<form id="home-form" onsubmit="return sf(event)" novalidate>
+<input type="hidden" name="_subject" value="New Client Inquiry - Prime Developers">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="fg"><label for="hf-name" class="sr-only">Your Name</label><input id="hf-name" name="name" placeholder="Your Name" required aria-label="Your name" autocomplete="name"></div>
+<div class="fg"><label for="hf-email" class="sr-only">Email Address</label><input id="hf-email" type="email" name="email" placeholder="Email Address" required aria-label="Email address" autocomplete="email"></div>
+<div class="fg"><label for="hf-phone" class="sr-only">Phone Number</label><input id="hf-phone" type="tel" name="phone" placeholder="Phone Number" aria-label="Phone number" autocomplete="tel"></div>
+<div class="fg"><label for="hf-msg" class="sr-only">Message</label><textarea id="hf-msg" name="message" placeholder="How can we help you?" required aria-label="Your message"></textarea></div>
+<button class="btn btn-full" id="home-btn" type="submit">Send Message</button>
+</form>
+<div class="ty" id="home-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p></div>
+</div>
+</div>
+</section>
+<footer>
+<div class="ft">
+<div><img src="https://lh3.googleusercontent.com/d/1L6i_4-VemEhdo3f-mRwhAVBuvJQlu66N" alt="The Prime Developers Inc logo" style="height:90px;width:auto;margin-bottom:14px;filter:brightness(1.3)" loading="lazy" decoding="async"><p class="fb-d">A boutique property services firm delivering repairs, renovations, and property management across the Greater Hamilton, Toronto, and the GTA.</p><div class="fb-h">Mon–Fri 6 am – 9 pm · Sun 12 – 9 pm · Sat Closed</div></div>
+<div><div class="fc-t">Navigate</div><ul class="fc"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('svc')">Services</a></li><li><a onclick="go('port')">Portfolio</a></li><li><a onclick="go('ct')">Contact</a></li></ul></div>
+<div><div class="fc-t">Services</div><ul class="fc"><li><a onclick="go('svc')">Handyman</a></li><li><a onclick="go('svc')">Plumbing</a></li><li><a onclick="go('svc')">Electrical</a></li><li><a onclick="go('svc')">Renovations</a></li><li><a onclick="go('svc')">Landscaping</a></li></ul></div>
+<div><div class="fc-t">Connect</div><ul class="fc"><li><a href="tel:+14376691543">(437) 669-1543</a></li><li><a href="mailto:info@theprimedevelopers.ca">info@theprimedevelopers.ca</a></li><li><a>185 King St E, Hamilton</a></li></ul></div>
+</div>
+<div class="fb"><span>© 2026 The Prime Developers Inc.</span><a role="button" tabindex="0">Privacy Policy</a></div>
+</footer>
+</div>
+
+<div id="page-svc" class="pg">
+<div class="sb"><button class="sb-btn" type="button" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Our Services</span></div>
+<div class="sv-hero">
+<div class="ey">What We Offer</div>
+<h1 class="sv-h1">Our <em>Services</em></h1>
+<p class="sv-sub">From repairs and maintenance to full-scope renovations and outdoor living — every service delivered with boutique precision.</p>
+<div class="sv-search">
+  <div class="sv-search-wrap">
+    <svg class="sv-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="sv-search" type="search" placeholder="Search services — e.g. plumbing, deck, emergency…" autocomplete="off" aria-label="Search services">
+    <button class="sv-search-clear" id="sv-search-clear" type="button" aria-label="Clear search">✕</button>
+  </div>
+</div>
+</div>
+<div class="sv-w">
+<div class="sv-no-results" id="sv-no-results">
+  <div class="sv-no-results-icon">🔍</div>
+  <p>No services found for <strong id="sv-no-results-term"></strong><br>Try a different keyword or <a style="color:var(--g);cursor:pointer" id="sv-search-reset">clear the search</a>.</p>
+</div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🔧</span><span class="sv-ct">Repairs &amp; Maintenance</span></div><p class="sv-cd">Keep your property in peak condition with our responsive repair and maintenance services.</p><div class="sv-g">
+<div class="sv-c"><div class="sv-n">01</div><div class="sv-ic">🔨</div><div class="sv-t">Handyman Services</div><p class="sv-b">From minor repairs to routine property maintenance, our skilled handyman team handles it all.</p><div class="sv-tags"><span class="sv-tag">General Repairs</span><span class="sv-tag">Fixture Install</span><span class="sv-tag">Drywall &amp; Painting</span><span class="sv-tag">Door &amp; Window</span><span class="sv-tag">Flooring</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Book a Handyman</button></div>
+<div class="sv-c"><div class="sv-n">02</div><div class="sv-ic">🚿</div><div class="sv-t">Plumbing</div><p class="sv-b">Licensed plumbers delivering fast, reliable service for routine maintenance and emergencies.</p><div class="sv-tags"><span class="sv-tag">Leak Detection</span><span class="sv-tag">Drain Cleaning</span><span class="sv-tag">Pipe Repair</span><span class="sv-tag">Water Heater</span><span class="sv-tag">Emergency 24/7</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Book a Plumber</button></div>
+<div class="sv-c"><div class="sv-n">03</div><div class="sv-ic">⚡</div><div class="sv-t">Electrical</div><p class="sv-b">Certified electricians handling panel upgrades, outlet installations, and full safety inspections.</p><div class="sv-tags"><span class="sv-tag">Panel Upgrades</span><span class="sv-tag">Outlet &amp; Switch</span><span class="sv-tag">Lighting</span><span class="sv-tag">EV Charging</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Book an Electrician</button></div>
+<div class="sv-c"><div class="sv-n">04</div><div class="sv-ic">🏠</div><div class="sv-t">HVAC &amp; Drywall</div><p class="sv-b">Heating, cooling maintenance, and seamless drywall repairs and finishing.</p><div class="sv-tags"><span class="sv-tag">HVAC</span><span class="sv-tag">Drywall Repair</span><span class="sv-tag">Insulation</span><span class="sv-tag">Ventilation</span><span class="sv-tag">Flooring</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Contact Us</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🏗️</span><span class="sv-ct">Renovations</span></div><p class="sv-cd">Full-scope renovations for every room — designed to maximize value, comfort, and beauty.</p><div class="sv-g">
+<div class="sv-c"><div class="sv-n">05</div><div class="sv-ic">🍳</div><div class="sv-t">Kitchen Remodel</div><p class="sv-b">One of the highest-return investments you can make in your property.</p><div class="sv-tags"><span class="sv-tag">Cabinets</span><span class="sv-tag">Countertops</span><span class="sv-tag">Backsplash</span><span class="sv-tag">Appliance Install</span><span class="sv-tag">Full Gut Reno</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Contact Us</button></div>
+<div class="sv-c"><div class="sv-n">06</div><div class="sv-ic">🛁</div><div class="sv-t">Bathroom Renovations</div><p class="sv-b">Transform your bathroom into a premium, spa-like retreat.</p><div class="sv-tags"><span class="sv-tag">Glass Enclosures</span><span class="sv-tag">Custom Tile</span><span class="sv-tag">Tub-to-Shower</span><span class="sv-tag">Waterproofing</span><span class="sv-tag">Full Reno</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Contact Us</button></div>
+<div class="sv-c"><div class="sv-n">07</div><div class="sv-ic">🛋️</div><div class="sv-t">Basement Finishing</div><p class="sv-b">Turn unused space into a livable, income-generating area.</p><div class="sv-tags"><span class="sv-tag">Waterproofing</span><span class="sv-tag">Framing</span><span class="sv-tag">Electrical</span><span class="sv-tag">Flooring</span><span class="sv-tag">Rental Suite</span><span class="sv-tag">Egress</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Discuss Your Basement</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🌿</span><span class="sv-ct">Outdoor Living</span></div><div class="sv-g">
+<div class="sv-c"><div class="sv-n">08</div><div class="sv-ic">🪴</div><div class="sv-t">Patio Design &amp; Construction</div><p class="sv-b">Stunning outdoor living areas tailored to your space and lifestyle.</p><div class="sv-tags"><span class="sv-tag">Flagstone</span><span class="sv-tag">Interlocking</span><span class="sv-tag">Stamped Concrete</span><span class="sv-tag">Pergolas</span><span class="sv-tag">Lighting</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Plan Your Patio</button></div>
+<div class="sv-c"><div class="sv-n">09</div><div class="sv-ic">🪵</div><div class="sv-t">Deck Construction</div><p class="sv-b">Custom-built decks designed for durability and style.</p><div class="sv-tags"><span class="sv-tag">Composite</span><span class="sv-tag">Hardwood</span><span class="sv-tag">Railings</span><span class="sv-tag">Multi-Level</span><span class="sv-tag">Permit-Ready</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Plan Your Deck</button></div>
+<div class="sv-c"><div class="sv-n">10</div><div class="sv-ic">🍽️</div><div class="sv-t">Outdoor Kitchen</div><p class="sv-b">Bring the indoors out with a fully equipped outdoor kitchen.</p><div class="sv-tags"><span class="sv-tag">Built-in Grills</span><span class="sv-tag">Countertops</span><span class="sv-tag">Cabinetry</span><span class="sv-tag">Plumbing</span><span class="sv-tag">Refrigeration</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Build Yours</button></div>
+</div></div>
+<div class="sv-cat"><div class="sv-ch"><span class="sv-ci">🌱</span><span class="sv-ct">Landscaping</span></div><div class="sv-g">
+<div class="sv-c"><div class="sv-n">11</div><div class="sv-ic">🌳</div><div class="sv-t">Lawn &amp; Garden Design</div><p class="sv-b">Complete lawn and garden care to keep outdoor spaces lush year-round.</p><div class="sv-tags"><span class="sv-tag">Garden Design</span><span class="sv-tag">Irrigation</span><span class="sv-tag">Lawn Care</span><span class="sv-tag">Tree Service</span><span class="sv-tag">Seasonal</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Contact Us</button></div>
+<div class="sv-c"><div class="sv-n">12</div><div class="sv-ic">🪨</div><div class="sv-t">Hardscaping &amp; Grading</div><p class="sv-b">Structural landscaping that transforms functionality and curb appeal.</p><div class="sv-tags"><span class="sv-tag">Retaining Walls</span><span class="sv-tag">Walkways</span><span class="sv-tag">Interlocking</span><span class="sv-tag">Drainage</span><span class="sv-tag">Grading</span></div><button class="btn btn-sm btn-arrow" onclick="go('ct')">Contact Us</button></div>
+</div></div>
+<div class="sv-cat" style="margin-top:72px"><div class="sv-ch"><span class="sv-ci">🚨</span><span class="sv-ct sv-ct-r">Emergency Response &amp; Restoration</span></div><p class="sv-cd" style="color:#dc3545;font-weight:600">24/7 emergency services — because property emergencies don't wait.</p><div class="sv-g">
+<div class="sv-c sv-emer"><div class="sv-n">13</div><div class="sv-ic">🌊</div><div class="sv-t">Flood Response</div><p class="sv-b">Immediate water extraction, dehumidification, and professional drying to minimize damage.</p><div class="sv-tags"><span class="sv-tag">Water Extraction</span><span class="sv-tag">Dehumidification</span><span class="sv-tag">Drying</span><span class="sv-tag">Emergency</span></div><button class="btn btn-sm btn-arrow btn-danger" onclick="go('ct')">Call Now</button></div>
+<div class="sv-c sv-emer"><div class="sv-n">14</div><div class="sv-ic">🔥</div><div class="sv-t">Restoration Services</div><p class="sv-b">Structural repair and restoration following water, fire, or storm damage to get your property back to normal.</p><div class="sv-tags"><span class="sv-tag">Water Damage</span><span class="sv-tag">Fire Damage</span><span class="sv-tag">Structural Repair</span><span class="sv-tag">Storm Recovery</span></div><button class="btn btn-sm btn-arrow btn-danger" onclick="go('ct')">Get Emergency Help</button></div>
+<div class="sv-c sv-emer"><div class="sv-n">15</div><div class="sv-ic">📞</div><div class="sv-t">24/7 Emergency Hotline</div><p class="sv-b">Round-the-clock emergency support for property owners — call anytime, day or night.</p><div class="sv-tags"><span class="sv-tag">24/7 Support</span><span class="sv-tag">Rapid Response</span><span class="sv-tag">All Emergencies</span></div><button class="btn btn-sm btn-arrow btn-danger" onclick="location.href='tel:+14376691543'">Call (437) 669-1543</button></div>
+</div></div>
+</div>
+</div>
+
+<div id="page-port" class="pg">
+<div class="sb"><button class="sb-btn" type="button" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Our Projects</span></div>
+<div class="mb">
+<div class="ms"><div class="ms-top"><span class="ms-l">Projects</span><span class="ms-p" id="proj-count">0</span></div><div class="pl" id="project-list"></div></div>
+<div style="position:relative;flex:1;display:flex;flex-direction:column"><div id="leaflet-map" style="flex:1;min-height:500px"></div></div>
+</div>
+<div class="mh"><div class="ey">Live Project Map</div><div class="mh-h">Our <em>Projects</em></div><p class="mh-s">Our development footprint across Hamilton and the Greater Region.</p></div>
+<div class="sstrip">
+<div class="sc"><div class="sc-i">🏠</div><div><div class="sc-l">Total Projects</div><div class="sc-n" id="count-total">&ndash;</div></div></div>
+<div class="sc"><div class="sc-i">📍</div><div><div class="sc-l">Neighbourhoods</div><div class="sc-n" id="count-hoods">&ndash;</div></div></div>
+</div>
+</div>
+
+<div id="page-ct" class="pg">
+<div class="sb"><button class="sb-btn" type="button" onclick="go('home')">Home</button><span class="sb-sep">/</span><span class="sb-cr">Contact Us</span></div>
+<div class="cpg">
+<div class="ey cpg-ey">Contact Us</div>
+<h1>Contact Us — <span>The Prime Developers Inc</span></h1>
+<p class="cpg-q">"We know that we are the best — just let us <a onclick="go('port')" style="color:var(--g);cursor:pointer;font-style:inherit">show you how the work needs to be done</a>!"</p>
+<p class="cpg-free">FREE ESTIMATES on all our services!</p>
+<div class="cpg-f" id="cpg-fw">
+<form id="ct-form" onsubmit="return sf(event)" novalidate>
+<input type="hidden" name="_subject" value="New Client Inquiry - Prime Developers">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="cpg-fg"><label for="ct-name">Name</label><input id="ct-name" name="name" placeholder="Your full name" required autocomplete="name"></div>
+<div class="cpg-fg"><label for="ct-email">Email</label><input id="ct-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email"></div>
+<div class="cpg-fg"><label for="ct-phone">Phone</label><input id="ct-phone" type="tel" name="phone" placeholder="+1 (437) 000-0000" autocomplete="tel"></div>
+<div class="cpg-fg"><label for="ct-message">Message</label><textarea id="ct-message" name="message" placeholder="Tell us about your project..." required></textarea></div>
+<div id="ct-err" class="form-err"></div>
+<button class="btn btn-submit" type="submit" id="ct-btn">Send Message</button>
+</form>
+</div>
+<div class="cpg-ty" id="cpg-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p><a onclick="rf()">Send another message</a></div>
+</div>
+</div>
+
+<!-- ══════════ SUMMER SALE PAGE ══════════ -->
+<div id="page-summer" class="pg">
+
+  <!-- NAV SUBHEADER -->
+  <div class="sb">
+    <button class="sb-btn" type="button" onclick="go('home')">Home</button>
+    <span class="sb-sep">/</span>
+    <span class="sb-cr" style="color:var(--g)">🌞 Summer Sale</span>
+  </div>
+
+  <!-- SPLIT HERO -->
+  <section class="ss-split">
+    <div class="ss-panel" id="ss-panel-kitchen" onclick="openSummerModal('kitchen')" onmouseenter="hoverSsPanel('kitchen')" onmouseleave="unhoverSsPanel()">
+      <div class="ss-panel-bg" style="background-image:url('assets/hero kithen 1.jpg');"></div>
+      <div class="ss-panel-ov"></div>
+      <div class="ss-panel-c">
+        <div class="ss-eyebrow">Kitchen Renovation</div>
+        <h2 class="ss-panel-title">Transform Your<br><span>Dream Kitchen</span></h2>
+        <button class="ss-btn-outline">Get Inspired</button>
+      </div>
+      <div class="ss-panel-vig"></div>
+    </div>
+    <div class="ss-divider"></div>
+    <div class="ss-panel" id="ss-panel-bathroom" onclick="openSummerModal('bathroom')" onmouseenter="hoverSsPanel('bathroom')" onmouseleave="unhoverSsPanel()">
+      <div class="ss-panel-bg" style="background-image:url('assets/hero batroom 1.jpg');"></div>
+      <div class="ss-panel-ov"></div>
+      <div class="ss-panel-c">
+        <div class="ss-eyebrow">Bathroom Renovation</div>
+        <h2 class="ss-panel-title">Luxury Bath<br><span>Redesign</span></h2>
+        <button class="ss-btn-outline">Get Inspired</button>
+      </div>
+      <div class="ss-panel-vig"></div>
+    </div>
+    <div class="ss-mob-hint">TAP A SIDE TO VIEW GALLERY</div>
+  </section>
+
+  <!-- SUMMER OFFER -->
+  <section class="ss-offer">
+    <div class="ss-bg-strip">
+      <img src="assets/summer sale 1.jpg" alt="">
+      <img src="assets/summer sale 2.jpg" alt="">
+      <img src="assets/summer sale.jpg" alt="">
+    </div>
+    <div class="ss-badge">🌞 LIMITED TIME OFFER</div>
+    <h2 class="ss-title">Summer Special</h2>
+    <p class="ss-sub">Full Kitchen Renovation <em>or</em> Full Bathroom Renovation</p>
+    <div class="ss-price">
+      <span class="ss-starting">Starting From</span>
+      <span class="ss-amount">$4,675</span>
+      <span class="ss-exclaim">!!!</span>
+    </div>
+    <p class="ss-note">Licensed &amp; insured · GTA's top-rated renovators · No hidden fees</p>
+    <button class="ss-claim-btn" style="margin-top:1.5rem;" onclick="document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">CLAIM THIS OFFER →</button>
+  </section>
+
+  <!-- STATS -->
+  <div class="ss-stats">
+    <div class="ss-stat"><div class="ss-stat-n">231+</div><div class="ss-stat-l">Projects Completed</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">6</div><div class="ss-stat-l">Years of Operation</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">185</div><div class="ss-stat-l">Clients Served</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">5★</div><div class="ss-stat-l">Rated GTA Renovators</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="ss-dark">
+    <div class="ss-center">
+      <div class="ss-eyebrow" style="justify-content:center;">Boutique Service · Bespoke Results</div>
+      <h2 class="ss-sec-title">Kitchen &amp; Bathroom<br><span>Renovations Done Right</span></h2>
+      <p class="ss-sec-body">We provide a bespoke, boutique service level specifically designed for homeowners across the GTA. Click either side above to explore our portfolio — then book your free, no-obligation estimate below.</p>
+    </div>
+  </section>
+
+  <!-- ESTIMATE FORM -->
+  <section class="ss-dark" id="ss-estimate" style="padding-top:0;">
+    <div class="ss-center">
+      <div class="ss-eyebrow" style="justify-content:center;">No Obligation · Free Visit</div>
+      <h2 class="ss-sec-title">Book Your<br><span>Free Estimate</span></h2>
+      <p class="ss-sec-body">Our experts will visit your home and provide a detailed quote at no cost.</p>
+    </div>
+    <div class="ss-form-wrap">
+      <div id="ss-form-success" style="display:none;text-align:center;padding:3rem 2rem;border:1px solid #1e1e1e;border-radius:8px;">
+        <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+        <h3 style="font-weight:900;font-size:1.4rem;letter-spacing:.1em;color:#fff;margin-bottom:.75rem;">Thank You!</h3>
+        <p style="color:#888;line-height:1.7;">We've received your request and will be in touch within 24 hours.</p>
+      </div>
+      <form id="ss-form" onsubmit="return submitSsForm(event)" novalidate>
+        <div class="ss-form-row">
+          <div>
+            <label class="ss-label">Full Name *</label>
+            <input class="ss-input" type="text" name="name" required placeholder="John Smith">
+          </div>
+          <div>
+            <label class="ss-label">Phone Number *</label>
+            <input class="ss-input" type="tel" name="phone" required placeholder="(416) 000-0000">
+          </div>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Email Address *</label>
+          <input class="ss-input" type="email" name="email" required placeholder="john@email.com">
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Service Needed *</label>
+          <select class="ss-input" name="service" required>
+            <option value="">Select a service...</option>
+            <option value="Kitchen Renovation">Kitchen Renovation</option>
+            <option value="Bathroom Renovation">Bathroom Renovation</option>
+            <option value="Both Kitchen &amp; Bathroom">Both Kitchen &amp; Bathroom</option>
+            <option value="Other Renovation">Other Renovation</option>
+          </select>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Project Description</label>
+          <textarea class="ss-input" name="message" rows="4" placeholder="Tell us about your project — size, style preferences, timeline..." style="resize:none;"></textarea>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label" style="margin-bottom:.75rem;">Preferred Contact Method</label>
+          <div class="ss-radio-group">
+            <label class="ss-radio-label"><input type="radio" name="preferred_contact" value="Phone" checked> Phone</label>
+            <label class="ss-radio-label"><input type="radio" name="preferred_contact" value="Email"> Email</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-full btn-submit" id="ss-submit-btn">Get My Free Estimate →</button>
+        <p style="text-align:center;font-size:.72rem;color:#444;margin-top:.75rem;letter-spacing:.06em;">* We typically respond within 24 hours. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+</div><!-- /page-summer -->
+
+<!-- KITCHEN GALLERY MODAL -->
+<div class="ss-modal hidden" id="ss-modal-kitchen" role="dialog" aria-label="Kitchen Renovation Portfolio">
+  <div class="ss-modal-hdr">
+    <div>
+      <div class="ss-modal-title">Kitchen Renovation — Portfolio</div>
+      <div class="ss-modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="ss-modal-x" onclick="closeSummerModal('kitchen')" aria-label="Close">×</button>
+  </div>
+  <div class="ss-modal-body">
+    <div style="flex:1;position:relative;min-height:0;">
+      <canvas id="ss-cgKitchen" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="ss-modal-cta">
+      <p>Ready to bring this style to your home?</p>
+      <button class="ss-modal-cta-btn" onclick="closeSummerModal('kitchen');document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">Book Your Free Estimate →</button>
+    </div>
+  </div>
+</div>
+
+<!-- BATHROOM GALLERY MODAL -->
+<div class="ss-modal hidden" id="ss-modal-bathroom" role="dialog" aria-label="Bathroom Renovation Portfolio">
+  <div class="ss-modal-hdr">
+    <div>
+      <div class="ss-modal-title">Bathroom Renovation — Portfolio</div>
+      <div class="ss-modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="ss-modal-x" onclick="closeSummerModal('bathroom')" aria-label="Close">×</button>
+  </div>
+  <div class="ss-modal-body">
+    <div style="flex:1;position:relative;min-height:0;">
+      <canvas id="ss-cgBathroom" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="ss-modal-cta">
+      <p>Ready to bring this style to your home?</p>
+      <button class="ss-modal-cta-btn" onclick="closeSummerModal('bathroom');document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">Book Your Free Estimate →</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="proj-modal" onclick="if(event.target===this)closeModal()" role="dialog" aria-modal="true" aria-label="Project details">
+<div class="modal">
+<button class="modal-close" type="button" onclick="closeModal()" aria-label="Close project details">✕</button>
+<div class="modal-media"></div>
+<div class="modal-body"></div>
+</div>
+</div>
+
+<script>
+var M=null,mOk=0,curSlide=0,curImgs=[],projModal=document.getElementById('proj-modal'),mMedia=projModal.querySelector('.modal-media'),mBody=projModal.querySelector('.modal-body');
+var D='https://lh3.googleusercontent.com/d/',DU='https://drive.google.com/uc?export=view&id=';
+var P=[
+{id:1,name:'Liberty Market Lofts',hood:'Liberty Village',address:'5 Hanna Ave, Toronto',lat:43.6375014,lng:-79.4181453,units:'–',cat:'High-End Renovations',desc:'Complete luxury loft renovation featuring 18ft accent wall painting, open-concept design, custom glass stair railings, and premium herringbone flooring. Completed in an accelerated 2-week timeframe.',imgs:[D+'1o-Z-5Gup6vJQB0rSeauZKORyaoW0OKFQ'],vid:'https://drive.google.com/file/d/1XOjF9y9zkLs7Ftf2NUh4iDGUKiXEIW3T/preview'},
+{id:2,name:'18 Yonge – Downtown Toronto',hood:'Downtown Toronto',address:'18 Yonge St, Toronto',lat:43.6444613,lng:-79.3764899,units:'–',cat:'High-End Renovations',desc:'Full-suite transformation designed for young professionals. Removed existing carpeting and installed premium luxury vinyl flooring throughout. Completed a full-unit paint to high-end standards, ensuring the property is 100% rent-ready for the downtown market.',imgs:[D+'1gfoM9YDfaTk_sooV3QWqRvonwvAaz6KY',D+'1m2lYUBYwWIHlNeYB7DtG0TcRvN7kvjwb',D+'1hYIdTcweTQRaAPKWQ-nl422lk-aaE2UB',D+'1JGh0oA5u5xO40YdkvA7hAeeV8JYyHJlP']},
+{id:3,name:'11 Brunel Ct – CityPlace Toronto',hood:'CityPlace',address:'11 Brunel Ct, Toronto',lat:43.6394386,lng:-79.3930638,units:'–',cat:'High-End Renovations / Pre-Sale Prep',desc:'Entrusted by one of our top realtors to prepare this property for the downtown market in just 1 week. We executed a strategic renovation including new flooring, a full repaint, and comprehensive repairs — all within a strict budget designed to maximize the seller\'s profit.',imgs:[D+'1QV-NuynCJmYm9Ku-P51oPwIbKkLMU_g4',D+'1Gb-00ow-B4AH2K-jnm1jls9d3VtwtVqB',D+'1RearzMcqhHZPoLVd805puWwxCd6rFEVM',D+'1t1Ia3xH9bz_Cu5Bu_vRhsL6qKfpLmgy4']},
+{id:4,name:'The Address at High Park – Toronto',hood:'High Park',address:'1638 Bloor St W, Toronto',lat:43.6555898,lng:-79.4562795,units:'–',cat:'Luxury Renovations / 48-Hour Turnaround',desc:'Completed a comprehensive 1+1 bedroom transformation over a single weekend. We installed premium luxury vinyl flooring throughout, executed a full professional repaint, and performed custom lighting upgrades to ensure the property was rent-ready for the next tenant immediately.',imgs:[D+'1HOpWpZVJ2188NXWiRbeNx1CyPGdTXIPj',D+'1JCR5NQaLqReFRGE2zC6g9r1BRfOFO709',D+'1Ey-sg5B2mQ6U7TEetWZsLABoaF3HXoZy']},
+{id:5,name:'150 Avondale St — Hamilton Turnaround',hood:'Hamilton',address:'150 Avondale St, Hamilton',lat:43.2525905,lng:-79.8255146,units:'–',cat:'Full Property Turnaround / Pre-Sale Prep',desc:'Following a long eviction process, we executed a complete property restoration on a budget of under $10k — full interior clearing, severe odor removal, backyard restoration, and a professional repaint. The property sold within 24 hours at 100% asking price.',imgs:[D+'1MmWj8_XTfDZu34zP0UX8Q0V1eQSQt4e4',D+'1qjh-tWMtlbqCmMZZBvGVGIw2J2fD-MKq',D+'1X-XGPp1_EYtTk7vdULKA_ksfLSKA_dHA',D+'1dI_viW6NnIUSRAW7QJuup3v8Ab7G1cGL',D+'1DJ78336RKv5_xV7SBFKs4iuu-YTpYMO2']}
+],mk={},aId=null;
+
+function go(p){
+document.querySelectorAll('.pg').forEach(function(e){e.classList.remove('on');e.style.display='none'});
+var t=document.getElementById('page-'+p);if(!t){t=document.getElementById('page-home');p='home'}
+t.style.display='block';t.classList.add('on');scrollTo(0,0);
+document.querySelectorAll('.nk span').forEach(function(l){l.classList.remove('ap')});
+var a=document.getElementById('nav-'+p);if(a)a.classList.add('ap');
+if(p==='port'){if(!mOk){setTimeout(function(){iMap();mOk=1},280)}else if(M){setTimeout(function(){M.invalidateSize()},280)}}
+}
+function goTo(id){setTimeout(function(){var e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})},60)}
+// Keyboard accessibility: Enter on role=button elements triggers click
+document.addEventListener('keydown',function(ev){if(ev.key==='Enter'&&ev.target.getAttribute('role')==='button')ev.target.click();});
+function toggleMenu(){var m=document.getElementById('nav-mob');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+function showErr(el,msg){if(el){el.textContent=msg;el.style.display='block';}}
+function resetBtn(btn){btn.disabled=false;btn.textContent='Send Message';}
+function sf(e){
+  e.preventDefault();
+  var form=e.target;
+  if(form._gotcha&&form._gotcha.value)return false;
+  var isHome=form.id==='home-form';
+  var btn=isHome?document.getElementById('home-btn'):document.getElementById('ct-btn');
+  var err=isHome?null:document.getElementById('ct-err');
+  btn.disabled=true;btn.textContent='Sending…';
+  if(err)err.style.display='none';
+  fetch('https://formspree.io/f/mwvrjgag',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+  .then(function(r){
+    if(r.ok){
+      form.style.display='none';
+      document.getElementById(isHome?'home-ty':'cpg-ty').classList.add('show');
+    } else {
+      r.json().then(function(d){showErr(err,(d&&d.errors&&d.errors[0]&&d.errors[0].message)||'Something went wrong. Please try again.');})
+      .catch(function(){showErr(err,'Something went wrong. Please try again.');});
+      resetBtn(btn);
+    }
+  }).catch(function(){showErr(err,'Network error. Please check your connection and try again.');resetBtn(btn);});
+  return false;
+}
+function rf(){
+  document.getElementById('cpg-ty').classList.remove('show');
+  var f=document.getElementById('cpg-fw').querySelector('form');
+  f.style.display='block';f.reset();
+  var err=document.getElementById('ct-err');
+  err.style.display='none';err.textContent='';
+  resetBtn(document.getElementById('ct-btn'));
+}
+function iMap(){
+M=L.map('leaflet-map',{center:[43.255,-79.87],zoom:11,zoomControl:false,attributionControl:false});
+L.control.zoom({position:'topright'}).addTo(M);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19}).addTo(M);
+rAll();
+var b=L.latLngBounds(P.map(function(p){return[p.lat,p.lng]}));
+if(P.length>1)M.fitBounds(b.pad(0.3));
+}
+function mIc(p){return L.divIcon({html:'<div class="pin-o"><div class="pin-b"><span class="pin-n">'+p.id+'</span></div></div>',className:'',iconSize:[34,42],iconAnchor:[17,42],popupAnchor:[0,-44]})}
+function mPp(p){return '<div><div class="pp-h"><div class="pp-n">'+p.name+'</div><div class="pp-a">'+p.address+'</div></div><div class="pp-f"><button class="btn btn-full btn-sm" style="margin-bottom:6px" onclick="openModal('+p.id+')">View Project</button><button class="btn btn-full btn-sm" onclick="go(\'ct\')">Free Estimate</button></div></div>'}
+function rAll(){
+var l=document.getElementById('project-list');
+document.getElementById('proj-count').textContent=P.length;
+document.getElementById('count-total').textContent=P.length;
+var h=[];P.forEach(function(p){if(h.indexOf(p.hood)===-1)h.push(p.hood)});
+document.getElementById('count-hoods').textContent=h.length;l.innerHTML='';
+P.forEach(function(p){
+var e=document.createElement('div');e.className='pi';e.dataset.id=p.id;
+e.innerHTML='<div class="pi-b">'+p.id+'</div><div class="pi-i"><div class="pi-n">'+p.name+'</div><div class="pi-h">'+p.hood+'</div></div><div class="pi-u">'+p.units+'<span>units</span></div>';
+e.addEventListener('click',function(){sP(p.id);var m=mk[p.id];if(m){M.setView(m.getLatLng(),14,{animate:true});m.openPopup()}});l.appendChild(e);
+var m=L.marker([p.lat,p.lng],{icon:mIc(p)}).bindPopup(mPp(p),{maxWidth:260,minWidth:230});
+m.on('click',function(){sP(p.id)});m.addTo(M);mk[p.id]=m
+})
+}
+function sP(id){aId=id;document.querySelectorAll('.pi').forEach(function(e){e.classList.toggle('on',parseInt(e.dataset.id)===id)});var a=document.querySelector('.pi.on');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function openModal(id){
+var p=P.find(function(x){return x.id===id});if(!p)return;
+curImgs=p.imgs||[];curSlide=0;
+var slides='';for(var i=0;i<curImgs.length;i++)slides+='<img src="'+curImgs[i]+'" alt="'+p.name+'"'+(i===0?' class="active"':'')+'>';
+if(p.vid)slides+='<iframe src="'+p.vid+'" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;position:absolute;inset:0;display:none;border:none"></iframe>';
+var total=curImgs.length+(p.vid?1:0);
+var dots='';if(total>1){dots='<div class="modal-dots">';for(var i=0;i<total;i++)dots+='<button class="modal-dot'+(i===0?' active':'')+'" onclick="goSlide('+i+')"></button>';dots+='</div>';}
+var nav=total>1?'<button class="modal-nav prev" onclick="navSlide(-1)">‹</button><button class="modal-nav next" onclick="navSlide(1)">›</button>':'';
+mMedia.innerHTML=slides+nav+dots;
+mMedia.dataset.total=total;mMedia.dataset.hasVid=p.vid?'1':'0';
+mBody.innerHTML='<div class="modal-tag">'+p.cat+'</div><div class="modal-title">'+p.name+'</div><div class="modal-addr">'+p.address+'</div><p class="modal-desc">'+p.desc+'</p><p class="modal-quote">"We know that we are the best — just let us <a onclick="go(\'port\')" style="color:var(--g);cursor:pointer;font-style:inherit">show you how the work needs to be done</a>!"</p><button class="btn" onclick="closeModal();go(\'ct\')">Contact Us</button>';
+projModal.classList.add('show');
+}
+function navSlide(d){goSlide(curSlide+d)}
+function goSlide(i){
+var imgs=mMedia.querySelectorAll('img'),dots=mMedia.querySelectorAll('.modal-dot'),ifr=mMedia.querySelector('iframe');
+var total=parseInt(mMedia.dataset.total)||imgs.length;
+if(!total)return;
+curSlide=(i%total+total)%total;
+imgs.forEach(function(m,j){m.style.display=j===curSlide?'block':'none';m.classList.toggle('active',j===curSlide)});
+if(ifr){var isVid=curSlide===imgs.length;ifr.style.display=isVid?'block':'none';if(!isVid)ifr.src=ifr.src;}
+dots.forEach(function(d,j){d.classList.toggle('active',j===curSlide)});
+}
+function closeModal(){projModal.classList.remove('show')}
+document.addEventListener('keydown',function(e){
+if(e.key==='Escape')closeModal();
+if(projModal.classList.contains('show')){
+if(e.key==='ArrowLeft')navSlide(-1);
+if(e.key==='ArrowRight')navSlide(1);
+}
+});
+
+/* ── Hero parallax: image drifts at 15% scroll speed, capped to hero height ── */
+(function(){
+  var bg=document.querySelector('.hero-bg');
+  var hero=document.querySelector('section.hero');
+  if(!bg||!hero||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  window.addEventListener('scroll',function(){
+    var y=Math.min(window.scrollY,hero.offsetHeight)*0.15;
+    bg.style.transform='translateY('+y+'px)';
+  },{passive:true});
+})();
+/* ── VariableProximity: radius=100, falloff=linear, wght 400→1000, opsz 9→40 ── */
+(function(){
+  var el=document.getElementById('vp-block');
+  var txt="At The Prime Developer, we don\u2019t just manage properties \u2014 we curate experiences. Our boutique model ensures high-touch communication, data-driven strategy for investors, seamless operational excellence for management firms, and premium, white-glove care for private homeowners. We know we are the best in the industry \u2014 just let us show you how the work should be done.";
+  var accents=['curate experiences','white-glove care'];
+  var radius=100;
+  // build char spans, mark accent phrases
+  var html='',i=0;
+  while(i<txt.length){
+    var matched=false;
+    for(var a=0;a<accents.length;a++){
+      if(txt.substr(i,accents[a].length)===accents[a]){
+        for(var c=0;c<accents[a].length;c++){
+          var ch=txt[i+c];
+          html+='<span class="vp-c vp-a">'+(ch===' '?' ':ch)+'</span>';
+        }
+        i+=accents[a].length;matched=true;break;
+      }
+    }
+    if(!matched){
+      var ch=txt[i];
+      html+='<span class="vp-c">'+(ch===' '?' ':ch.replace(/&/g,'&amp;').replace(/</g,'&lt;'))+'</span>';
+      i++;
+    }
+  }
+  el.innerHTML=html;
+  var spans=el.querySelectorAll('.vp-c');
+  // white base rgb
+  var wb=[255,255,255], gb=[140,198,63];
+  document.addEventListener('mousemove',function(e){
+    var mx=e.clientX,my=e.clientY;
+    spans.forEach(function(s){
+      var r=s.getBoundingClientRect();
+      var cx=r.left+r.width/2,cy=r.top+r.height/2;
+      var dist=Math.sqrt((mx-cx)*(mx-cx)+(my-cy)*(my-cy));
+      var f=Math.max(0,1-dist/radius); // linear falloff
+      var wght=Math.round(400+f*600);
+      var opsz=+(9+f*31).toFixed(1);
+      s.style.fontVariationSettings="'wght' "+wght+",'opsz' "+opsz;
+      if(s.classList.contains('vp-a')){
+        var r2=Math.round(wb[0]+f*(gb[0]-wb[0]));
+        var g2=Math.round(wb[1]+f*(gb[1]-wb[1]));
+        var b2=Math.round(wb[2]+f*(gb[2]-wb[2]));
+        s.style.color='rgb('+r2+','+g2+','+b2+')';
+      } else {
+        s.style.color='rgba(255,255,255,'+(0.6+f*0.4)+')';
+      }
+    });
+  });
+})();
+
+/* ── BlurText: mirrors direction="top", animateBy="words", delay=200, threshold=0.1 ── */
+(function(){
+  var el=document.getElementById('blur-hero');
+  var txt='Over 1,250 Problems Solved. 250+ Projects Delivered.';
+  el.innerHTML=txt.split(' ').map(function(w){
+    return '<span class="bt-w">'+w+'\u00A0</span>';
+  }).join('');
+  var words=el.querySelectorAll('.bt-w');
+  new IntersectionObserver(function(entries,obs){
+    if(!entries[0].isIntersecting)return;
+    words.forEach(function(w,i){setTimeout(function(){w.classList.add('bv')},i*200)});
+    obs.disconnect();
+  },{threshold:0.1}).observe(el);
+})();
+/* ── Logo loop: clone track so translateX(-50%) creates a seamless restart ── */
+(function(){var t=document.getElementById('logo-track');if(t)t.innerHTML+=t.innerHTML;})();
+/* ── Count-up: IntersectionObserver + requestAnimationFrame, runs once ── */
+(function(){
+  var duration=1800;
+  function fmt(n,plus){
+    var s=n>=1000?Math.floor(n/1000)+','+(String(n%1000).padStart(3,'0')):String(n);
+    return s+(plus||'');
+  }
+  function animateCounter(el){
+    var target=parseInt(el.getAttribute('data-target'),10);
+    var plus=el.getAttribute('data-plus')||'';
+    var start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var progress=Math.min((ts-start)/duration,1);
+      var ease=1-Math.pow(1-progress,3);
+      var current=Math.round(ease*target);
+      el.textContent=fmt(current,progress>=1?plus:'');
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters=document.querySelectorAll('.count');
+  new IntersectionObserver(function(entries,obs){
+    if(!entries[0].isIntersecting)return;
+    counters.forEach(function(el){animateCounter(el);});
+    obs.disconnect();
+  },{threshold:0.3}).observe(document.querySelector('.metrics'));
+})();
+/* ══════════ SUMMER SALE JS ══════════ */
+(function(){
+  var ssGalleries = {};
+
+  var kitchenImages = [
+    'assets/kithen  1.jpg','assets/kithen 2.jpg','assets/kithen 3.jpg','assets/kithen 4.jpg','assets/kithen 5.jpg',
+    'assets/kithen 6.jpg','assets/kithen 7.jpg','assets/kithen 8.jpg','assets/kithen 9.jpg'
+  ];
+  var bathroomImages = [
+    'assets/batroom1.jpg','assets/batroom2.jpg','assets/batroom3.jpg','assets/batroom4.jpg','assets/batroom5.jpg',
+    'assets/batroom6.jpg','assets/batroom7.jpg','assets/batroom8.jpg','assets/batroom9.jpg'
+  ];
+  var kitchenLabels  = ['Modern White Kitchen','Dark Cabinetry & Island','Open Concept Kitchen','Farmhouse Style','Contemporary Remodel','Custom Built-ins','Luxury Upgrade','Compact Design','Two-Tone Kitchen'];
+  var bathroomLabels = ['Master Ensuite','Walk-in Shower','Spa-Style Bath','Small Bath Maximized','Double Vanity','Tile & Flooring','Freestanding Tub','Kids Bathroom','Full Gut & Redo'];
+
+  async function initSsGallery(canvasId, images, labels) {
+    if (ssGalleries[canvasId]) return;
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var mod;
+    try { mod = await import('./assets/ogl.bundle.js'); } catch(e) { return; }
+    var Renderer=mod.Renderer,Camera=mod.Camera,Transform=mod.Transform,Plane=mod.Plane,Mesh=mod.Mesh,Program=mod.Program,Texture=mod.Texture;
+
+    var renderer = new Renderer({ canvas:canvas, alpha:false, antialias:true, dpr:Math.min(devicePixelRatio,2) });
+    var gl = renderer.gl;
+    gl.clearColor(0.894, 0.886, 0.871, 1);
+
+    var CAM_Z=2.5, FOV=75;
+    var camera = new Camera(gl, { fov:FOV });
+    camera.position.z = CAM_Z;
+
+    var viewH = 2*Math.tan((FOV*Math.PI/180)/2)*CAM_Z;
+    var pH = viewH*0.58, pW = pH*0.75;
+    var CFG = { bend:0.0, borderRadius:0.05, scrollSpeed:2.2, scrollEase:0.05, planeW:pW, planeH:pH, gap:pW*0.12 };
+    var scene = new Transform();
+
+    function resize(){
+      var wrap=canvas.parentElement;
+      renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
+      camera.perspective({ aspect:wrap.offsetWidth/wrap.offsetHeight });
+    }
+    window.addEventListener('resize', resize); resize();
+
+    var vert='attribute vec3 position;attribute vec2 uv;uniform mat4 modelViewMatrix;uniform mat4 projectionMatrix;uniform float uBend;varying vec2 vUv;void main(){vUv=uv;vec3 p=position;if(abs(uBend)>0.0001){float t=p.x*uBend;p.x=sin(t)/uBend;p.z+=(cos(t)-1.0)/uBend;}gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}';
+    var frag='precision highp float;uniform sampler2D tMap;uniform float uRadius;varying vec2 vUv;void main(){vec2 p=vUv-0.5;vec2 q=abs(p)-(0.5-uRadius);float d=length(max(q,0.0))+min(max(q.x,q.y),0.0)-uRadius;if(d>0.0)discard;gl_FragColor=texture2D(tMap,vUv);}';
+
+    function makeTexture(src, label) {
+      var tex = new Texture(gl, { generateMipmaps:false });
+      var img = new Image();
+      img.onload = function() {
+        var CW=900,CH=1200,oc=document.createElement('canvas');
+        oc.width=CW; oc.height=CH;
+        var ctx=oc.getContext('2d');
+        var imgR=img.naturalWidth/img.naturalHeight, canR=CW/CH;
+        var sx,sy,sw,sh;
+        if(imgR>canR){sh=img.naturalHeight;sw=sh*canR;sx=(img.naturalWidth-sw)/2;sy=0;}
+        else{sw=img.naturalWidth;sh=sw/canR;sy=(img.naturalHeight-sh)/2;sx=0;}
+        ctx.drawImage(img,sx,sy,sw,sh,0,0,CW,CH);
+        var grad=ctx.createLinearGradient(0,CH*0.65,0,CH);
+        grad.addColorStop(0,'rgba(0,0,0,0)'); grad.addColorStop(1,'rgba(0,0,0,0.78)');
+        ctx.fillStyle=grad; ctx.fillRect(0,0,CW,CH);
+        ctx.fillStyle='#ffffff'; ctx.font='bold 52px sans-serif'; ctx.letterSpacing='3px';
+        ctx.fillText(label,36,CH-72);
+        ctx.fillStyle='#6abf4b'; ctx.fillRect(36,CH-54,ctx.measureText(label).width,4);
+        tex.image=oc;
+      };
+      img.src=src; return tex;
+    }
+
+    var stride=CFG.planeW+CFG.gap, totalW=stride*images.length, meshes=[];
+    images.forEach(function(src,i){
+      var geo=new Plane(gl,{width:CFG.planeW,height:CFG.planeH,widthSegments:32});
+      var tex=makeTexture(src,labels[i]||src);
+      var prog=new Program(gl,{vertex:vert,fragment:frag,uniforms:{tMap:{value:tex},uBend:{value:CFG.bend},uRadius:{value:CFG.borderRadius}},transparent:true,cullFace:false});
+      var mesh=new Mesh(gl,{geometry:geo,program:prog});
+      var baseX=(i-(images.length-1)/2)*stride;
+      mesh.position.x=baseX; mesh.setParent(scene);
+      meshes.push({mesh:mesh,baseX:baseX});
+    });
+
+    var scroll={cur:0,tar:0}, dragging=false, dragX0=0, tarX0=0;
+    canvas.addEventListener('wheel',function(e){e.preventDefault();scroll.tar+=e.deltaY*0.003*CFG.scrollSpeed;},{passive:false});
+    canvas.addEventListener('mousedown',function(e){dragging=true;dragX0=e.clientX;tarX0=scroll.tar;canvas.style.cursor='grabbing';});
+    window.addEventListener('mousemove',function(e){if(!dragging)return;scroll.tar=tarX0-(e.clientX-dragX0)*0.006*CFG.scrollSpeed;});
+    window.addEventListener('mouseup',function(){dragging=false;canvas.style.cursor='grab';});
+    canvas.addEventListener('touchstart',function(e){dragX0=e.touches[0].clientX;tarX0=scroll.tar;},{passive:true});
+    canvas.addEventListener('touchmove',function(e){scroll.tar=tarX0-(e.touches[0].clientX-dragX0)*0.006*CFG.scrollSpeed;},{passive:true});
+
+    function lerp(a,b,t){return a+(b-a)*t;}
+    var rafId;
+    function loop(){
+      rafId=requestAnimationFrame(loop);
+      scroll.cur=lerp(scroll.cur,scroll.tar,CFG.scrollEase);
+      var offset=scroll.cur*stride, half=totalW/2;
+      meshes.forEach(function(m){
+        var x=m.baseX-offset;
+        while(x>half)x-=totalW; while(x<-half)x+=totalW;
+        m.mesh.position.x=x;
+      });
+      renderer.render({scene:scene,camera:camera});
+    }
+    ssGalleries[canvasId]={start:function(){loop();},stop:function(){cancelAnimationFrame(rafId);}};
+    ssGalleries[canvasId].start();
+  }
+
+  window.openSummerModal = function(type) {
+    document.getElementById('ss-modal-'+type).classList.remove('hidden');
+    document.body.style.overflow='hidden';
+    if(type==='kitchen') initSsGallery('ss-cgKitchen', kitchenImages, kitchenLabels);
+    else initSsGallery('ss-cgBathroom', bathroomImages, bathroomLabels);
+  };
+  window.closeSummerModal = function(type) {
+    document.getElementById('ss-modal-'+type).classList.add('hidden');
+    document.body.style.overflow='';
+  };
+  window.hoverSsPanel = function(side) {
+    if(window.innerWidth<768)return;
+    document.getElementById('ss-panel-kitchen').style.flex  = side==='kitchen'  ? '1.15':'0.85';
+    document.getElementById('ss-panel-bathroom').style.flex = side==='bathroom' ? '1.15':'0.85';
+  };
+  window.unhoverSsPanel = function() {
+    document.getElementById('ss-panel-kitchen').style.flex  = '1';
+    document.getElementById('ss-panel-bathroom').style.flex = '1';
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if(e.key==='Escape') { closeSummerModal('kitchen'); closeSummerModal('bathroom'); }
+  });
+
+  window.submitSsForm = function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = document.getElementById('ss-submit-btn');
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch('https://formspree.io/f/maqkrqrr',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        form.style.display='none';
+        document.getElementById('ss-form-success').style.display='block';
+      } else {
+        btn.disabled=false; btn.textContent='Get My Free Estimate →';
+        alert('Something went wrong. Please try again or call us directly.');
+      }
+    }).catch(function(){
+      btn.disabled=false; btn.textContent='Get My Free Estimate →';
+      alert('Network error. Please check your connection.');
+    });
+    return false;
+  };
+})();
+
+/* ── Service search: filters cards, hides empty categories, shows no-results ── */
+(function(){
+  var input=document.getElementById('sv-search');
+  var clearBtn=document.getElementById('sv-search-clear');
+  var noResults=document.getElementById('sv-no-results');
+  var noResultsTerm=document.getElementById('sv-no-results-term');
+  var resetLink=document.getElementById('sv-search-reset');
+  if(!input)return;
+  function reset(){input.value='';filter();input.focus();}
+  if(clearBtn)clearBtn.addEventListener('click',reset);
+  if(resetLink)resetLink.addEventListener('click',reset);
+  input.addEventListener('input',filter);
+  function filter(){
+    var q=input.value.trim().toLowerCase();
+    if(clearBtn)clearBtn.style.display=q?'block':'none';
+    var cards=document.querySelectorAll('#page-svc .sv-c');
+    var visible=0;
+    cards.forEach(function(card){
+      var title=(card.querySelector('.sv-t')||{}).textContent||'';
+      var body=(card.querySelector('.sv-b')||{}).textContent||'';
+      var tags=Array.from(card.querySelectorAll('.sv-tag')).map(function(t){return t.textContent;}).join(' ');
+      var haystack=(title+' '+body+' '+tags).toLowerCase();
+      var match=!q||haystack.indexOf(q)!==-1;
+      card.style.display=match?'':'none';
+      if(match)visible++;
+    });
+    document.querySelectorAll('#page-svc .sv-cat').forEach(function(cat){
+      var any=Array.from(cat.querySelectorAll('.sv-c')).some(function(c){return c.style.display!=='none';});
+      cat.style.display=any?'':'none';
+    });
+    if(noResults){
+      var empty=visible===0&&!!q;
+      noResults.classList.toggle('show',empty);
+      if(noResultsTerm)noResultsTerm.textContent='"'+input.value.trim()+'"';
+    }
+  }
+})();
+</script>
+</body>
+</html>
