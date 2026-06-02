@@ -57,6 +57,117 @@
 .sv-no-results-icon{font-size:40px;margin-bottom:16px;opacity:.35}
 .sv-no-results p{font-size:16px;font-weight:300;color:var(--mt);line-height:1.6}
 .sv-no-results strong{color:var(--mid);font-weight:600}
+/* ══════════ SUMMER SALE PAGE ══════════ */
+/* -- Fonts for summer page -- */
+/* Raleway & Open Sans loaded via JS on demand */
+.ss-font-h { font-family: 'Raleway', var(--f); }
+/* Nav highlight for summer */
+#nav-summer { color: var(--g) !important; font-weight: 700 !important; }
+#nav-summer::after { width: 100% !important; }
+
+/* ── Split Hero ── */
+.ss-split { display:flex; height:calc(100vh - 100px); min-height:500px; }
+@media(max-width:767px){ .ss-split { flex-direction:column; height:auto; } }
+.ss-panel { flex:1; position:relative; display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; transition:flex .5s cubic-bezier(.4,0,.2,1); }
+@media(max-width:767px){ .ss-panel { min-height:320px; } }
+.ss-panel-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .55s ease; }
+.ss-panel:hover .ss-panel-bg { transform:scale(1.06); }
+.ss-panel-ov { position:absolute; inset:0; background:rgba(0,0,0,.48); transition:background .4s; }
+.ss-panel:hover .ss-panel-ov { background:rgba(0,0,0,.3); }
+.ss-panel-c { position:relative; z-index:2; text-align:center; padding:2rem; transition:transform .4s ease; }
+.ss-panel:hover .ss-panel-c { transform:scale(1.04); }
+.ss-eyebrow { display:inline-flex; align-items:center; gap:.75rem; font-weight:700; font-size:.65rem; letter-spacing:.22em; color:var(--g); text-transform:uppercase; margin-bottom:1.1rem; }
+.ss-eyebrow::before,.ss-eyebrow::after { content:''; display:block; width:32px; height:1.5px; background:var(--g); }
+.ss-panel-title { font-weight:900; font-size:clamp(2rem,5vw,3.6rem); color:#fff; line-height:1.1; text-shadow:0 3px 30px rgba(0,0,0,.8); margin-bottom:1.5rem; }
+.ss-panel-title span { color:var(--g); }
+.ss-btn-outline { display:inline-block; border:2px solid #fff; color:#fff; background:transparent; padding:1rem 2.8rem; border-radius:50px; font-weight:800; font-size:1rem; letter-spacing:.14em; cursor:pointer; text-transform:uppercase; transition:background .25s,color .25s,border-color .25s,transform .2s; }
+.ss-btn-outline:hover { background:var(--g); border-color:var(--g); color:#fff; transform:translateY(-2px); }
+.ss-divider { width:2px; flex-shrink:0; z-index:5; background:linear-gradient(to bottom,transparent,var(--g) 25%,var(--g) 75%,transparent); }
+@media(max-width:767px){ .ss-divider { display:none; } }
+.ss-panel-vig { position:absolute; bottom:0; left:0; right:0; height:38%; background:linear-gradient(to top,rgba(0,0,0,.7),transparent); pointer-events:none; z-index:1; }
+.ss-mob-hint { position:absolute; bottom:12px; left:0; right:0; text-align:center; font-size:.68rem; letter-spacing:.12em; color:rgba(255,255,255,.55); pointer-events:none; z-index:3; }
+@media(min-width:768px){ .ss-mob-hint { display:none; } }
+
+/* ── Summer offer section ── */
+.ss-offer { background:#0d1a0a; text-align:center; padding:6rem 2rem; position:relative; overflow:hidden; }
+.ss-bg-strip { position:absolute; inset:0; display:flex; gap:4px; }
+.ss-bg-strip img { flex:1; width:0; height:100%; object-fit:cover; object-position:center top; }
+.ss-offer::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.45); pointer-events:none; z-index:1; }
+.ss-offer > *:not(.ss-bg-strip) { position:relative; z-index:2; }
+.ss-badge { display:inline-block; background:var(--g); color:#fff; font-weight:800; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; padding:.45rem 1.4rem; border-radius:50px; margin-bottom:1.5rem; }
+.ss-title { font-weight:900; font-size:clamp(3rem,7vw,6rem); color:#fff; letter-spacing:.04em; text-transform:uppercase; margin:0 0 .5rem; line-height:1; }
+.ss-sub { font-size:clamp(1rem,2.5vw,1.35rem); color:rgba(255,255,255,.85); margin:0 0 2rem; }
+.ss-sub em { color:var(--g); font-style:normal; font-weight:700; }
+.ss-price { display:flex; align-items:baseline; justify-content:center; gap:.3rem; margin-bottom:1.2rem; }
+.ss-starting { font-weight:700; font-size:clamp(1rem,2vw,1.3rem); color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:.1em; }
+.ss-amount { font-weight:900; font-size:clamp(3.5rem,10vw,8rem); color:var(--g); line-height:1; }
+.ss-exclaim { font-weight:900; font-size:clamp(2rem,5vw,4rem); color:#fff; }
+.ss-note { font-size:.9rem; color:rgba(255,255,255,.6); letter-spacing:.05em; margin:0; }
+.ss-claim-btn { display:inline-block; padding:1.4rem 4rem; background:var(--g); color:#fff; border-radius:50px; text-decoration:none; font-weight:900; font-size:1.4rem; letter-spacing:.12em; text-transform:uppercase; box-shadow:0 8px 30px rgba(106,191,75,.4); transition:background .2s,transform .15s,box-shadow .2s; border:none; cursor:pointer; }
+.ss-claim-btn:hover { background:var(--gd); transform:translateY(-3px); box-shadow:0 12px 40px rgba(106,191,75,.5); }
+
+/* ── Stats bar ── */
+.ss-stats { background:#e4e3de; border-top:1px solid #cccbc5; border-bottom:1px solid #cccbc5; display:flex; flex-wrap:wrap; justify-content:center; }
+.ss-stat { flex:1; min-width:160px; padding:1.75rem 1rem; text-align:center; border-right:1px solid #cccbc5; }
+.ss-stat:last-child { border-right:none; }
+.ss-stat-n { font-weight:900; font-size:2.4rem; color:#55a038; line-height:1; margin-bottom:.35rem; }
+.ss-stat-l { font-weight:700; font-size:.6rem; letter-spacing:.18em; color:#555; text-transform:uppercase; }
+
+/* ── Intro dark section ── */
+.ss-dark { background-image:url('assets/hero-neighborhood.jpg'); background-size:cover; background-position:center; background-attachment:fixed; position:relative; padding:5rem 1.5rem; }
+.ss-dark::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,.82); pointer-events:none; }
+.ss-dark > * { position:relative; z-index:1; }
+.ss-center { text-align:center; max-width:680px; margin:0 auto; }
+.ss-sec-title { font-weight:900; font-size:clamp(1.6rem,3vw,2.4rem); color:#fff; line-height:1.2; margin-bottom:1rem; }
+.ss-sec-title span { color:var(--g); }
+.ss-sec-body { color:#ccc; font-size:.95rem; line-height:1.75; }
+
+/* ── Form ── */
+.ss-form-wrap { max-width:660px; margin:3rem auto 0; }
+.ss-form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+@media(max-width:560px){ .ss-form-row { grid-template-columns:1fr; } }
+.ss-form-field { margin-bottom:1rem; }
+.ss-label { display:block; font-weight:700; font-size:.65rem; letter-spacing:.16em; color:#888; text-transform:uppercase; margin-bottom:.5rem; }
+.ss-input { width:100%; padding:.8rem 1rem; background:#111; border:1px solid #2a2a2a; color:#fff; font-size:.9rem; font-family:var(--f); border-radius:6px; outline:none; transition:border-color .2s,box-shadow .2s; }
+.ss-input:focus { border-color:var(--g); box-shadow:0 0 0 3px rgba(106,191,75,.15); }
+.ss-input option { background:#111; }
+.ss-radio-group { display:flex; gap:2rem; }
+.ss-radio-label { display:flex; align-items:center; gap:.5rem; cursor:pointer; color:#ccc; font-size:.9rem; }
+.ss-radio-label input { accent-color:var(--g); width:16px; height:16px; }
+
+/* ── Gallery modals ── */
+.ss-modal { position:fixed; inset:0; z-index:1100; background:#e4e3de; display:flex; flex-direction:column; animation:fu .25s ease; }
+.ss-modal.hidden { display:none; }
+.ss-modal-hdr { display:flex; align-items:center; justify-content:space-between; padding:1.25rem 2rem; border-bottom:1px solid #cccbc5; background:#e4e3de; flex-shrink:0; }
+.ss-modal-title { font-weight:800; font-size:clamp(1.2rem,2.5vw,1.6rem); letter-spacing:.06em; color:#1a1a1a; }
+.ss-modal-sub { font-size:.6rem; letter-spacing:.2em; color:#55a038; margin-top:3px; text-transform:uppercase; }
+.ss-modal-x { background:none; border:none; color:#1a1a1a; font-size:2.2rem; line-height:1; cursor:pointer; padding:0 .2rem; font-weight:300; transition:color .2s; }
+.ss-modal-x:hover { color:#55a038; }
+.ss-modal-body { flex:1; overflow-y:auto; padding:0; display:flex; flex-direction:column; }
+.ss-modal-cta { text-align:center; padding:1.5rem; background:#e4e3de; }
+.ss-modal-cta p { color:#555; font-size:.9rem; margin-bottom:1rem; }
+.ss-modal-cta-btn { display:inline-block; padding:.8rem 2.5rem; background:var(--g); color:#fff; border:none; border-radius:50px; font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:background .2s,transform .15s; }
+.ss-modal-cta-btn:hover { background:var(--gd); transform:translateY(-2px); }
+
+/* ── Summer footer ── */
+.ss-footer { background:#050505; border-top:1px solid #111; padding:3rem 1.5rem; text-align:center; }
+.ss-footer-brand { font-weight:900; font-size:1.1rem; letter-spacing:.16em; color:#fff; margin-bottom:4px; }
+.ss-footer-brand span { color:var(--g); }
+.ss-footer-tagline { font-size:.6rem; letter-spacing:.22em; color:#555; margin-bottom:1.5rem; text-transform:uppercase; }
+.ss-footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.25rem 2rem; margin-bottom:1.5rem; }
+.ss-footer-links a { color:#555; text-decoration:none; font-size:.82rem; transition:color .2s; }
+.ss-footer-links a:hover { color:var(--g); }
+.ss-footer-copy { font-size:.65rem; color:#333; letter-spacing:.1em; text-transform:uppercase; }
+
+/* ── Rating badge ── */
+.ss-rating { display:flex; align-items:center; gap:.6rem; background:#f5f5f2; border:1px solid #dddcd7; border-radius:50px; padding:.45rem 1rem .45rem .65rem; }
+.ss-rating-stars { display:flex; gap:1px; }
+.ss-rating-stars svg { width:14px; height:14px; fill:#f59e0b; }
+.ss-rating-text { line-height:1.2; }
+.ss-rating-title { font-weight:700; font-size:.7rem; color:#1a1a1a; display:block; letter-spacing:.02em; }
+.ss-rating-sub { font-size:.62rem; color:#888; display:block; }
+@media(max-width:640px){ .ss-rating { display:none; } }
+
 /* ── Mobile nav ── */
 .nav-ham{display:none;flex-direction:column;justify-content:space-between;width:26px;height:20px;background:none;border:none;cursor:pointer;padding:0}
 .nav-ham span{display:block;width:100%;height:2.5px;background:var(--dk);border-radius:2px;transition:transform .2s,opacity .2s}
@@ -81,6 +192,7 @@
 <span id="nav-port" onclick="go('port')" role="menuitem" tabindex="0">Portfolio</span>
 <span onclick="go('home');goTo('cli')" role="menuitem" tabindex="0">Clients</span>
 <span id="nav-ct" onclick="go('ct')" role="menuitem" tabindex="0">Contact</span>
+<span id="nav-summer" onclick="go('summer')" role="menuitem" tabindex="0">🌞 Summer Sale</span>
 </div>
 <button class="btn btn-sm" type="button" onclick="go('ct')">Get in Touch</button>
 <button class="nav-ham" type="button" onclick="toggleMenu()" aria-label="Open navigation menu" id="nav-ham"><span></span><span></span><span></span></button>
@@ -94,6 +206,7 @@
 <a onclick="toggleMenu();go('port')">Portfolio</a>
 <a onclick="toggleMenu();go('home');goTo('cli')">Clients</a>
 <a onclick="toggleMenu();go('ct')">Contact</a>
+<a onclick="toggleMenu();go('summer')" style="color:var(--g)">🌞 Summer Sale</a>
 </div>
 </div>
 
@@ -276,6 +389,175 @@
 </div>
 <div class="cpg-ty" id="cpg-ty"><h3>Thank You!</h3><p>We've received your message and will get back to you shortly.</p><a onclick="rf()">Send another message</a></div>
 </div>
+</div>
+
+<!-- ══════════ SUMMER SALE PAGE ══════════ -->
+<div id="page-summer" class="pg">
+
+  <!-- NAV SUBHEADER -->
+  <div class="sb">
+    <button class="sb-btn" type="button" onclick="go('home')">Home</button>
+    <span class="sb-sep">/</span>
+    <span class="sb-cr" style="color:var(--g)">🌞 Summer Sale</span>
+  </div>
+
+  <!-- SPLIT HERO -->
+  <section class="ss-split">
+    <div class="ss-panel" id="ss-panel-kitchen" onclick="openSummerModal('kitchen')" onmouseenter="hoverSsPanel('kitchen')" onmouseleave="unhoverSsPanel()">
+      <div class="ss-panel-bg" style="background-image:url('assets/hero kithen 1.jpg');"></div>
+      <div class="ss-panel-ov"></div>
+      <div class="ss-panel-c">
+        <div class="ss-eyebrow">Kitchen Renovation</div>
+        <h2 class="ss-panel-title">Transform Your<br><span>Dream Kitchen</span></h2>
+        <button class="ss-btn-outline">Get Inspired</button>
+      </div>
+      <div class="ss-panel-vig"></div>
+    </div>
+    <div class="ss-divider"></div>
+    <div class="ss-panel" id="ss-panel-bathroom" onclick="openSummerModal('bathroom')" onmouseenter="hoverSsPanel('bathroom')" onmouseleave="unhoverSsPanel()">
+      <div class="ss-panel-bg" style="background-image:url('assets/hero batroom 1.jpg');"></div>
+      <div class="ss-panel-ov"></div>
+      <div class="ss-panel-c">
+        <div class="ss-eyebrow">Bathroom Renovation</div>
+        <h2 class="ss-panel-title">Luxury Bath<br><span>Redesign</span></h2>
+        <button class="ss-btn-outline">Get Inspired</button>
+      </div>
+      <div class="ss-panel-vig"></div>
+    </div>
+    <div class="ss-mob-hint">TAP A SIDE TO VIEW GALLERY</div>
+  </section>
+
+  <!-- SUMMER OFFER -->
+  <section class="ss-offer">
+    <div class="ss-bg-strip">
+      <img src="assets/summer sale 1.jpg" alt="">
+      <img src="assets/summer sale 2.jpg" alt="">
+      <img src="assets/summer sale.jpg" alt="">
+    </div>
+    <div class="ss-badge">🌞 LIMITED TIME OFFER</div>
+    <h2 class="ss-title">Summer Special</h2>
+    <p class="ss-sub">Full Kitchen Renovation <em>or</em> Full Bathroom Renovation</p>
+    <div class="ss-price">
+      <span class="ss-starting">Starting From</span>
+      <span class="ss-amount">$4,675</span>
+      <span class="ss-exclaim">!!!</span>
+    </div>
+    <p class="ss-note">Licensed &amp; insured · GTA's top-rated renovators · No hidden fees</p>
+    <button class="ss-claim-btn" style="margin-top:1.5rem;" onclick="document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">CLAIM THIS OFFER →</button>
+  </section>
+
+  <!-- STATS -->
+  <div class="ss-stats">
+    <div class="ss-stat"><div class="ss-stat-n">231+</div><div class="ss-stat-l">Projects Completed</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">6</div><div class="ss-stat-l">Years of Operation</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">185</div><div class="ss-stat-l">Clients Served</div></div>
+    <div class="ss-stat"><div class="ss-stat-n">5★</div><div class="ss-stat-l">Rated GTA Renovators</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="ss-dark">
+    <div class="ss-center">
+      <div class="ss-eyebrow" style="justify-content:center;">Boutique Service · Bespoke Results</div>
+      <h2 class="ss-sec-title">Kitchen &amp; Bathroom<br><span>Renovations Done Right</span></h2>
+      <p class="ss-sec-body">We provide a bespoke, boutique service level specifically designed for homeowners across the GTA. Click either side above to explore our portfolio — then book your free, no-obligation estimate below.</p>
+    </div>
+  </section>
+
+  <!-- ESTIMATE FORM -->
+  <section class="ss-dark" id="ss-estimate" style="padding-top:0;">
+    <div class="ss-center">
+      <div class="ss-eyebrow" style="justify-content:center;">No Obligation · Free Visit</div>
+      <h2 class="ss-sec-title">Book Your<br><span>Free Estimate</span></h2>
+      <p class="ss-sec-body">Our experts will visit your home and provide a detailed quote at no cost.</p>
+    </div>
+    <div class="ss-form-wrap">
+      <div id="ss-form-success" style="display:none;text-align:center;padding:3rem 2rem;border:1px solid #1e1e1e;border-radius:8px;">
+        <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+        <h3 style="font-weight:900;font-size:1.4rem;letter-spacing:.1em;color:#fff;margin-bottom:.75rem;">Thank You!</h3>
+        <p style="color:#888;line-height:1.7;">We've received your request and will be in touch within 24 hours.</p>
+      </div>
+      <form id="ss-form" onsubmit="return submitSsForm(event)" novalidate>
+        <div class="ss-form-row">
+          <div>
+            <label class="ss-label">Full Name *</label>
+            <input class="ss-input" type="text" name="name" required placeholder="John Smith">
+          </div>
+          <div>
+            <label class="ss-label">Phone Number *</label>
+            <input class="ss-input" type="tel" name="phone" required placeholder="(416) 000-0000">
+          </div>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Email Address *</label>
+          <input class="ss-input" type="email" name="email" required placeholder="john@email.com">
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Service Needed *</label>
+          <select class="ss-input" name="service" required>
+            <option value="">Select a service...</option>
+            <option value="Kitchen Renovation">Kitchen Renovation</option>
+            <option value="Bathroom Renovation">Bathroom Renovation</option>
+            <option value="Both Kitchen &amp; Bathroom">Both Kitchen &amp; Bathroom</option>
+            <option value="Other Renovation">Other Renovation</option>
+          </select>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label">Project Description</label>
+          <textarea class="ss-input" name="message" rows="4" placeholder="Tell us about your project — size, style preferences, timeline..." style="resize:none;"></textarea>
+        </div>
+        <div class="ss-form-field">
+          <label class="ss-label" style="margin-bottom:.75rem;">Preferred Contact Method</label>
+          <div class="ss-radio-group">
+            <label class="ss-radio-label"><input type="radio" name="preferred_contact" value="Phone" checked> Phone</label>
+            <label class="ss-radio-label"><input type="radio" name="preferred_contact" value="Email"> Email</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-full btn-submit" id="ss-submit-btn">Get My Free Estimate →</button>
+        <p style="text-align:center;font-size:.72rem;color:#444;margin-top:.75rem;letter-spacing:.06em;">* We typically respond within 24 hours. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+</div><!-- /page-summer -->
+
+<!-- KITCHEN GALLERY MODAL -->
+<div class="ss-modal hidden" id="ss-modal-kitchen" role="dialog" aria-label="Kitchen Renovation Portfolio">
+  <div class="ss-modal-hdr">
+    <div>
+      <div class="ss-modal-title">Kitchen Renovation — Portfolio</div>
+      <div class="ss-modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="ss-modal-x" onclick="closeSummerModal('kitchen')" aria-label="Close">×</button>
+  </div>
+  <div class="ss-modal-body">
+    <div style="flex:1;position:relative;min-height:0;">
+      <canvas id="ss-cgKitchen" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="ss-modal-cta">
+      <p>Ready to bring this style to your home?</p>
+      <button class="ss-modal-cta-btn" onclick="closeSummerModal('kitchen');document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">Book Your Free Estimate →</button>
+    </div>
+  </div>
+</div>
+
+<!-- BATHROOM GALLERY MODAL -->
+<div class="ss-modal hidden" id="ss-modal-bathroom" role="dialog" aria-label="Bathroom Renovation Portfolio">
+  <div class="ss-modal-hdr">
+    <div>
+      <div class="ss-modal-title">Bathroom Renovation — Portfolio</div>
+      <div class="ss-modal-sub">The Prime Developers Inc · Scroll or drag to explore</div>
+    </div>
+    <button class="ss-modal-x" onclick="closeSummerModal('bathroom')" aria-label="Close">×</button>
+  </div>
+  <div class="ss-modal-body">
+    <div style="flex:1;position:relative;min-height:0;">
+      <canvas id="ss-cgBathroom" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+    </div>
+    <div class="ss-modal-cta">
+      <p>Ready to bring this style to your home?</p>
+      <button class="ss-modal-cta-btn" onclick="closeSummerModal('bathroom');document.getElementById('ss-estimate').scrollIntoView({behavior:'smooth'})">Book Your Free Estimate →</button>
+    </div>
+  </div>
 </div>
 
 <div class="modal-bg" id="proj-modal" onclick="if(event.target===this)closeModal()" role="dialog" aria-modal="true" aria-label="Project details">
@@ -503,6 +785,157 @@ if(e.key==='ArrowRight')navSlide(1);
     obs.disconnect();
   },{threshold:0.3}).observe(document.querySelector('.metrics'));
 })();
+/* ══════════ SUMMER SALE JS ══════════ */
+(function(){
+  var ssGalleries = {};
+
+  var kitchenImages = [
+    'assets/kithen  1.jpg','assets/kithen 2.jpg','assets/kithen 3.jpg','assets/kithen 4.jpg','assets/kithen 5.jpg',
+    'assets/kithen 6.jpg','assets/kithen 7.jpg','assets/kithen 8.jpg','assets/kithen 9.jpg'
+  ];
+  var bathroomImages = [
+    'assets/batroom1.jpg','assets/batroom2.jpg','assets/batroom3.jpg','assets/batroom4.jpg','assets/batroom5.jpg',
+    'assets/batroom6.jpg','assets/batroom7.jpg','assets/batroom8.jpg','assets/batroom9.jpg'
+  ];
+  var kitchenLabels  = ['Modern White Kitchen','Dark Cabinetry & Island','Open Concept Kitchen','Farmhouse Style','Contemporary Remodel','Custom Built-ins','Luxury Upgrade','Compact Design','Two-Tone Kitchen'];
+  var bathroomLabels = ['Master Ensuite','Walk-in Shower','Spa-Style Bath','Small Bath Maximized','Double Vanity','Tile & Flooring','Freestanding Tub','Kids Bathroom','Full Gut & Redo'];
+
+  async function initSsGallery(canvasId, images, labels) {
+    if (ssGalleries[canvasId]) return;
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var mod;
+    try { mod = await import('./assets/ogl.bundle.js'); } catch(e) { return; }
+    var Renderer=mod.Renderer,Camera=mod.Camera,Transform=mod.Transform,Plane=mod.Plane,Mesh=mod.Mesh,Program=mod.Program,Texture=mod.Texture;
+
+    var renderer = new Renderer({ canvas:canvas, alpha:false, antialias:true, dpr:Math.min(devicePixelRatio,2) });
+    var gl = renderer.gl;
+    gl.clearColor(0.894, 0.886, 0.871, 1);
+
+    var CAM_Z=2.5, FOV=75;
+    var camera = new Camera(gl, { fov:FOV });
+    camera.position.z = CAM_Z;
+
+    var viewH = 2*Math.tan((FOV*Math.PI/180)/2)*CAM_Z;
+    var pH = viewH*0.58, pW = pH*0.75;
+    var CFG = { bend:0.0, borderRadius:0.05, scrollSpeed:2.2, scrollEase:0.05, planeW:pW, planeH:pH, gap:pW*0.12 };
+    var scene = new Transform();
+
+    function resize(){
+      var wrap=canvas.parentElement;
+      renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
+      camera.perspective({ aspect:wrap.offsetWidth/wrap.offsetHeight });
+    }
+    window.addEventListener('resize', resize); resize();
+
+    var vert='attribute vec3 position;attribute vec2 uv;uniform mat4 modelViewMatrix;uniform mat4 projectionMatrix;uniform float uBend;varying vec2 vUv;void main(){vUv=uv;vec3 p=position;if(abs(uBend)>0.0001){float t=p.x*uBend;p.x=sin(t)/uBend;p.z+=(cos(t)-1.0)/uBend;}gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}';
+    var frag='precision highp float;uniform sampler2D tMap;uniform float uRadius;varying vec2 vUv;void main(){vec2 p=vUv-0.5;vec2 q=abs(p)-(0.5-uRadius);float d=length(max(q,0.0))+min(max(q.x,q.y),0.0)-uRadius;if(d>0.0)discard;gl_FragColor=texture2D(tMap,vUv);}';
+
+    function makeTexture(src, label) {
+      var tex = new Texture(gl, { generateMipmaps:false });
+      var img = new Image();
+      img.onload = function() {
+        var CW=900,CH=1200,oc=document.createElement('canvas');
+        oc.width=CW; oc.height=CH;
+        var ctx=oc.getContext('2d');
+        var imgR=img.naturalWidth/img.naturalHeight, canR=CW/CH;
+        var sx,sy,sw,sh;
+        if(imgR>canR){sh=img.naturalHeight;sw=sh*canR;sx=(img.naturalWidth-sw)/2;sy=0;}
+        else{sw=img.naturalWidth;sh=sw/canR;sy=(img.naturalHeight-sh)/2;sx=0;}
+        ctx.drawImage(img,sx,sy,sw,sh,0,0,CW,CH);
+        var grad=ctx.createLinearGradient(0,CH*0.65,0,CH);
+        grad.addColorStop(0,'rgba(0,0,0,0)'); grad.addColorStop(1,'rgba(0,0,0,0.78)');
+        ctx.fillStyle=grad; ctx.fillRect(0,0,CW,CH);
+        ctx.fillStyle='#ffffff'; ctx.font='bold 52px sans-serif'; ctx.letterSpacing='3px';
+        ctx.fillText(label,36,CH-72);
+        ctx.fillStyle='#6abf4b'; ctx.fillRect(36,CH-54,ctx.measureText(label).width,4);
+        tex.image=oc;
+      };
+      img.src=src; return tex;
+    }
+
+    var stride=CFG.planeW+CFG.gap, totalW=stride*images.length, meshes=[];
+    images.forEach(function(src,i){
+      var geo=new Plane(gl,{width:CFG.planeW,height:CFG.planeH,widthSegments:32});
+      var tex=makeTexture(src,labels[i]||src);
+      var prog=new Program(gl,{vertex:vert,fragment:frag,uniforms:{tMap:{value:tex},uBend:{value:CFG.bend},uRadius:{value:CFG.borderRadius}},transparent:true,cullFace:false});
+      var mesh=new Mesh(gl,{geometry:geo,program:prog});
+      var baseX=(i-(images.length-1)/2)*stride;
+      mesh.position.x=baseX; mesh.setParent(scene);
+      meshes.push({mesh:mesh,baseX:baseX});
+    });
+
+    var scroll={cur:0,tar:0}, dragging=false, dragX0=0, tarX0=0;
+    canvas.addEventListener('wheel',function(e){e.preventDefault();scroll.tar+=e.deltaY*0.003*CFG.scrollSpeed;},{passive:false});
+    canvas.addEventListener('mousedown',function(e){dragging=true;dragX0=e.clientX;tarX0=scroll.tar;canvas.style.cursor='grabbing';});
+    window.addEventListener('mousemove',function(e){if(!dragging)return;scroll.tar=tarX0-(e.clientX-dragX0)*0.006*CFG.scrollSpeed;});
+    window.addEventListener('mouseup',function(){dragging=false;canvas.style.cursor='grab';});
+    canvas.addEventListener('touchstart',function(e){dragX0=e.touches[0].clientX;tarX0=scroll.tar;},{passive:true});
+    canvas.addEventListener('touchmove',function(e){scroll.tar=tarX0-(e.touches[0].clientX-dragX0)*0.006*CFG.scrollSpeed;},{passive:true});
+
+    function lerp(a,b,t){return a+(b-a)*t;}
+    var rafId;
+    function loop(){
+      rafId=requestAnimationFrame(loop);
+      scroll.cur=lerp(scroll.cur,scroll.tar,CFG.scrollEase);
+      var offset=scroll.cur*stride, half=totalW/2;
+      meshes.forEach(function(m){
+        var x=m.baseX-offset;
+        while(x>half)x-=totalW; while(x<-half)x+=totalW;
+        m.mesh.position.x=x;
+      });
+      renderer.render({scene:scene,camera:camera});
+    }
+    ssGalleries[canvasId]={start:function(){loop();},stop:function(){cancelAnimationFrame(rafId);}};
+    ssGalleries[canvasId].start();
+  }
+
+  window.openSummerModal = function(type) {
+    document.getElementById('ss-modal-'+type).classList.remove('hidden');
+    document.body.style.overflow='hidden';
+    if(type==='kitchen') initSsGallery('ss-cgKitchen', kitchenImages, kitchenLabels);
+    else initSsGallery('ss-cgBathroom', bathroomImages, bathroomLabels);
+  };
+  window.closeSummerModal = function(type) {
+    document.getElementById('ss-modal-'+type).classList.add('hidden');
+    document.body.style.overflow='';
+  };
+  window.hoverSsPanel = function(side) {
+    if(window.innerWidth<768)return;
+    document.getElementById('ss-panel-kitchen').style.flex  = side==='kitchen'  ? '1.15':'0.85';
+    document.getElementById('ss-panel-bathroom').style.flex = side==='bathroom' ? '1.15':'0.85';
+  };
+  window.unhoverSsPanel = function() {
+    document.getElementById('ss-panel-kitchen').style.flex  = '1';
+    document.getElementById('ss-panel-bathroom').style.flex = '1';
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if(e.key==='Escape') { closeSummerModal('kitchen'); closeSummerModal('bathroom'); }
+  });
+
+  window.submitSsForm = function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = document.getElementById('ss-submit-btn');
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch('https://formspree.io/f/maqkrqrr',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        form.style.display='none';
+        document.getElementById('ss-form-success').style.display='block';
+      } else {
+        btn.disabled=false; btn.textContent='Get My Free Estimate →';
+        alert('Something went wrong. Please try again or call us directly.');
+      }
+    }).catch(function(){
+      btn.disabled=false; btn.textContent='Get My Free Estimate →';
+      alert('Network error. Please check your connection.');
+    });
+    return false;
+  };
+})();
+
 /* ── Service search: filters cards, hides empty categories, shows no-results ── */
 (function(){
   var input=document.getElementById('sv-search');
